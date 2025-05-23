@@ -9,7 +9,7 @@
   <style>
     body {
       margin: 0;
-      font-family: Helvetica;
+      font-family: Arial, sans-serif;
     }
 
     header {
@@ -21,8 +21,21 @@
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
 
+    header > div {
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-right: 1rem;
+    }
+
     nav a {
       margin: 0 1rem;
+      position: relative;
       text-decoration: none;
       color: #333;;
     }
@@ -36,11 +49,17 @@
       cursor: pointer;
     }
 
-    .hero {
+    .ecomind {
       position: relative;
       text-align: center;
       height: 400px; /* Set a fixed height for better control */
       overflow: hidden;
+    }
+
+    .logo {
+      width: 50px;
+      height: 50px;
+      margin-right: 1rem;
     }
 
     .background {
@@ -55,27 +74,29 @@
       background: #eaf7e2; /* Optional: background color for empty space */
     }
 
-
     .foreground {
       position: absolute;
       bottom: 0;
-      left: 50%;
+      left: 70%;
       transform: translateX(-50%);
-      width: 22%; /* Make the person smaller for realism */
-      max-width: 220px; /* Prevents it from being too large on big screens */
+      /* Changed size of the person recycling image below */
+      width: 100px;
+      height: 100px;
+      flex-shrink: 0;
+      aspect-ratio: 100/100;
+      max-width: 100%; /* Optional: prevents overflow on small screens */
       z-index: 2;
       filter: drop-shadow(0 8px 16px rgba(0,0,0,0.18));
-      pointer-events: none; /* Prevents accidental drag/select */
-      /* Optional: Add a slight fade for blending */
-      /* opacity: 0.97; */
+      pointer-events: none;
+      size-adjust: auto; /* Prevents accidental drag/select */
     }
 
-    .hero img {
+    .ecomind img {
       width: 100%;
       height: auto;
     }
 
-    .hero-content {
+    .ecomind-content {
       position: absolute;
       top: 30%;
       left: 50%;
@@ -139,31 +160,27 @@
 
 <body>
   <header>
-    <div><strong>EcoMind</strong></div>
-    <nav>
+    <div>
+      <img src="image/logo.png" alt="Logo" class="logo">
+      <div><strong>EcoMind</strong></div>
+    </div>
+    <nav class="nav-links">
       <a href="#">Home</a>
-      <a href="#">About Us</a>
-      <a href="#">Module</a>
-      <a href="#">Game</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+      <a href="#">Modules</a>
     </nav>
     <button class="login-btn">Login</button>
   </header>
 
-  <div class="hero">
-    <div style="position: relative; width: 100%; height: 0; padding-top: 45.5000%;
- padding-bottom: 0; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); margin-top: 1.6em; margin-bottom: 0.9em; overflow: hidden;
- border-radius: 8px; will-change: transform;">
-  <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; padding: 0;margin: 0;"
-    src="https://www.canva.com/design/DAGnHeCY4e4/0nDcbEiOSgfPfyqgPKQXQw/view?embed" allowfullscreen="allowfullscreen" allow="fullscreen">
-  </iframe>
-</div>
-<a href="https:&#x2F;&#x2F;www.canva.com&#x2F;design&#x2F;DAGnHeCY4e4&#x2F;0nDcbEiOSgfPfyqgPKQXQw&#x2F;view?utm_content=DAGnHeCY4e4&amp;utm_campaign=designshare&amp;utm_medium=embeds&amp;utm_source=link" target="_blank" rel="noopener"></a>
+  <div class="ecomind">
+    <img src="image/homepagewithgirl.png" alt="EcoMind" class="background">
   </div>
 
   <div class="section">
     <div class="vision-mission">
       <div class="card">
-        <h2>VISSION</h2>
+        <h2>VISION</h2>
         <p>To be the go-to digital hub for creative waste education, empowering the youth to lead environmental change through responsible and sustainable communities.</p>
       </div>
       <div class="card">
@@ -175,7 +192,7 @@
 
   <div class="about-section">
     <h2>ABOUT US</h2>
-    <p>At EcoMind, we believe that education is the key to a sustainable future. We want to empower individuals with the knowledge and habits necessary for proper waste disposal. Users of all ages can access and learn how to manage waste responsibly and become stewards of the environment.</p>
+    <p>Description about the website and team.</p>
     <button class="learn-more-btn">Learn More</button>
     </div>
   </div>
@@ -187,7 +204,7 @@
     </div>
     <div>
       <h4>About Us</h4>
-      <p>Smarter Disposal Starts Here</p>
+      <p>Short info about the team or mission</p>
     </div>
     <div>
       <h4>Contact Us</h4>
