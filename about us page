@@ -132,6 +132,27 @@
       border-radius: 5px;
       cursor: pointer;
     }
+    .partnership-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+    .partnership-image {
+      flex: 1;
+      min-width: 180px;
+    }
+    .partnership-image img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+    .partnership-text {
+      flex: 1;
+      min-width: 250px;
+      text-align: left;
+    }
   </style>
 </head>
 
@@ -160,9 +181,17 @@
   </div>
 
   <div class="about-section">
-    <h2>Partnerships</h2>
-    <p>Discover our partner organizations—NGOs, government programs, and environmental groups—working together to promote sustainable waste management and community impact.</p>
+   <div class="about-section">
+  <div class="partnership-container">
+    <div class="partnership-image">
+      <img src="images/partnerships.png" alt="Partnership" />
+    </div>
+    <div class="partnership-text">
+      <h2>Partnerships</h2>
+      <p>Discover our partner organizations—NGOs, government programs, and environmental groups—working together to promote sustainable waste management and community impact.</p>
+    </div>
   </div>
+</div>
   <footer>
     <div>
       <h3>ECOMIND</h3>
