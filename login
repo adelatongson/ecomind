@@ -4,23 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EcoMind - Environmental Education</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        /* Base styles for the body and background */
         body {
-            font-family: 'Arial', sans-serif;
-            background-image: url('loginbackround.png');
+            font-family: 'Inter', sans-serif; /* Using Inter font as per instructions */
+            background-image: url('image/Backgroundlogin.svg'); /* Placeholder for loginbackround.png */
             background-size: cover;
             background-repeat: no-repeat;
             background-position: center;
             min-height: 100vh;
             position: relative;
+            overflow-x: hidden; /* Prevent horizontal scrolling */
         }
 
+        /* Overlay for the background image */
         body::before {
             content: '';
             position: absolute;
@@ -32,97 +30,23 @@
             z-index: -1;
         }
 
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 2rem;
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-weight: bold;
-            font-size: 1.2rem;
-            color: #2d5016;
-            text-decoration: none;
-            cursor: pointer;
-            transition: opacity 0.3s;
-        }
-
-        .logo:hover {
-            opacity: 0.8;
-        }
-
-        .logo img {
-            width: 24px;
-            height: 24px;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-            align-items: center;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: #333;
-            font-weight: 500;
-            transition: color 0.3s;
-            padding: 0.5rem 1rem;
-        }
-
-        .nav-links a:hover {
-            color: #2d5016;
-        }
-
-        .nav-links .login-btn {
-            background: #9ACD32;
-            padding: 0.5rem 1.5rem;
-            border-radius: 20px;
-            text-decoration: none;
-            color: #2d5016;
-            font-weight: bold;
-            transition: background 0.3s;
-        }
-
-        .nav-links .login-btn:hover {
-            background: #8FBC8F;
-        }
-
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-            gap: 3px;
-        }
-
-        .hamburger span {
-            width: 25px;
-            height: 3px;
-            background: #333;
-            transition: 0.3s;
-        }
-
+        /* Main content area, adjusted for fixed header */
         .main-content {
             display: flex;
             max-width: 1200px;
             margin: 0 auto;
             padding: 2rem;
-            gap: 0;
+            gap: 0; /* No gap between welcome and login sections by default */
             align-items: flex-start;
-            min-height: calc(100vh - 80px);
+            min-height: calc(100vh - 80px); /* Adjust based on new navbar height */
+            padding-top: 6rem; /* Add padding to account for fixed navbar */
+            justify-content: center; /* Center content horizontally */
         }
 
+        /* Welcome section styling */
         .welcome-section {
             flex: 1;
-            background-image: url('loginwelcome.png');
+            background-image: url('image/welcome.svg'); /* Placeholder for loginwelcome.png */
             background-size: contain;
             background-position: center;
             background-repeat: no-repeat;
@@ -131,37 +55,20 @@
             color: white;
             position: relative;
             overflow: hidden;
-            height: 500px;
+            height: 500px; /* Fixed height for consistency */
             display: flex;
             flex-direction: column;
             justify-content: center;
         }
 
-        .welcome-section::after {
-            display: none;
-        }
-
-        .welcome-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            opacity: 0;
-            z-index: -1;
-        }
-
+        /* Welcome section heading */
         .welcome-section h1 {
             font-size: 3rem;
             margin-bottom: 1rem;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
 
-        .children-illustration {
-            display: none;
-        }
-
+        /* Login section styling */
         .login-section {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
@@ -169,12 +76,13 @@
             padding: 2rem;
             width: 350px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            height: 500px;
+            height: 500px; /* Fixed height for consistency */
             display: flex;
             flex-direction: column;
             justify-content: center;
         }
 
+        /* Login section heading */
         .login-section h2 {
             text-align: center;
             margin-bottom: 2rem;
@@ -182,10 +90,12 @@
             font-size: 2rem;
         }
 
+        /* Form group for inputs */
         .form-group {
             margin-bottom: 1.5rem;
         }
 
+        /* Input field styling */
         .form-group input {
             width: 100%;
             padding: 0.8rem;
@@ -196,15 +106,18 @@
             background: rgba(255, 255, 255, 0.5);
         }
 
+        /* Input focus state */
         .form-group input:focus {
             outline: none;
-            border-color: #4682B4;
+            border-color: #4682B4; /* SteelBlue */
         }
 
+        /* Password field container for toggle icon */
         .password-field {
             position: relative;
         }
 
+        /* Password toggle icon styling */
         .password-toggle {
             position: absolute;
             right: 10px;
@@ -214,35 +127,40 @@
             color: #666;
         }
 
+        /* Password toggle image size */
         .password-toggle img {
             width: 20px;
             height: 20px;
         }
 
+        /* Login button styling */
         .login-button {
             width: 100%;
             padding: 0.8rem;
-            background: #9ACD32;
+            background: #9ACD32; /* YellowGreen */
             border: none;
             border-radius: 10px;
             font-size: 1rem;
             font-weight: bold;
-            color: #2d5016;
+            color: #2d5016; /* Darker green for text */
             cursor: pointer;
             transition: background 0.3s;
             margin-bottom: 1rem;
         }
 
+        /* Login button hover state */
         .login-button:hover {
-            background: #8FBC8F;
+            background: #8FBC8F; /* DarkSeaGreen */
         }
 
+        /* Social login buttons container */
         .social-login {
             display: flex;
             gap: 1rem;
             margin-bottom: 1rem;
         }
 
+        /* Individual social button styling */
         .social-btn {
             flex: 1;
             padding: 0.6rem;
@@ -258,93 +176,122 @@
             font-size: 0.9rem;
         }
 
+        /* Social button hover state */
         .social-btn:hover {
-            border-color: #4682B4;
-            background: #f0f8ff;
+            border-color: #4682B4; /* SteelBlue */
+            background: #f0f8ff; /* AliceBlue */
         }
 
+        /* Register button styling */
         .register-btn {
             width: 100%;
             padding: 0.8rem;
             background: transparent;
-            border: 2px solid #9ACD32;
+            border: 2px solid #9ACD32; /* YellowGreen */
             border-radius: 10px;
             font-size: 1rem;
-            color: #2d5016;
+            color: #2d5016; /* Darker green for text */
             cursor: pointer;
             transition: all 0.3s;
         }
 
+        /* Register button hover state */
         .register-btn:hover {
-            background: #9ACD32;
+            background: #9ACD32; /* YellowGreen */
             color: white;
         }
 
+        /* Responsive adjustments for smaller screens */
         @media (max-width: 768px) {
-            .hamburger {
-                display: flex;
-            }
-
-            .nav-links {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                right: 0;
-                background: rgba(255, 255, 255, 0.95);
-                flex-direction: column;
-                padding: 1rem;
-                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            }
-
-            .nav-links.active {
-                display: flex;
-            }
-
             .main-content {
                 flex-direction: column;
                 gap: 1rem;
                 padding: 1rem;
+                padding-top: 6rem; /* Adjust for smaller screens too */
             }
 
             .welcome-section {
                 width: 100%;
-                border-radius: 20px;
-                height: auto;
+                border-radius: 20px; /* Full border-radius on mobile */
+                height: auto; /* Auto height on mobile */
+                padding: 2rem; /* Reduced padding on mobile */
             }
 
             .welcome-section h1 {
-                font-size: 2rem;
+                font-size: 2rem; /* Smaller font on mobile */
             }
 
             .login-section {
                 width: 100%;
-                max-width: 400px;
-                border-radius: 20px;
-                height: auto;
+                max-width: 400px; /* Max width for login section on mobile */
+                border-radius: 20px; /* Full border-radius on mobile */
+                height: auto; /* Auto height on mobile */
+                align-self: center; /* Center the login section */
             }
+        }
+
+        /* Modal specific styles */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1000; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 400px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            text-align: center;
+            position: relative;
+        }
+
+        .close-button {
+            color: #aaa;
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close-button:hover,
+        .close-button:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
         }
     </style>
 </head>
-<body>
-    <nav class="navbar">
-        <a href="#home" class="logo">
-            <img src="logo.png" alt="EcoMind Logo">
-            EcoMind
-        </a>
-        <ul class="nav-links">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About Us</a></li>
-            <li><a href="#module">Module</a></li>
-            <li><a href="#game">Game</a></li>
-            <li><a href="#login" class="login-btn">Login</a></li>
-        </ul>
-        <div class="hamburger">
-            <span></span>
-            <span></span>
-            <span></span>
+<body class="bg-gray-100">
+
+    <header class="fixed top-0 left-0 w-full bg-white shadow-md z-50 py-4 px-6 md:px-12 flex justify-between items-center rounded-b-lg">
+        <div class="flex items-center space-x-2">
+            <img src="image/logo.png" alt="Ecomind Logo" class="w-10 h-10 rounded-full">
+            <span class="text-xl font-semibold text-gray-800">Ecomind</span>
         </div>
-    </nav>
+        <nav class="hidden md:flex items-center space-x-8">
+            <a href="#home" class="text-gray-700 hover:text-green-600 font-medium transition-colors duration-300">Home</a>
+            <a href="#about" class="text-gray-700 hover:text-green-600 font-medium transition-colors duration-300">About Us</a>
+            <a href="#module" class="text-gray-700 hover:text-green-600 font-medium transition-colors duration-300">Module</a>
+            <a href="#game" class="text-gray-700 hover:text-green-600 font-medium transition-colors duration-300">Game</a>
+            <a href="#login" class="bg-[#B0CC29] text-black px-8 py-3 rounded-full hover:bg-opacity-80 transition-colors duration-300 shadow-lg font-semibold inline-block">Login</a>
+        </nav>
+        <button class="md:hidden text-gray-700 text-2xl" id="hamburger-button"> &#9776; </button>
+    </header>
 
     <main class="main-content">
         <section class="welcome-section">
@@ -360,7 +307,7 @@
                     <div class="password-field">
                         <input type="password" id="password" placeholder="Password" required>
                         <span class="password-toggle" onclick="togglePassword()">
-                            <img id="passwordToggleImg" src="show.png" alt="Show password">
+                            <img id="passwordToggleImg" src="https://placehold.co/20x20/CCCCCC/000000?text=👁️" alt="Show password">
                         </span>
                     </div>
                 </div>
@@ -369,10 +316,10 @@
 
             <div class="social-login">
                 <button class="social-btn" onclick="socialLogin('facebook')">
-                    <img src="facebook.png" alt="Facebook" width="16" height="16"> Facebook
+                    <img src="https://placehold.co/16x16/3B5998/FFFFFF?text=f" alt="Facebook" width="16" height="16"> Facebook
                 </button>
                 <button class="social-btn" onclick="socialLogin('google')">
-                    <img src="google.png" alt="Google" width="16" height="16"> Google
+                    <img src="https://placehold.co/16x16/DB4437/FFFFFF?text=G" alt="Google" width="16" height="16"> Google
                 </button>
             </div>
 
@@ -380,7 +327,26 @@
         </section>
     </main>
 
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeModal()">&times;</span>
+            <p id="modalMessage"></p>
+            <button class="login-button mt-4" onclick="closeModal()">OK</button>
+        </div>
+    </div>
+
     <script>
+        // Function to show a custom modal message instead of alert()
+        function showModal(message) {
+            document.getElementById('modalMessage').textContent = message;
+            document.getElementById('myModal').style.display = 'flex'; // Use flex to center
+        }
+
+        // Function to close the custom modal
+        function closeModal() {
+            document.getElementById('myModal').style.display = 'none';
+        }
+
         // Login form functionality
         document.getElementById('loginForm').addEventListener('submit', function(e) {
             e.preventDefault();
@@ -389,11 +355,11 @@
             const password = document.getElementById('password').value;
             
             if (email && password) {
-                alert(`Welcome back! Login successful for ${email}`);
+                showModal(`Welcome back! Login successful for ${email}`);
                 // Here you would typically send the data to your server
                 console.log('Login attempt:', { email, password });
             } else {
-                alert('Please fill in all fields');
+                showModal('Please fill in all fields');
             }
         });
 
@@ -404,42 +370,74 @@
             
             if (passwordField.type === 'password') {
                 passwordField.type = 'text';
-                toggleImg.src = 'hidden.png';
+                toggleImg.src = 'https://placehold.co/20x20/CCCCCC/000000?text=🙈'; // Placeholder for hide icon
                 toggleImg.alt = 'Hide password';
             } else {
                 passwordField.type = 'password';
-                toggleImg.src = 'show.png';
+                toggleImg.src = 'https://placehold.co/20x20/CCCCCC/000000?text=👁️'; // Placeholder for show icon
                 toggleImg.alt = 'Show password';
             }
         }
 
         // Social login functionality
         function socialLogin(provider) {
-            alert(`Redirecting to ${provider} login...`);
+            showModal(`Redirecting to ${provider} login...`);
             // Here you would typically redirect to the social media OAuth flow
             console.log(`Social login with ${provider}`);
         }
 
         // Register button functionality
         function showRegister() {
-            alert('Redirecting to registration page...');
+            showModal('Redirecting to registration page...');
             // Here you would typically redirect to a registration form
             console.log('Navigate to registration');
         }
 
         // Mobile navigation toggle
-        document.querySelector('.hamburger').addEventListener('click', function() {
-            const navLinks = document.querySelector('.nav-links');
-            navLinks.classList.toggle('active');
+        document.getElementById('hamburger-button').addEventListener('click', function() {
+            const navLinks = document.querySelector('header nav'); // Select the nav element
+            navLinks.classList.toggle('hidden'); // Toggle the 'hidden' class to show/hide
+            navLinks.classList.toggle('flex'); // Add flex to make it a column
+            navLinks.classList.toggle('flex-col'); // Add flex-col for vertical stacking
+            navLinks.classList.toggle('absolute'); // Position absolutely for overlay
+            navLinks.classList.toggle('top-full'); // Place below the header
+            navLinks.classList.toggle('left-0'); // Span full width
+            navLinks.classList.toggle('w-full'); // Span full width
+            navLinks.classList.toggle('bg-white'); // Background for the menu
+            navLinks.classList.toggle('shadow-lg'); // Shadow for the menu
+            navLinks.classList.toggle('py-4'); // Padding
+            navLinks.classList.toggle('items-center'); // Center items
+            navLinks.classList.toggle('space-y-4'); // Space between links
+            navLinks.classList.toggle('md:hidden'); // Ensure it's hidden on medium screens
         });
-
+        
         // Smooth scrolling for navigation links
-        document.querySelectorAll('.nav-links a').forEach(link => {
+        document.querySelectorAll('header nav a').forEach(link => {
             link.addEventListener('click', function(e) {
-                e.preventDefault();
-                const target = this.getAttribute('href');
-                console.log(`Navigating to ${target}`);
-                // Here you would implement actual navigation
+                // Close mobile menu if open
+                const navLinks = document.querySelector('header nav');
+                if (!navLinks.classList.contains('hidden')) {
+                    navLinks.classList.add('hidden');
+                    navLinks.classList.remove('flex', 'flex-col', 'absolute', 'top-full', 'left-0', 'w-full', 'bg-white', 'shadow-lg', 'py-4', 'items-center', 'space-y-4');
+                }
+
+                // Prevent default anchor click behavior only for internal links
+                if (this.hash !== "") {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        const headerOffset = document.querySelector('header').offsetHeight;
+                        const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+                        const offsetPosition = elementPosition - headerOffset;
+
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: "smooth"
+                        });
+                    }
+                }
+                console.log(`Navigating to ${this.getAttribute('href')}`);
             });
         });
     </script>
