@@ -305,7 +305,7 @@
       <a href="file:///C:/Users/MyPC/OneDrive/Ecomind/homepage.html">Home</a>
       <a href="file:///C:/Users/MyPC/OneDrive/Ecomind/about%20us%20page.html">About Us</a>
       <a href="file:///C:/Users/MyPC/OneDrive/Ecomind/modules%20homepage.html">Modules</a>
-      <a href="#">Game</a>
+      <a href="file:///C:/Users/MyPC/OneDrive/Ecomind/game%20homepage.html">Game</a>
       <a href="file:///C:/Users/MyPC/OneDrive/Ecomind/login.html" class="login-btn">Login</a>
     </nav>
 </header>
@@ -418,7 +418,6 @@
 </footer>
 
 <script>
-    // Set current year in footer
     document.getElementById("year").textContent = new Date().getFullYear();
 </script>
 
@@ -428,7 +427,6 @@
     const commentText = document.getElementById("commentText");
     const anonymousCheckbox = document.getElementById("anonymousCheckbox");
 
-    // Load saved comments from localStorage
     function loadComments() {
         dropBoxContainer.innerHTML = "";
         const comments = JSON.parse(localStorage.getItem("comments") || "[]");
@@ -486,10 +484,10 @@
         loadComments();
     });
 
-    // Initial load
     loadComments();
 </script>
 
 </body>
 </html>
+
 
