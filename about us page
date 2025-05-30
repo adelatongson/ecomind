@@ -250,7 +250,7 @@ footer {
   <div class="ecomind">
     <img src="images/w.png" alt="EcoMind" class="background">
     <div class="about-overlay">
-      <h2>What About Us</h2>
+      <h2>About EcoMind</h2>
       <p>EcoMind is a web-based educational platform dedicated to promoting awareness and action on proper waste management. Our goal is to equip students, volunteers, and community members with the knowledge and tools needed to understand the environmental impact of waste and adopt responsible disposal practices. Through interactive lessons, quizzes, and real-world challenges, we aim to build a more informed and environmentally responsible generation.</p>
     </div>
   </div>
