@@ -118,9 +118,8 @@
             margin: 0 auto;
             padding: 2rem;
             gap: 0;
-            align-items: center;
-            min-height: calc(100vh - 100px);
-            position: relative;
+            align-items: flex-start;
+            min-height: calc(100vh - 80px);
         }
 
         .welcome-section {
@@ -131,25 +130,38 @@
             background-repeat: no-repeat;
             border-radius: 20px 0 0 20px;
             padding: 3rem;
-            height: 600px;
+            color: white;
+            position: relative;
+            overflow: hidden;
+            height: 500px;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
         }
 
-        /* Remove unused styles */
+        .welcome-section::after {
+            display: none;
+        }
+
+        .welcome-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            opacity: 0;
+            z-index: -1;
+        }
 
         .register-section {
             background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(15px);
+            backdrop-filter: blur(10px);
             border-radius: 0 20px 20px 0;
             padding: 2rem;
-            width: 400px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-            height: 600px;
+            width: 350px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            height: 500px;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -178,7 +190,6 @@
             margin-bottom: 2rem;
             color: #333;
             font-size: 2rem;
-            font-weight: bold;
         }
 
         .form-group {
@@ -187,20 +198,17 @@
 
         .form-group input {
             width: 100%;
-            padding: 1rem;
+            padding: 0.8rem;
             border: 2px solid #ddd;
-            border-radius: 15px;
+            border-radius: 10px;
             font-size: 1rem;
-            transition: all 0.3s;
-            background: rgba(255, 255, 255, 0.8);
+            transition: border-color 0.3s;
+            background: rgba(255, 255, 255, 0.5);
         }
 
         .form-group input:focus {
             outline: none;
-            border-color: #9ACD32;
-            background: rgba(255, 255, 255, 1);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(154, 205, 50, 0.2);
+            border-color: #4682B4;
         }
 
         .password-field {
@@ -209,15 +217,11 @@
 
         .password-toggle {
             position: absolute;
-            right: 15px;
+            right: 10px;
             top: 50%;
             transform: translateY(-50%);
             cursor: pointer;
-            transition: transform 0.3s;
-        }
-
-        .password-toggle:hover {
-            transform: translateY(-50%) scale(1.1);
+            color: #666;
         }
 
         .password-toggle img {
@@ -227,27 +231,20 @@
 
         .create-button {
             width: 100%;
-            padding: 1rem;
-            background: linear-gradient(135deg, #9ACD32, #8FBC8F);
+            padding: 0.8rem;
+            background: #9ACD32;
             border: none;
-            border-radius: 15px;
-            font-size: 1.1rem;
+            border-radius: 10px;
+            font-size: 1rem;
             font-weight: bold;
-            color: white;
+            color: #2d5016;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: background 0.3s;
             margin-bottom: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
         }
 
         .create-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(154, 205, 50, 0.3);
-        }
-
-        .create-button:active {
-            transform: translateY(0);
+            background: #8FBC8F;
         }
 
         @media (max-width: 768px) {
@@ -280,11 +277,7 @@
             .welcome-section {
                 width: 100%;
                 border-radius: 20px;
-                height: 300px;
-            }
-
-            .welcome-text h1 {
-                font-size: 2rem;
+                height: auto;
             }
 
             .register-section {
@@ -294,8 +287,6 @@
                 height: auto;
             }
         }
-
-        /* Remove unused animations */
     </style>
 </head>
 <body>
@@ -362,22 +353,12 @@
                     return;
                 }
                 
-                // Add some visual feedback
-                const button = document.querySelector('.create-button');
-                const originalText = button.textContent;
-                button.textContent = 'Creating Account...';
-                button.style.background = '#8FBC8F';
-                
-                setTimeout(() => {
-                    alert(`Welcome to EcoMind, ${fullName}! Your account has been created successfully.`);
-                    button.textContent = originalText;
-                    button.style.background = 'linear-gradient(135deg, #9ACD32, #8FBC8F)';
-                    
-                    // Reset form
-                    document.getElementById('registerForm').reset();
-                }, 1500);
-                
+                alert(`Welcome to EcoMind, ${fullName}! Your account has been created successfully.`);
+                // Here you would typically send the data to your server
                 console.log('Registration attempt:', { fullName, email, password: '***' });
+                
+                // Reset form
+                document.getElementById('registerForm').reset();
             } else {
                 alert('Please fill in all fields');
             }
@@ -416,17 +397,6 @@
                 e.preventDefault();
                 const target = this.getAttribute('href');
                 console.log(`Navigating to ${target}`);
-            });
-        });
-
-        // Add input focus effects
-        document.querySelectorAll('input').forEach(input => {
-            input.addEventListener('focus', function() {
-                this.parentElement.style.transform = 'scale(1.02)';
-            });
-            
-            input.addEventListener('blur', function() {
-                this.parentElement.style.transform = 'scale(1)';
             });
         });
     </script>
