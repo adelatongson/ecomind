@@ -1,214 +1,495 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Ecomind - About Us</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f0f4f8; /* Light gray background */
+            background-color: #f3f4f6;
+            margin: 0;
+            padding: 0;
+            color: #333;
         }
-        /* Custom gradient for the hero section background */
+        header {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            background: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            padding: 12px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+        }
+        header .logo {
+            display: flex;
+            align-items: center;
+        }
+        header .logo img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+        header nav a {
+            margin-left: 20px;
+            text-decoration: none;
+            color: #555;
+            font-weight: 500;
+        }
+        header nav a:hover {
+            color: #16a34a; /* green */
+        }
+        header nav .login-btn {
+            background: #b0cc29;
+            color: black;
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-weight: 600;
+            text-decoration: none;
+            margin-left: 30px;
+            display: inline-block;
+            transition: background-color 0.3s ease;
+        }
+        header nav .login-btn:hover {
+            background-color: #a6bb28;
+        }
         .hero-background {
-            background-image: url('image/background.png'); /* Placeholder for background image */
-            background-size: cover;
-            background-position: center;
+            margin-top: 72px;
+            background: url('image/background.png') center/cover no-repeat;
+            padding: 60px 20px;
             position: relative;
+            color: black;
         }
         .hero-background::before {
-            content: '';
+            content: "";
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(to right, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.1)); /* Darker gradient overlay */
+            inset: 0;
+            background: linear-gradient(to right, rgba(0,0,0,0.5), rgba(0,0,0,0.3));
+            z-index: 0;
         }
-        /* Custom wave effect for the footer */
-        .footer-wave {
-            background-color: #344E41; /* Dark green */
+        .hero-content {
             position: relative;
-            padding-top: 8rem; /* Space for the wave */
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            max-width: 1200px;
+            margin: auto;
+            gap: 20px;
+            z-index: 1;
         }
-        .footer-wave::before {
-            content: '';
+        .hero-content img {
+            max-width: 100%;
+            max-height: 300px;
+            border-radius: 12px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+            flex: 1 1 300px;
+        }
+        .hero-text {
+            flex: 1 1 400px;
+            background: rgba(255 255 255 / 0.85);
+            border-radius: 10px;
+            padding: 20px;
+        }
+        .hero-text h1 {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+        }
+        .hero-text p {
+            font-size: 1.125rem;
+            line-height: 1.5;
+        }
+        section.partnerships {
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 0 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            align-items: center;
+        }
+        .partners-logos {
+            flex: 1 1 50%;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+        .partner {
+            text-align: center;
+        }
+        .partner img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            margin-bottom: 8px;
+        }
+        .partner span {
+            font-weight: 600;
+            font-size: 0.875rem;
+            color: #555;
+            display: block;
+        }
+        .partnership-text {
+            flex: 1 1 45%;
+            color: #555;
+            font-size: 1.1rem;
+        }
+        section.feedback {
+            max-width: 700px;
+            margin: 60px auto;
+            padding: 0 20px 60px;
+        }
+        section.feedback h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 24px;
+            color: #333;
+        }
+        #dropBoxContainer {
+            display: flex;
+            flex-direction: column-reverse;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+        .drop-box-item {
+            background: white;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            padding: 12px 16px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            position: relative;
+            gap: 12px;
+        }
+        .drop-box-item img {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            border: 2px solid #10B981;
+            flex-shrink: 0;
+        }
+        .comment-text {
+            flex-grow: 1;
+            font-style: italic;
+            color: #666;
+        }
+        .drop-box-item strong {
+            font-weight: 600;
+            color: #222;
+        }
+        .drop-box-item p:last-child {
+            font-size: 0.85rem;
+            color: #999;
+            margin: 0;
+        }
+        .delete-btn {
             position: absolute;
-            top: -100px; /* Adjust to control wave height */
-            left: 0;
+            top: 6px;
+            right: 6px;
+            background: #ef4444;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 22px;
+            height: 22px;
+            cursor: pointer;
+            font-size: 16px;
+            line-height: 22px;
+            opacity: 0.7;
+            transition: opacity 0.2s;
+        }
+        .delete-btn:hover {
+            opacity: 1;
+        }
+        textarea {
             width: 100%;
-            height: 100px; /* Height of the wave SVG */
-            background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1440 100" xmlns="http://www.w3.org/2000/svg"><path fill="%23344E41" fill-opacity="1" d="M0,64L48,69.3C96,75,192,85,288,80C384,75,480,59,576,53.3C672,48,768,53,864,58.7C960,64,1056,69,1152,64C1248,59,1344,43,1392,34.7L1440,27L1440,100L1392,100C1344,100,1248,100,1152,100C1056,100,960,100,864,100C768,100,672,100,576,100C480,100,384,100,288,100C192,100,96,100,48,100L0,100Z"></path></svg>') no-repeat center bottom;
-            background-size: cover;
-            transform: translateY(100px); /* Adjust to position the wave */
+            padding: 12px;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            resize: vertical;
+            margin-bottom: 12px;
+            box-sizing: border-box;
+            font-family: inherit;
+        }
+        .checkbox-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+            gap: 8px;
+            font-size: 0.9rem;
+            color: #444;
+        }
+        button#submitComment {
+            background-color: #16a34a;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            float: right;
+        }
+        button#submitComment:hover {
+            background-color: #15803d;
+        }
+        footer {
+            background-color: #4f6d3f;
+            color: #ccc;
+            padding: 40px 20px;
+            font-size: 0.9rem;
+        }
+        footer .container {
+     max-width: 1200px;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    justify-content: center;
+}
+
+        footer .container {
+            max-width: 1200px;
+            margin: auto;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            justify-content: center;
+        }
+        footer h3 {
+            color: white;
+            margin-bottom: 12px;
+        }
+        footer ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        footer ul li {
+            margin-bottom: 8px;
+        }
+        footer ul li a {
+            color: #ccc;
+            text-decoration: none;
+        }
+        footer ul li a:hover {
+            color: #a6db4a;
+        }
+        footer .bottom-bar {
+            text-align: center;
+            margin-top: 24px;
+            border-top: 1px solid #35522c;
+            padding-top: 16px;
+        }
+        footer .bottom-bar a {
+            margin: 0 12px;
+            color: #a6db4a;
+            text-decoration: none;
         }
     </style>
 </head>
-<body class="bg-gray-100">
+<body>
 
-    <header class="fixed top-0 left-0 w-full bg-white shadow-md z-50 py-4 px-6 md:px-12 flex justify-between items-center rounded-b-lg">
-        <div class="flex items-center space-x-2">
-            <img src="image/logo.png" alt="Ecomind Logo" class="w-10 h-10 rounded-full">
-            <span class="text-xl font-semibold text-gray-800">Ecomind</span>
-        </div>
-        <nav class="hidden md:flex items-center space-x-8">
-            <a href="#" class="text-gray-700 hover:text-green-600 font-medium transition-colors duration-300">Home</a>
-            <a href="#" class="text-gray-700 hover:text-green-600 font-medium transition-colors duration-300">About Us</a>
-            <a href="#" class="text-gray-700 hover:text-green-600 font-medium transition-colors duration-300">Module</a>
-            <a href="#" class="text-700 hover:text-green-600 font-medium transition-colors duration-300">Game</a>
-            <a href="about.html" class="bg-[#B0CC29] text-black px-8 py-3 rounded-full hover:bg-opacity-80 transition-colors duration-300 shadow-lg font-semibold inline-block">Login</a>
-        </nav>
-        <button class="md:hidden text-gray-700 text-2xl"> &#9776; </button>
-        </div>
-    </header>
+<header>
+    <div class="logo">
+        <img src="image/logo.png" alt="Ecomind Logo" />
+        <span>Ecomind</span>
+    </div>
+    <nav>
+      <a href="file:///C:/Users/MyPC/OneDrive/Ecomind/homepage.html">Home</a>
+      <a href="file:///C:/Users/MyPC/OneDrive/Ecomind/about%20us%20page.html">About Us</a>
+      <a href="file:///C:/Users/MyPC/OneDrive/Ecomind/modules%20homepage.html">Modules</a>
+      <a href="#">Game</a>
+      <a href="file:///C:/Users/MyPC/OneDrive/Ecomind/login.html" class="login-btn">Login</a>
+    </nav>
+</header>
 
-    <section class="hero-background text-white py-24 md:py-32 relative overflow-hidden">
-        <div class="container mx-auto px-6 md:px-12 flex flex-col md:flex-row items-center justify-between relative z-0">
-            <div class="md:w-1/2 flex justify-center md:justify-start mb-10 md:mb-0">
-                <img src="image/yy.svg" alt="Global Community Illustration" class="w-full max-w-sm md:max-w-md rounded-lg shadow-xl">
-            </div>
-            <div class="md:w-1/2 text-center md:text-left">
-                <h1 class="text-4xl md:text-5xl font-extrabold mb-6 leading-tight rounded-lg p-2 bg-black bg-opacity-20 inline-block">What about us</h1>
-                <p class="text-lg md:text-xl leading-relaxed bg-black bg-opacity-20 p-4 rounded-lg">
-                    Ecomind is a web-based educational platform dedicated to promoting awareness and action on proper waste management. Our goal is to equip students, volunteers, and community members with the knowledge and tools needed to understand the environmental impact of waste and adopt responsible disposal practices. Through interactive lessons, quizzes, and real-world challenges, we aim to build a more informed and environmentally responsible generation.
-                </p>
-            </div>
+<section class="hero-background">
+    <div class="hero-content">
+        <img src="image/yy.svg" alt="Global Community Illustration" />
+        <div class="hero-text">
+            <h1>What is EcoMind</h1>
+            <p>
+                Ecomind is a web-based educational platform dedicated to promoting awareness and action on proper waste management. Our goal is to equip students, volunteers, and community members with the knowledge and tools needed to understand the environmental impact of waste and adopt responsible disposal practices. Through interactive lessons, quizzes, and real-world challenges, we aim to build a more informed and environmentally responsible generation.
+            </p>
         </div>
-    </section>
+    </div>
+</section>
 
-    <section class="py-16 md:py-24 bg-white">
-        <div class="container mx-auto px-6 md:px-12 flex flex-col md:flex-row items-center md:items-start justify-between">
-            <div class="md:w-1/2 grid grid-cols-2 gap-8 justify-items-center items-center mb-12 md:mb-0">
-                <div class="flex flex-col items-center text-center">
-                    <img src="https://placehold.co/100x100/FFD700/FFFFFF?text=iVOLUNTEER" alt="iVolunteer Philippines Logo" class="w-24 h-24 mb-4 rounded-full shadow-md">
-                    <span class="text-sm font-semibold text-gray-700">iVOLUNTEER PHILIPPINES</span>
-                </div>
-                <div class="flex flex-col items-center text-center">
-                    <img src="https://placehold.co/100x100/FF0000/FFFFFF?text=SAVE+CHILDREN" alt="Save the Children Logo" class="w-24 h-24 mb-4 rounded-full shadow-md">
-                    <span class="text-sm font-semibold text-gray-700">Save the Children</span>
-                </div>
-                <div class="flex flex-col items-center text-center">
-                    <img src="https://placehold.co/100x100/0000FF/FFFFFF?text=PNVSCA" alt="Philippine National Volunteer Service Coordinating Agency Logo" class="w-24 h-24 mb-4 rounded-full shadow-md">
-                    <span class="text-sm font-semibold text-gray-700">PNVSCA</span>
-                </div>
-                <div class="flex flex-col items-center text-center">
-                    <img src="https://placehold.co/100x100/008000/FFFFFF?text=PRECIOUS+PLASTIC" alt="Precious Plastic Philippines Logo" class="w-24 h-24 mb-4 rounded-full shadow-md">
-                    <span class="text-sm font-semibold text-gray-700">PRECIOUS PLASTIC PHILIPPINES</span>
-                </div>
-                <div class="flex flex-col items-center text-center">
-                    <img src="https://placehold.co/100x100/800080/FFFFFF?text=PORMS" alt="PORMS Logo" class="w-24 h-24 mb-4 rounded-full shadow-md">
-                    <span class="text-sm font-semibold text-gray-700">PORMS</span>
-                </div>
-                <div class="flex flex-col items-center text-center">
-                    <img src="https://placehold.co/100x100/00FFFF/FFFFFF?text=ENVIRONMENTAL+GROUP" alt="Environmental Group Logo" class="w-24 h-24 mb-4 rounded-full shadow-md">
-                    <span class="text-sm font-semibold text-gray-700">Environmental Group</span>
-                </div>
-            </div>
-
-            <div class="md:w-1/2 md:pl-12 text-center md:text-left">
-                <h2 class="text-4xl font-bold text-gray-800 mb-6">Partnerships</h2>
-                <p class="text-lg text-gray-600 leading-relaxed">
-                    Discover our partner organizations—NGOs, government programs, and environmental groups—working together to promote sustainable waste management and community impact.
-                </p>
-            </div>
+<section class="partnerships">
+    <div class="partners-logos">
+        <div class="partner">
+            <img src="https://placehold.co/100x100/FFD700/FFFFFF?text=iVOLUNTEER" alt="iVolunteer Philippines Logo" />
+            <span>iVOLUNTEER PHILIPPINES</span>
         </div>
-    </section>
-
-    <section class="py-16 md:py-24 bg-gray-100">
-        <div class="container mx-auto px-6 md:px-12">
-            <h2 class="text-4xl font-bold text-center text-gray-800 mb-12">Feedback</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-white p-8 rounded-lg shadow-lg flex flex-col items-center text-center transition duration-300 hover:shadow-xl">
-                    <p class="text-lg italic text-gray-700 mb-6">"A terrific piece of praise"</p>
-                    <div class="flex items-center space-x-3">
-                        <img src="https://placehold.co/50x50/4F6D5C/FFFFFF?text=U1" alt="User Avatar" class="w-12 h-12 rounded-full border-2 border-green-500">
-                        <div>
-                            <p class="font-semibold text-gray-800">User Name 1</p>
-                            <p class="text-sm text-gray-500">Description</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="bg-white p-8 rounded-lg shadow-lg flex flex-col items-center text-center transition duration-300 hover:shadow-xl">
-                    <p class="text-lg italic text-gray-700 mb-6">"A fantastic bit of feedback"</p>
-                    <div class="flex items-center space-x-3">
-                        <img src="https://placehold.co/50x50/4F6D5C/FFFFFF?text=U2" alt="User Avatar" class="w-12 h-12 rounded-full border-2 border-green-500">
-                        <div>
-                            <p class="font-semibold text-gray-800">User Name 2</p>
-                            <p class="text-sm text-gray-500">Description</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="bg-white p-8 rounded-lg shadow-lg flex flex-col items-center text-center transition duration-300 hover:shadow-xl">
-                    <p class="text-lg italic text-gray-700 mb-6">"A genuinely glowing review"</p>
-                    <div class="flex items-center space-x-3">
-                        <img src="https://placehold.co/50x50/4F6D5C/FFFFFF?text=U3" alt="User Avatar" class="w-12 h-12 rounded-full border-2 border-green-500">
-                        <div>
-                            <p class="font-semibold text-gray-800">User Name 3</p>
-                            <p class="text-sm text-gray-500">Description</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="bg-white p-8 rounded-lg shadow-lg mt-16 max-w-3xl mx-auto">
-                <textarea class="w-full p-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 mb-4" rows="5" placeholder="Add Comment"></textarea>
-                <div class="flex justify-end">
-                    <button class="bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-8 rounded-full shadow-lg transition duration-300">Submit</button>
-                </div>
-            </div>
+        <div class="partner">
+            <img src="https://placehold.co/100x100/FF0000/FFFFFF?text=SAVE+CHILDREN" alt="Save the Children Logo" />
+            <span>Save the Children</span>
         </div>
-    </section>
+        <div class="partner">
+            <img src="https://placehold.co/100x100/0000FF/FFFFFF?text=PNVSCA" alt="PNVSCA Logo" />
+            <span>PNVSCA</span>
+        </div>
+        <div class="partner">
+            <img src="https://placehold.co/100x100/008000/FFFFFF?text=PRECIOUS+PLASTIC" alt="Precious Plastic Philippines Logo" />
+            <span>PRECIOUS PLASTIC PHILIPPINES</span>
+        </div>
+        <div class="partner">
+            <img src="https://placehold.co/100x100/800080/FFFFFF?text=PORMS" alt="PORMS Logo" />
+            <span>PORMS</span>
+        </div>
+        <div class="partner">
+            <img src="https://placehold.co/100x100/00FFFF/FFFFFF?text=ENVIRONMENTAL+GROUP" alt="Environmental Group Logo" />
+            <span>Environmental Group</span>
+        </div>
+    </div>
+    <div class="partnership-text">
+        <h2>Partnerships</h2>
+        <p>
+            Discover our partner organizations—NGOs, government programs, and environmental groups—working together to promote sustainable waste management and community impact.
+        </p>
+    </div>
+</section>
 
-    <footer class="bg-[#4F6D3F] text-gray-300 py-12 px-4 md:px-12">
-        <div class="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 justify-items-center justify-center">
-            <div>
-                <h3 class="text-xl font-semibold text-white mb-4">ECOMIND</h3>
-                <ul class="space-y-2">
-                    <li><a href="#" class="hover:text-green-400 transition-colors duration-300 flex items-center"><span class="mr-2">&#x1F4F7;</span> Instagram</a></li>
-                    <li><a href="#" class="hover:text-green-400 transition-colors duration-300 flex items-center"><span class="mr-2">&#x1F426;</span> Twitter</a></li>
-                    <li><a href="#" class="hover:text-green-400 transition-colors duration-300 flex items-center"><span class="mr-2">&#x1F465;</span> Facebook</a></li>
-                    <li><a href="#" class="hover:text-green-400 transition-colors duration-300 flex items-center"><span class="mr-2">&#x1F4CC;</span> Pinterest</a></li>
-                </ul>
-            </div>
-            <div>
-                <h3 class="text-xl font-semibold text-white mb-4">About Us</h3>
-                <ul class="space-y-2">
-                    <li><a href="#" class="hover:text-green-400 transition-colors duration-300">About Ecomind</a></li>
-                    <li><a href="#" class="hover:text-green-400 transition-colors duration-300">Vision & Mission</a></li>
-                    <li><a href="#" class="hover:text-green-400 transition-colors duration-300">Partnership</a></li>
-                    <li><a href="#" class="hover:text-green-400 transition-colors duration-300">Sustainability</a></li>
-                </ul>
-            </div>
-            <div>
-                <h3 class="text-xl font-semibold text-white mb-4">Contact Us</h3>
-                <ul class="space-y-2">
-                    <li><a href="#" class="hover:text-green-400 transition-colors duration-300">1-800-555-5555</a></li>
-                    <li><a href="#" class="hover:text-green-400 transition-colors duration-300">Join us</a></li>
-                    <li><a href="#" class="hover:text-green-400 transition-colors duration-300">Email us</a></li>
-                    <li><a href="#" class="hover:text-green-400 transition-colors duration-300">Customer Support</a></li>
-                </ul>
-            </div>
-            <div>
-                <h3 class="text-xl font-semibold text-white mb-4">Learning</h3>
-                <ul class="space-y-2">
-                    <li><a href="#" class="hover:text-green-400 transition-colors duration-300">Modules</a></li>
-                    <li><a href="#" class="hover:text-green-400 transition-colors duration-300">Quizzes</a></li>
-                    <li><a href="#" class="hover:text-green-400 transition-colors duration-300">Games</a></li>
-                    <li><a href="#" class="hover:text-green-400 transition-colors duration-300">Volunteers</a></li>
-                </ul>
-            </div>
+<section class="feedback">
+    <h2>Feedback</h2>
+    <div id="dropBoxContainer"></div>
+
+    <textarea id="commentText" placeholder="Add your comment here..." rows="4"></textarea>
+    <div class="checkbox-container">
+        <input type="checkbox" id="anonymousCheckbox" />
+        <label for="anonymousCheckbox">Post anonymously</label>
+    </div>
+    <button id="submitComment">Submit</button>
+</section>
+
+<footer>
+    <div class="container">
+        <div>
+            <h3>EcoMind</h3>
+            <ul>
+                <li><a href="#">Instagram</a></li>
+                <li><a href="#">Facebook</a></li>
+                <li><a href="#">Pinterest</a></li>
+            </ul>
         </div>
-        <div class="container mx-auto border-t border-gray-600 mt-8 pt-6 text-center text-sm">
-            <div class="flex flex-col md:flex-row justify-center items-center space-y-2 md:space-y-0 md:space-x-8">
-                <p>&copy; 2049 Fitma</p>
-                <a href="#" class="hover:text-green-400 transition-colors duration-300">Fitma Policies</a>
-                <a href="#" class="hover:text-green-400 transition-colors duration-300">Terms of Use</a>
-                <a href="#" class="hover:text-green-400 transition-colors duration-300">About us</a>
-            </div>
+        <div>
+            <h3>About Us</h3>
+            <ul>
+                <li><a href="#">Who We Are</a></li>
+                <li><a href="#">Media & Press</a></li>
+                <li><a href="#">Partners</a></li>
+                <li><a href="#">Our Vision</a></li>
+            </ul>
         </div>
-    </footer>
+        <div>
+            <h3>Get in Touch</h3>
+            <ul>
+                <li><a href="#">+1-800-555-5555</a></li>
+                <li><a href="#">Join the Team</a></li>
+                <li><a href="#">hello@ecomind.org</a></li>
+                <li><a href="#">Support</a></li>
+            </ul>
+        </div>
+        <div>
+            <h3>Learn More</h3>
+            <ul>
+                <li><a href="#">All Modules</a></li>
+                <li><a href="#">Quizzes</a></li>
+                <li><a href="#">Eco Guides</a></li>
+                <li><a href="#">For Volunteers</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="bottom-bar">
+        <p>&copy; <span id="year"></span> EcoMind. All rights reserved.</p>
+        <div>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Use</a>
+            <a href="#">Site Map</a>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // Set current year in footer
+    document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
+<script>
+    const dropBoxContainer = document.getElementById("dropBoxContainer");
+    const submitBtn = document.getElementById("submitComment");
+    const commentText = document.getElementById("commentText");
+    const anonymousCheckbox = document.getElementById("anonymousCheckbox");
+
+    // Load saved comments from localStorage
+    function loadComments() {
+        dropBoxContainer.innerHTML = "";
+        const comments = JSON.parse(localStorage.getItem("comments") || "[]");
+        comments.reverse().forEach((comment, index) => {
+            const div = document.createElement("div");
+            div.className = "drop-box-item";
+
+            const img = document.createElement("img");
+            if (comment.anonymous) {
+                img.src = "image/anonymous.png";
+                img.alt = "Anonymous";
+            } else {
+                img.src = "image/user.png";
+                img.alt = "User";
+            }
+            div.appendChild(img);
+
+            const content = document.createElement("div");
+            content.innerHTML = `<strong>${comment.anonymous ? "Anonymous" : "User"}</strong><p class="comment-text">${comment.text}</p>`;
+            div.appendChild(content);
+
+            const delBtn = document.createElement("button");
+            delBtn.className = "delete-btn";
+            delBtn.textContent = "×";
+            delBtn.addEventListener("click", () => {
+                deleteComment(comments.length - 1 - index);
+            });
+            div.appendChild(delBtn);
+
+            dropBoxContainer.appendChild(div);
+        });
+    }
+
+    function deleteComment(index) {
+        const comments = JSON.parse(localStorage.getItem("comments") || "[]");
+        comments.splice(index, 1);
+        localStorage.setItem("comments", JSON.stringify(comments));
+        loadComments();
+    }
+
+    submitBtn.addEventListener("click", () => {
+        const text = commentText.value.trim();
+        if (text === "") {
+            alert("Please enter a comment.");
+            return;
+        }
+        const comments = JSON.parse(localStorage.getItem("comments") || "[]");
+        comments.push({
+            text,
+            anonymous: anonymousCheckbox.checked,
+        });
+        localStorage.setItem("comments", JSON.stringify(comments));
+        commentText.value = "";
+        anonymousCheckbox.checked = false;
+        loadComments();
+    });
+
+    // Initial load
+    loadComments();
+</script>
 
 </body>
 </html>
+
