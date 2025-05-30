@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ECOMIND - Sustainable Development Goals</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
+    body {
+      margin: 0;
+      font-family: 'Inter', Arial, sans-serif;
+    }
+
+    header {
+      background-color: #fff;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    header > div {
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-right: 1rem;
+    }
+
+    nav a {
+      margin: 0 1rem;
+      position: relative;
+      text-decoration: none;
+      color: #333;
+    }
+
+    .login-btn {
+      background-color: #b2d235;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      color: white;
+      cursor: pointer;
+    }
+
+    .ecomind {
+      position: relative;
+      text-align: center;
+      height: 400px;
+      overflow: hidden;
+    }
+
+    .logo {
+      width: 50px;
+      height: 50px;
+      margin-right: 1rem;
+    }
+
+    .background {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+    }
+
+    .about-overlay {
+      position: absolute;
+      top: 50%;
+      right: 5%;
+      transform: translateY(-50%);
+      background-color: rgba(255, 255, 255, 0.562);
+      padding: 1.5rem;
+      border-radius: 10px;
+      width: 40%;
+      text-align: left;
+      z-index: 2;
+    }
+
+    .section {
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+
+    .card {
+      border: 1px solid #ddd;
+      padding: 1.5rem;
+      border-radius: 8px;
+      width: 300px;
+    }
+
+    .about-section {
+      padding: 2rem;
+    }
+
+    .about-boxes {
+      display: flex;
+      justify-content: right;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    footer {
+      background: linear-gradient(to top, #2b5726, #61b946);
+      color: white;
+      padding: 2rem;
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+    }
+
+    footer div {
+      width: 30%;
+      min-width: 200px;
+      margin-bottom: 1rem;
+    }
+
+    .learn-more-btn {
+      margin-top: 1rem;
+      padding: 0.5rem 1rem;
+      background-color: #b2d235;
+      border: none;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .partnership-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .partnership-image {
+      flex: 1;
+      min-width: 180px;
+    }
+
+    .partnership-image img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+
+    .partnership-text {
+      flex: 1;
+      min-width: 250px;
+      text-align: left;
+    }
+
+    .drop-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem;
+      background-color: #f9f9f9;
+    }
+
+    .drop-box h2 {
+      margin-bottom: 2rem;
+    }
+
+    .drop-box-container {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .drop-box-item {
+      background-color: white;
+      border-radius: 8px;
+      padding: 1rem;
+      width: 300px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      position: relative;
+    }
+
+    .drop-box-item img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+    }
+
+    .drop-box-item p {
+      margin: 1rem 0;
+    }
+
+    .drop-box-item button.delete-btn {
+      background-color: #ff5e5e;
+      color: white;
+      border: none;
+      padding: 0.3rem 0.7rem;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      margin-top: 0.5rem;
+    }
+
+    .add-comment {
+      margin-top: 2rem;
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .add-comment input {
+      padding: 0.5rem;
+      border-radius: 5px;
+      border: 1px solid #ddd;
+      width: 300px;
+    }
+
+    .add-comment button {
+      background-color: #b2d235;
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div>
+      <img src="image/logo.png" alt="Logo" class="logo">
+      <div><strong>EcoMind</strong></div>
+    </div>
+    <nav class="nav-links">
+      <a href="#">Home</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+      <a href="#">Modules</a>
+    </nav>
+    <button class="login-btn">Login</button>
+  </header>
+
+  <div class="ecomind">
+    <img src="images/w.png" alt="EcoMind" class="background">
+    <div class="about-overlay">
+      <h2>What About Us</h2>
+      <p>EcoMind is a web-based educational platform dedicated to promoting awareness and action on proper waste management. Our goal is to equip students, volunteers, and community members with the knowledge and tools needed to understand the environmental impact of waste and adopt responsible disposal practices. Through interactive lessons, quizzes, and real-world challenges, we aim to build a more informed and environmentally responsible generation.</p>
+    </div>
+  </div>
+
+  <div class="about-section">
+    <div class="partnership-container">
+      <div class="partnership-image">
+        <img src="images/partnerships.png" alt="Partnership" />
+      </div>
+      <div class="partnership-text">
+        <h2>Partnerships</h2>
+        <p>Discover our partner organizations—NGOs, government programs, and environmental groups—working together to promote sustainable waste management and community impact.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="drop-box">
+    <h2>Drop Box</h2>
+    <div class="drop-box-container" id="dropBoxContainer">
+      <!-- Feedbacks will be loaded here -->
+    </div>
+    <div class="add-comment">
+      <input type="text" id="commentInput" placeholder="Add Comment">
+      <button id="submitComment">Submit</button>
+    </div>
+  </div>
+
+  <footer>
+    <div>
+      <h3>ECOMIND</h3>
+      <p>Instagram</p>
+      <p>Twitter</p>
+      <p>LinkedIn</p>
+      <p>Facebook</p>
+    </div>
+    <div>
+      <h4>About Us</h4>
+      <p>About Ecomind</p>
+      <p>Vision & Mission</p>
+      <p>Partnership</p>
+      <p>Sustainability</p>
+    </div>
+    <div>
+      <h4>Contact Us</h4>
+      <p>1-800-555-5555</p>
+      <p>Join us</p>
+      <p>Email us</p>
+      <p>Customer Support</p>
+    </div>
+    <div>
+      <h5>Learning</h5>
+      <p>Modules</p>
+      <p>Quizzes</p>
+      <p>Games</p>
+      <p>Volunteers</p>
+    </div>
+  </footer>
+
+  <script>
+    const dropBoxContainer = document.getElementById('dropBoxContainer');
+    const commentInput = document.getElementById('commentInput');
+    const submitBtn = document.getElementById('submitComment');
+
+    // Load stored feedbacks from localStorage
+    window.addEventListener('DOMContentLoaded', () => {
+      const storedComments = JSON.parse(localStorage.getItem('feedbackComments')) || [];
+      storedComments.forEach(comment => addCommentToDOM(comment));
+    });
+
+    submitBtn.addEventListener('click', () => {
+      const commentText = commentInput.value.trim();
+      if (commentText) {
+        addCommentToDOM(commentText);
+        saveComment(commentText);
+        commentInput.value = '';
+      }
+    });
+
+    function addCommentToDOM(commentText) {
+      const newComment = document.createElement('div');
+      newComment.className = 'drop-box-item';
+      newComment.innerHTML = `
+        <img src="images/profile1.png" alt="Profile">
+        <p class="comment-text">"${commentText}"</p>
+        <p><strong>Name</strong></p>
+        <p>Description</p>
+        <button class="delete-btn">Delete</button>
+      `;
+
+      newComment.querySelector('.delete-btn').addEventListener('click', () => {
+        deleteComment(commentText);
+        dropBoxContainer.removeChild(newComment);
+      });
+
+      dropBoxContainer.insertBefore(newComment, dropBoxContainer.firstChild);
+    }
+
+    function saveComment(commentText) {
+      const storedComments = JSON.parse(localStorage.getItem('feedbackComments')) || [];
+      storedComments.unshift(commentText);
+      localStorage.setItem('feedbackComments', JSON.stringify(storedComments));
+    }
+
+    function deleteComment(commentText) {
+      let storedComments = JSON.parse(localStorage.getItem('feedbackComments')) || [];
+      const index = storedComments.indexOf(commentText);
+      if (index !== -1) {
+        storedComments.splice(index, 1);
+        localStorage.setItem('feedbackComments', JSON.stringify(storedComments));
+      }
+    }
+  </script>
+</body>
+</html>
