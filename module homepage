@@ -193,20 +193,19 @@ footer .bottom-bar a {
 </head>
 
 <body>
-  <header>
+<header>
     <div class="logo">
-      <img src="https://placehold.co/40x40/007bff/ffffff?text=E" alt="EcoMind Logo" class="rounded-full" />
-      <strong>EcoMind</strong>
+        <img src="image/logo.png" alt="Ecomind Logo" />
+        <span>Ecomind</span>
     </div>
-    <nav id="nav" class="hidden md:flex">
+    <nav>
       <a href="file:///C:/Users/MyPC/OneDrive/Ecomind/homepage.html">Home</a>
       <a href="file:///C:/Users/MyPC/OneDrive/Ecomind/about%20us%20page.html">About Us</a>
       <a href="file:///C:/Users/MyPC/OneDrive/Ecomind/modules%20homepage.html">Modules</a>
-      <a href="#">Game</a>
+      <a href="file:///C:/Users/MyPC/OneDrive/Ecomind/game%20homepage.html">Game</a>
       <a href="file:///C:/Users/MyPC/OneDrive/Ecomind/login.html" class="login-btn">Login</a>
     </nav>
-    <button class="md:hidden text-gray-700 text-2xl" onclick="document.getElementById('nav').classList.toggle('show')">&#9776;</button>
-  </header>
+</header>
 
   <section class="banner">
     <div class="banner-image">
