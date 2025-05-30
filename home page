@@ -1,216 +1,235 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ECOMIND - Sustainable Development Goals</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-    }
-
-    header {
-      background-color: #fff;
-      padding: 1rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    }
-
-    header > div {
-      display: flex;
-      align-items: center;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      margin-right: 1rem;
-    }
-
-    nav a {
-      margin: 0 1rem;
-      position: relative;
-      text-decoration: none;
-      color: #333;;
-    }
-
-    .login-btn {
-      background-color: #b2d235;
-      border: none;
-      padding: 0.5rem 1rem;
-      border-radius: 5px;
-      color: white;
-      cursor: pointer;
-    }
-
-    .ecomind {
-      position: relative;
-      text-align: center;
-      height: 400px; /* Set a fixed height for better control */
-      overflow: hidden;
-    }
-
-    .logo {
-      width: 50px;
-      height: 50px;
-      margin-right: 1rem;
-    }
-
-    .background {
-      width: 100%;
-      height: 100%;
-      object-fit: contain; /* Changed from cover to contain */
-      display: block;
-      position: absolute;
-      top: 0;
-      left: 0;
-      z-index: 1;
-      background: #eaf7e2; /* Optional: background color for empty space */
-    }
-
-    .foreground {
-      position: absolute;
-      bottom: 0;
-      left: 70%;
-      transform: translateX(-50%);
-      /* Changed size of the person recycling image below */
-      width: 100px;
-      height: 100px;
-      flex-shrink: 0;
-      aspect-ratio: 100/100;
-      max-width: 100%; /* Optional: prevents overflow on small screens */
-      z-index: 2;
-      filter: drop-shadow(0 8px 16px rgba(0,0,0,0.18));
-      pointer-events: none;
-      size-adjust: auto; /* Prevents accidental drag/select */
-    }
-
-    .ecomind img {
-      width: 100%;
-      height: auto;
-    }
-
-    .ecomind-content {
-      position: absolute;
-      top: 30%;
-      left: 50%;
-      transform: translate(-50%, -30%);
-      color: white;
-    }
-
-    .section {
-      padding: 3rem 2rem;
-      text-align: center;
-    }
-
-    .vision-mission {
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
-      margin-top: 2rem;
-    }
-
-    .card {
-      border: 1px solid #ddd;
-      padding: 1.5rem;
-      border-radius: 8px;
-      width: 300px;
-    }
-
-    .about-section {
-      padding: 2rem;
-    }
-
-    .about-boxes {
-      display: flex;
-      justify-content: right;
-      gap: 1rem;
-      margin-top: 2rem;
-    }
-
-    footer {
-      background: linear-gradient(to top, #2b5726, #61b946);
-      color: white;
-      padding: 2rem;
-      display: flex;
-      justify-content: space-around;
-    } 
-
-    footer div {
-      width: 30%;
-    }
-
-    .learn-more-btn {
-      margin-top: 1rem;
-      padding: 0.5rem 1rem;
-      background-color: #b2d235;
-      border: none;
-      color: white;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ecomind - Sustainable Development</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f2f5; /* Light gray background */
+        }
+        .hero-background {
+            background-image: url('image/Background.svg'); /* Placeholder for the mountain image */
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            height: 80vh; /* Adjust height as needed */
+            display: flex;
+            align-items: flex-end; /* Push content to the bottom */
+            justify-content: center; /* Center the content horizontally */
+            text-align: center;
+            color: white;
+            padding-top: 64px; /* Space for fixed header */
+            padding-bottom: 4rem; /* Added padding to the bottom of the hero section */
+        }
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.1) 50%, rgba(0,0,0,0.3) 100%);
+        }
+        /* Styling for the outer rounded rectangle card */
+        .stats-card {
+            background-color: rgba(255, 255, 255, 0.6); /* Translucent white background */
+            border-radius: 1.5rem; /* More rounded corners */
+            padding: 1rem 1.5rem; /* Padding inside the card */
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            display: flex; /* Use flexbox for internal alignment */
+            align-items: center; /* Vertically center items */
+            justify-content: flex-start; /* Align items to the start */
+            width: 280px; /* Fixed width for the card */
+        }
+        /* Styling for the inner circular progress bar */
+        .stats-progress-circle {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            /* Creates the ring effect using radial and conic gradients */
+            background: radial-gradient(white 60%, transparent 61%), /* Inner transparent circle for the hole */
+                        conic-gradient(var(--fill-color) 0% var(--percentage), var(--unfill-color) var(--percentage) 100%); /* Arc fill */
+            background-origin: border-box;
+            background-clip: content-box, border-box;
+            /* Optional: Add a subtle inner white border for definition */
+            box-shadow: inset 0 0 0 5px rgba(255, 255, 255, 0.5);
+        }
+        .stats-progress-circle span {
+            position: relative;
+            z-index: 2; /* Ensures text is above the gradients */
+        }
+        .vision-mission-card {
+            background-color: white;
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+        .about-us-gradient {
+            background-color: white; /* Changed from gradient to solid white */
+            padding-top: 8rem; /* Adjust to extend gradient upwards */
+            padding-bottom: 4rem;
+        }
+    </style>
 </head>
+<body class="bg-gray-100">
 
-<body>
-  <header>
-    <div>
-      <img src="image/logo.png" alt="Logo" class="logo">
-      <div><strong>EcoMind</strong></div>
-    </div>
-    <nav class="nav-links">
-      <a href="#">Home</a>
-      <a href="#">About</a>
-      <a href="#">Contact</a>
-      <a href="#">Modules</a>
-    </nav>
-    <button class="login-btn">Login</button>
-  </header>
+    <header class="fixed top-0 left-0 w-full bg-white shadow-md z-50 py-4 px-6 md:px-12 flex justify-between items-center rounded-b-lg">
+        <div class="flex items-center space-x-2">
+            <img src="image/logo.png" alt="Ecomind Logo" class="w-10 h-10 rounded-full">
+            <span class="text-xl font-semibold text-gray-800">Ecomind</span>
+        </div>
+        <nav class="hidden md:flex items-center space-x-8">
+            <a href="#" class="text-gray-700 hover:text-green-600 font-medium transition-colors duration-300">Home</a>
+            <a href="#" class="text-gray-700 hover:text-green-600 font-medium transition-colors duration-300">About Us</a>
+            <a href="#" class="text-gray-700 hover:text-green-600 font-medium transition-colors duration-300">Module</a>
+            <a href="#" class="text-700 hover:text-green-600 font-medium transition-colors duration-300">Game</a>
+            <a href="about.html" class="bg-[#B0CC29] text-black px-8 py-3 rounded-full hover:bg-opacity-80 transition-colors duration-300 shadow-lg font-semibold inline-block">Login</a>
+        </nav>
+        <button class="md:hidden text-gray-700 text-2xl"> &#9776; </button>
+    </header>
 
-  <div class="ecomind">
-    <img src="image/homepagewithgirl.png" alt="EcoMind" class="background">
-  </div>
+    <main>
+        <section class="hero-background relative">
+            <div class="hero-overlay"></div>
+            <div class="relative z-10 flex flex-col md:flex-row items-end md:items-center justify-between w-full max-w-6xl mx-auto px-4 pb-8">
+                <div class="text-left md:w-1/2 mb-8 md:mb-0 flex flex-col items-start">
+                    <div class="flex items-center space-x-4 mb-2">
+                        <img src="image/logo.png" alt="Ecomind Logo" class="w-24 h-24 rounded-full">
+                        <h1 class="text-6xl md:text-7xl font-extrabold tracking-tight text-black drop-shadow-lg">ECOMIND</h1>
+                    </div>
+                    <p class="text-xl md:text-2xl font-light text-black drop-shadow-md">Sustainable Development Goals</p>
+                </div>
 
-  <div class="section">
-    <div class="vision-mission">
-      <div class="card">
-        <h2>VISION</h2>
-        <p>To be the go-to digital hub for creative waste education, empowering the youth to lead environmental change through responsible and sustainable communities.</p>
-      </div>
-      <div class="card">
-        <h2>MISSION</h2>
-        <p>To provide accessible and interactive learning resources that make waste disposal smart, fun, and informative—ultimately inspiring awareness among individuals of all ages.</p>
-      </div>
-    </div>
-  </div>
+                <div class="relative flex justify-center items-end md:w-1/2">
+                    <img src="image/girl.svg" alt="Woman holding recycling" class="w-full max-w-xs md:max-w-md h-auto rounded-xl">
 
-  <div class="about-section">
-    <h2>ABOUT US</h2>
-    <p>Description about the website and team.</p>
-    <button class="learn-more-btn">Learn More</button>
-    </div>
-  </div>
+                    <div class="absolute bottom-0 right-0 flex flex-col space-y-4 pr-4">
+                        <div class="stats-card">
+                            <div class="stats-progress-circle" style="--fill-color: #FF8C00; --unfill-color: rgba(255, 140, 0, 0.3); --percentage: 50%;">
+                                <span class="text-xl font-bold text-gray-800">50%</span>
+                            </div>
+                            <div class="ml-4 text-left">
+                                <span class="text-gray-700 text-lg">Enrollees</span>
+                            </div>
+                        </div>
 
-  <footer>
-    <div>
-      <h3>ECOMIND</h3>
-      <p>Sustainable Development Goals</p>
-    </div>
-    <div>
-      <h4>About Us</h4>
-      <p>Short info about the team or mission</p>
-    </div>
-    <div>
-      <h4>Contact Us</h4>
-      <p>support@ecomind.org</p>
-    </div>
-  </footer>
+                        <div class="stats-card">
+                            <div class="stats-progress-circle" style="--fill-color: #8A2BE2; --unfill-color: rgba(138, 43, 226, 0.3); --percentage: 35%;">
+                                <span class="text-xl font-bold text-gray-800">35%</span>
+                            </div>
+                            <div class="ml-4 text-left">
+                                <span class="text-gray-700 text-lg">On going<br>Students</span>
+                            </div>
+                        </div>
+
+                        <div class="stats-card">
+                            <div class="stats-progress-circle" style="--fill-color: #FFD700; --unfill-color: rgba(255, 215, 0, 0.3); --percentage: 81%;">
+                                <span class="text-xl font-bold text-gray-800">81%</span>
+                            </div>
+                            <div class="ml-4 text-left">
+                                <span class="text-gray-700 text-lg">With<br>Certification</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="container mx-auto px-4 py-16 grid grid-cols-1 md:grid-cols-2 gap-8 relative z-20">
+            <div class="vision-mission-card">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">VISION</h2>
+                <p class="text-sm text-gray-600 mb-6">Vision of the team</p>
+                <p class="text-gray-700 leading-relaxed">
+                    To be the go-to digital hub for creative waste education, pioneering the reduction of environmental effects through knowledge and responsible communities.
+                </p>
+            </div>
+            <div class="vision-mission-card">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">MISSION</h2>
+                <p class="text-sm text-gray-600 mb-6">Mission of the team</p>
+                <p class="text-gray-700 leading-relaxed">
+                    To provide accessible and interactive learning materials that make waste disposal easier to learn and promote environmentally friendly practices among individuals of all ages.
+                </p>
+            </div>
+        </section>
+
+        <section class="about-us-gradient py-16 px-4 md:px-12">
+            <div class="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div class="text-left">
+                    <h2 class="text-4xl font-bold text-gray-800 mb-4">ABOUT US</h2>
+                    <p class="text-lg text-gray-700 mb-6">Description about the website and team.</p>
+                    <a href="about.html" class="bg-[#B0CC29] text-black px-8 py-3 rounded-full hover:bg-opacity-80 transition-colors duration-300 shadow-lg font-semibold inline-block">Learn More</a>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="bg-white rounded-lg shadow-md h-40"></div>
+                    <div class="bg-white rounded-lg shadow-md h-40"></div>
+                    <div class="bg-white rounded-lg shadow-md h-40"></div>
+                    <div class="bg-white rounded-lg shadow-md h-40"></div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-[#4F6D3F] text-gray-300 py-12 px-4 md:px-12">
+        <div class="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 justify-items-center justify-center">
+            <div>
+                <h3 class="text-xl font-semibold text-white mb-4">ECOMIND</h3>
+                <ul class="space-y-2">
+                    <li><a href="#" class="hover:text-green-400 transition-colors duration-300 flex items-center"><span class="mr-2">&#x1F4F7;</span> Instagram</a></li>
+                    <li><a href="#" class="hover:text-green-400 transition-colors duration-300 flex items-center"><span class="mr-2">&#x1F426;</span> Twitter</a></li>
+                    <li><a href="#" class="hover:text-green-400 transition-colors duration-300 flex items-center"><span class="mr-2">&#x1F465;</span> Facebook</a></li>
+                    <li><a href="#" class="hover:text-green-400 transition-colors duration-300 flex items-center"><span class="mr-2">&#x1F4CC;</span> Pinterest</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-xl font-semibold text-white mb-4">About Us</h3>
+                <ul class="space-y-2">
+                    <li><a href="#" class="hover:text-green-400 transition-colors duration-300">About Ecomind</a></li>
+                    <li><a href="#" class="hover:text-green-400 transition-colors duration-300">Vision & Mission</a></li>
+                    <li><a href="#" class="hover:text-green-400 transition-colors duration-300">Partnership</a></li>
+                    <li><a href="#" class="hover:text-green-400 transition-colors duration-300">Sustainability</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-xl font-semibold text-white mb-4">Contact Us</h3>
+                <ul class="space-y-2">
+                    <li><a href="#" class="hover:text-green-400 transition-colors duration-300">1-800-555-5555</a></li>
+                    <li><a href="#" class="hover:text-green-400 transition-colors duration-300">Join us</a></li>
+                    <li><a href="#" class="hover:text-green-400 transition-colors duration-300">Email us</a></li>
+                    <li><a href="#" class="hover:text-green-400 transition-colors duration-300">Customer Support</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-xl font-semibold text-white mb-4">Learning</h3>
+                <ul class="space-y-2">
+                    <li><a href="#" class="hover:text-green-400 transition-colors duration-300">Modules</a></li>
+                    <li><a href="#" class="hover:text-green-400 transition-colors duration-300">Quizzes</a></li>
+                    <li><a href="#" class="hover:text-green-400 transition-colors duration-300">Games</a></li>
+                    <li><a href="#" class="hover:text-green-400 transition-colors duration-300">Volunteers</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="container mx-auto border-t border-gray-600 mt-8 pt-6 text-center text-sm">
+            <div class="flex flex-col md:flex-row justify-center items-center space-y-2 md:space-y-0 md:space-x-8">
+                <p>&copy; 2049 Fitma</p>
+                <a href="#" class="hover:text-green-400 transition-colors duration-300">Fitma Policies</a>
+                <a href="#" class="hover:text-green-400 transition-colors duration-300">Terms of Use</a>
+                <a href="#" class="hover:text-green-400 transition-colors duration-300">About us</a>
+            </div>
+        </div>
+    </footer>
+
+
 </body>
-
 </html>
