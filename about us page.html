@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>ECOMIND - Sustainable Development Goals</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
 
@@ -19,6 +18,7 @@
       padding: 1rem 2rem;
       display: flex;
       justify-content: space-between;
+      
       align-items: center;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
@@ -117,10 +117,13 @@
       padding: 2rem;
       display: flex;
       justify-content: space-around;
+      flex-wrap: wrap;
     }
 
     footer div {
       width: 30%;
+      min-width: 200px;
+      margin-bottom: 1rem;
     }
 
     .learn-more-btn {
@@ -183,6 +186,7 @@
       padding: 1rem;
       width: 300px;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      position: relative;
     }
 
     .drop-box-item img {
@@ -193,15 +197,6 @@
 
     .drop-box-item p {
       margin: 1rem 0;
-    }
-
-    .drop-box-item button {
-      background-color: #b2d235;
-      color: white;
-      border: none;
-      padding: 0.5rem 1rem;
-      border-radius: 5px;
-      cursor: pointer;
     }
 
     .add-comment {
@@ -228,7 +223,6 @@
     }
   </style>
 </head>
-
 <body>
   <header>
     <div>
@@ -246,7 +240,6 @@
 
   <div class="ecomind">
     <img src="images/w.png" alt="EcoMind" class="background">
-
     <div class="about-overlay">
       <h2>What About Us</h2>
       <p>EcoMind is a web-based educational platform dedicated to promoting awareness and action on proper waste management. Our goal is to equip students, volunteers, and community members with the knowledge and tools needed to understand the environmental impact of waste and adopt responsible disposal practices. Through interactive lessons, quizzes, and real-world challenges, we aim to build a more informed and environmentally responsible generation.</p>
@@ -254,99 +247,97 @@
   </div>
 
   <div class="about-section">
-    <div class="about-section">
-      <div class="partnership-container">
-        <div class="partnership-image">
-          <img src="images/partnerships.png" alt="Partnership" />
-        </div>
-        <div class="partnership-text">
-          <h2>Partnerships</h2>
-          <p>Discover our partner organizations—NGOs, government programs, and environmental groups—working together to promote sustainable waste management and community impact.</p>
-        </div>
+    <div class="partnership-container">
+      <div class="partnership-image">
+        <img src="images/partnerships.png" alt="Partnership" />
+      </div>
+      <div class="partnership-text">
+        <h2>Partnerships</h2>
+        <p>Discover our partner organizations—NGOs, government programs, and environmental groups—working together to promote sustainable waste management and community impact.</p>
       </div>
     </div>
+  </div>
 
-    <div class="drop-box">
-      <h2>Drop Box</h2>
-      <div class="drop-box-container" id="dropBoxContainer">
-        <div class="drop-box-item">
-          <img src="images/profile1.png" alt="Profile">
-          <p>"A terrific piece of praise"</p>
-          <p><strong>Name</strong></p>
-          <p>Description</p>
-        </div>
-        <div class="drop-box-item">
-          <img src="images/profile2.png" alt="Profile">
-          <p>"A fantastic bit of feedback"</p>
-          <p><strong>Name</strong></p>
-          <p>Description</p>
-        </div>
-        <div class="drop-box-item">
-          <img src="images/profile3.png" alt="Profile">
-          <p>"A genuinely glowing review"</p>
-          <p><strong>Name</strong></p>
-          <p>Description</p>
-        </div>
-      </div>
-      <div class="add-comment">
-        <input type="text" id="commentInput" placeholder="Add Comment">
-        <button id="submitComment">Submit</button>
-      </div>
+  <div class="drop-box">
+    <h2>Drop Box</h2>
+    <div class="drop-box-container" id="dropBoxContainer">
+      <!-- Feedbacks will be loaded here -->
     </div>
+    <div class="add-comment">
+      <input type="text" id="commentInput" placeholder="Add Comment">
+      <button id="submitComment">Submit</button>
+    </div>
+  </div>
 
-    <footer>
-      <div>
-        <h3>ECOMIND</h3>
-        <p>Instagram</p>
-        <p>Twitter</p>
-        <p>LinkedIn</p>
-        <p>Facebook</p>
-      </div>
-      <div>
-        <h4>About Us</h4>
-        <p>About Ecomind</p>
-        <p>Vision & Mission</p>
-        <p>Partnership</p>
-        <p>Sustainability</p>
-      </div>
-      <div>
-        <h4>Contact Us</h4>
-        <p>1-800-555-5555</p>
-        <p>Join us</p>
-        <p>Email us</p>
-        <p>Customer Support</p>
-      </div>
-      <div>
-        <h5>Learning</h5>
-        <p>Modules</p>
-        <p>Quizzes</p>
-        <p>Games</p>
-        <p>Volunteers</p>
-      </div>
-    </footer>
+  <footer>
+    <div>
+      <h3>ECOMIND</h3>
+      <p>Instagram</p>
+      <p>Twitter</p>
+      <p>LinkedIn</p>
+      <p>Facebook</p>
+    </div>
+    <div>
+      <h4>About Us</h4>
+      <p>About Ecomind</p>
+      <p>Vision & Mission</p>
+      <p>Partnership</p>
+      <p>Sustainability</p>
+    </div>
+    <div>
+      <h4>Contact Us</h4>
+      <p>1-800-555-5555</p>
+      <p>Join us</p>
+      <p>Email us</p>
+      <p>Customer Support</p>
+    </div>
+    <div>
+      <h5>Learning</h5>
+      <p>Modules</p>
+      <p>Quizzes</p>
+      <p>Games</p>
+      <p>Volunteers</p>
+    </div>
+  </footer>
 
   <script>
-    document.getElementById('submitComment').addEventListener('click', function() {
-      const commentInput = document.getElementById('commentInput');
+    const dropBoxContainer = document.getElementById('dropBoxContainer');
+    const commentInput = document.getElementById('commentInput');
+    const submitBtn = document.getElementById('submitComment');
+
+    // Load stored feedbacks from localStorage
+    window.addEventListener('DOMContentLoaded', () => {
+      const storedComments = JSON.parse(localStorage.getItem('feedbackComments')) || [];
+      storedComments.forEach(comment => addCommentToDOM(comment));
+    });
+
+    submitBtn.addEventListener('click', () => {
       const commentText = commentInput.value.trim();
-
       if (commentText) {
-        const dropBoxContainer = document.getElementById('dropBoxContainer');
-
-        const newComment = document.createElement('div');
-        newComment.className = 'drop-box-item';
-        newComment.innerHTML = `
-          <img src="images/profile1.png" alt="Profile">
-          <p>"${commentText}"</p>
-          <p><strong>Name</strong></p>
-          <p>Description</p>
-        `;
-
-        dropBoxContainer.insertBefore(newComment, dropBoxContainer.firstChild);
+        addCommentToDOM(commentText);
+        saveComment(commentText);
         commentInput.value = '';
       }
     });
+
+    function addCommentToDOM(commentText) {
+      const newComment = document.createElement('div');
+      newComment.className = 'drop-box-item';
+      newComment.innerHTML = `
+        <img src="images/profile1.png" alt="Profile">
+        <p class="comment-text">"${commentText}"</p>
+        <p><strong>Name</strong></p>
+        <p>Description</p>
+      `;
+      dropBoxContainer.insertBefore(newComment, dropBoxContainer.firstChild);
+    }
+
+    function saveComment(commentText) {
+      const storedComments = JSON.parse(localStorage.getItem('feedbackComments')) || [];
+      storedComments.unshift(commentText);
+      localStorage.setItem('feedbackComments', JSON.stringify(storedComments));
+    }
+      
   </script>
 </body>
-
 </html>
