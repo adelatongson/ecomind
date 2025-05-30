@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
- 
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -131,41 +131,100 @@
       color: white;
       border-radius: 5px;
       cursor: pointer;
+    }
 
-      .background-container {
-  position: relative;
-  height: 400px;
-  overflow: hidden;
-}
+    .partnership-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
 
-.background-container img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
+    .partnership-image {
+      flex: 1;
+      min-width: 180px;
+    }
 
-.overlay-box {
-  position: absolute;
-  right: 0; /* Align fully to the right edge */
-  background-color: rgba(255, 255, 255, 0.9);
-  padding: 1.5rem;
-  border-radius: 10px;
-  width: 40%;
-  text-align: left;
-  z-index: 2;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  margin-right: 2%; /* Optional spacing from edge */
-}
+    .partnership-image img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
 
-.about-box {
-  top: 20%;
-}
+    .partnership-text {
+      flex: 1;
+      min-width: 250px;
+      text-align: left;
+    }
 
-.partnership-box {
-  top: 60%;
-}
+    .drop-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem;
+      background-color: #f9f9f9;
+    }
 
+    .drop-box h2 {
+      margin-bottom: 2rem;
+    }
+
+    .drop-box-container {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .drop-box-item {
+      background-color: white;
+      border-radius: 8px;
+      padding: 1rem;
+      width: 300px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .drop-box-item img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+    }
+
+    .drop-box-item p {
+      margin: 1rem 0;
+    }
+
+    .drop-box-item button {
+      background-color: #b2d235;
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .add-comment {
+      margin-top: 2rem;
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .add-comment input {
+      padding: 0.5rem;
+      border-radius: 5px;
+      border: 1px solid #ddd;
+      width: 300px;
+    }
+
+    .add-comment button {
+      background-color: #b2d235;
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      cursor: pointer;
     }
   </style>
 </head>
@@ -195,39 +254,99 @@
   </div>
 
   <div class="about-section">
-    <h2>Partnerships</h2>
-    <p>Discover our partner organizations—NGOs, government programs, and environmental groups—working together to promote sustainable waste management and community impact.</p>
-  </div>
-  <footer>
-    <div>
-      <h3>ECOMIND</h3>
-      <p>Instagram</p>
-      <p>Twitter</p>
-      <p>LinkedIn</p>
-      <p>Facebook</p>
+    <div class="about-section">
+      <div class="partnership-container">
+        <div class="partnership-image">
+          <img src="images/partnerships.png" alt="Partnership" />
+        </div>
+        <div class="partnership-text">
+          <h2>Partnerships</h2>
+          <p>Discover our partner organizations—NGOs, government programs, and environmental groups—working together to promote sustainable waste management and community impact.</p>
+        </div>
+      </div>
     </div>
-    <div>
-      <h4>About Us</h4>
-      <p>About Ecomind</p>
-      <p>Vision & Mission</p>
-      <p>Partnership</p>
-      <p>Sustainability</p>
-    </div>
-    <div>
-      <h4>Contact Us</h4>
-      <p>1-800-555-5555</p>
-      <p>Join us</p>
-      <p>Email us</p>
-      <p>Customer Support</p>
-    </div>
-    <div>
-      <h5>Learning</h5>
-      <p>Modules</p>
-      <p>Quizzes</p>
-      <p>Games</p>
-      <p>Volunteers</p>
-    </div>
-  </footer>
-</body>
-</html>
 
+    <div class="drop-box">
+      <h2>Drop Box</h2>
+      <div class="drop-box-container" id="dropBoxContainer">
+        <div class="drop-box-item">
+          <img src="images/profile1.png" alt="Profile">
+          <p>"A terrific piece of praise"</p>
+          <p><strong>Name</strong></p>
+          <p>Description</p>
+        </div>
+        <div class="drop-box-item">
+          <img src="images/profile2.png" alt="Profile">
+          <p>"A fantastic bit of feedback"</p>
+          <p><strong>Name</strong></p>
+          <p>Description</p>
+        </div>
+        <div class="drop-box-item">
+          <img src="images/profile3.png" alt="Profile">
+          <p>"A genuinely glowing review"</p>
+          <p><strong>Name</strong></p>
+          <p>Description</p>
+        </div>
+      </div>
+      <div class="add-comment">
+        <input type="text" id="commentInput" placeholder="Add Comment">
+        <button id="submitComment">Submit</button>
+      </div>
+    </div>
+
+    <footer>
+      <div>
+        <h3>ECOMIND</h3>
+        <p>Instagram</p>
+        <p>Twitter</p>
+        <p>LinkedIn</p>
+        <p>Facebook</p>
+      </div>
+      <div>
+        <h4>About Us</h4>
+        <p>About Ecomind</p>
+        <p>Vision & Mission</p>
+        <p>Partnership</p>
+        <p>Sustainability</p>
+      </div>
+      <div>
+        <h4>Contact Us</h4>
+        <p>1-800-555-5555</p>
+        <p>Join us</p>
+        <p>Email us</p>
+        <p>Customer Support</p>
+      </div>
+      <div>
+        <h5>Learning</h5>
+        <p>Modules</p>
+        <p>Quizzes</p>
+        <p>Games</p>
+        <p>Volunteers</p>
+      </div>
+    </footer>
+
+  <script>
+    document.getElementById('submitComment').addEventListener('click', function() {
+      const commentInput = document.getElementById('commentInput');
+      const commentText = commentInput.value.trim();
+
+      if (commentText) {
+        const dropBoxContainer = document.getElementById('dropBoxContainer');
+
+        const newComment = document.createElement('div');
+        newComment.className = 'drop-box-item';
+        newComment.innerHTML = `
+          <img src="images/profile1.png" alt="Profile">
+          <p>"${commentText}"</p>
+          <p><strong>Name</strong></p>
+          <p>Description</p>
+        `;
+
+        dropBoxContainer.insertBefore(newComment, dropBoxContainer.firstChild);
+        commentInput.value = '';
+      }
+    });
+  </script>
+</body>
+
+</html>
