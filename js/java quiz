@@ -1,0 +1,439 @@
+document.addEventListener('DOMContentLoaded', () => {
+    // --- Mobile Menu Logic ---
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const closeMobileMenuButton = document.getElementById('close-mobile-menu');
+    const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+
+    function toggleMobileMenu() {
+        mobileMenu.classList.toggle('translate-x-full');
+        mobileMenuOverlay.classList.toggle('hidden');
+    }
+
+    if (mobileMenuButton) {
+        mobileMenuButton.addEventListener('click', toggleMobileMenu);
+    }
+    if (closeMobileMenuButton) {
+        closeMobileMenuButton.addEventListener('click', toggleMobileMenu);
+    }
+    if (mobileMenuOverlay) {
+        mobileMenuOverlay.addEventListener('click', toggleMobileMenu);
+    }
+    mobileMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            if (!mobileMenu.classList.contains('translate-x-full')) {
+                toggleMobileMenu();
+            }
+        });
+    });
+
+    // --- Quiz Logic ---
+    const quizContainer = document.getElementById('quiz-container');
+    const quizResultsContainer = document.getElementById('quiz-results');
+    const questionTextElement = document.getElementById('question-text');
+    const quizOptions = document.querySelectorAll('.quiz-option');
+    const submitAnswerButton = document.getElementById('submit-answer-button');
+    const feedbackMessage = document.getElementById('feedback-message'); // This will now remain hidden until the end
+    const questionCurrentCountElement = document.getElementById('question-current-count');
+    const questionTotalCountElement = document.getElementById('question-total-count');
+    const finalScoreElement = document.getElementById('final-score');
+    const restartQuizButton = document.getElementById('restart-quiz-button');
+    const resultsLinkDesktop = document.getElementById('results-link-desktop');
+    const resultsLinkMobile = document.getElementById('results-link-mobile');
+
+
+    // Array of quiz questions
+    const questions = [
+        {
+            question: "Which of the following is the most environmentally friendly method of waste disposal?",
+            options: {
+                A: "Landfilling",
+                B: "Incineration",
+                C: "Open Dumping",
+                D: "Recycling"
+            },
+            correctAnswer: "D"
+        },
+        {
+            question: "What is the primary cause of climate change?",
+            options: {
+                A: "Volcanic eruptions",
+                B: "Deforestation",
+                C: "Burning fossil fuels",
+                D: "Ocean currents"
+            },
+            correctAnswer: "C"
+        },
+        {
+            question: "Which gas is most responsible for the greenhouse effect?",
+            options: {
+                A: "Oxygen",
+                B: "Nitrogen",
+                C: "Carbon Dioxide",
+                D: "Methane"
+            },
+            correctAnswer: "C"
+        },
+        {
+            question: "What is waste segregation?",
+            options: {
+                A: "Mixing all types of waste into one bin",
+                B: "Burning all types of waste",
+                C: "Separating waste based on type, composition, or recyclability",
+                D: "Throwing away waste without classification"
+            },
+            correctAnswer: "C"
+        },
+        {
+            question: "What law is known as the Ecological Solid Waste Management Act of 2000?",
+            options: {
+                A: "Republic Act No. 7160",
+                B: "Republic Act No. 9003",
+                C: "Republic Act No. 10121",
+                D: "Republic Act No. 8425"
+            },
+            correctAnswer: "B"
+        },
+        {
+            question: "What is one key purpose of Republic Act No. 9003?",
+            options: {
+                A: "Encourage illegal dumping",
+                B: "Promote incineration",
+                C: "Mandate solid waste management programs",
+                D: "Increase landfill usage"
+            },
+            correctAnswer: "C"
+        },
+        {
+            question: "Which of the following is a category of waste that should be separated?",
+            options: {
+                A: "Liquid only",
+                B: "Biodegradable",
+                C: "Precious metals",
+                D: "Unused items"
+            },
+            correctAnswer: "B"
+        },
+        {
+            question: "Why is proper waste segregation important for the environment?",
+            options: {
+                A: "It increases pollution",
+                B: "It reduces the risk of contamination",
+                C: "It delays waste disposal",
+                D: "It produces more waste"
+            },
+            correctAnswer: "B"
+        },
+        {
+            question: "How does recycling contribute to natural resource conservation?",
+            options: {
+                A: "It increases energy use",
+                B: "It uses more raw materials",
+                C: "It reduces demand for virgin resources",
+                D: "It harms the environment"
+            },
+            correctAnswer: "C"
+        },
+        {
+            question: "What is a direct benefit of efficient waste management?",
+            options: {
+                A: "More waste is created",
+                B: "Higher landfill dependency",
+                C: "Increased collection costs",
+                D: "Streamlined collection and processing"
+            },
+            correctAnswer: "D"
+        },
+        {
+            question: "What does proper hazardous waste disposal prevent?",
+            options: {
+                A: "Soil enrichment",
+                B: "Health risks from toxic exposure",
+                C: "Recycling of toxic materials",
+                D: "Water purification"
+            },
+            correctAnswer: "B"
+        },
+        {
+            question: "What is one effect of reducing landfill dependency?",
+            options: {
+                A: "Increased pollution",
+                B: "Shortened landfill lifespan",
+                C: "Extended landfill lifespan",
+                D: "More land needed for dumpsites"
+            },
+            correctAnswer: "C"
+        },
+        {
+            question: "What is a common obstacle in effective waste segregation?",
+            options: {
+                A: "Excess awareness",
+                B: "Too many recycling centers",
+                C: "Lack of education and awareness",
+                D: "Perfect compliance"
+            },
+            correctAnswer: "C"
+        },
+        {
+            question: "Why can inconsistent segregation practices be problematic?",
+            options: {
+                A: "They save time",
+                B: "They lead to less waste",
+                C: "They cause confusion and reduce efficiency",
+                D: "They promote sustainability"
+            },
+            correctAnswer: "C"
+        },
+        {
+            question: "What infrastructure issue affects waste segregation?",
+            options: {
+                A: "Excess collection bins",
+                B: "Limited recycling bins and collection systems",
+                C: "Too many composting options",
+                D: "Free recycling services"
+            },
+            correctAnswer: "B"
+        },
+        {
+            question: "What happens when food waste is mixed with recyclables?",
+            options: {
+                A: "Better composting",
+                B: "Easier sorting",
+                C: "Contamination of recyclable materials",
+                D: "Lower waste volume"
+            },
+            correctAnswer: "C"
+        },
+        {
+            question: "Which factor can limit the ability to set up waste segregation systems?",
+            options: {
+                A: "Overfunding",
+                B: "Lack of waste",
+                C: "Cost and limited resources",
+                D: "Too much space"
+            },
+            correctAnswer: "C"
+        },
+        {
+            question: "What type of waste is typically biodegradable?",
+            options: {
+                A: "Plastic bottles",
+                B: "Aluminum cans",
+                C: "Food scraps",
+                D: "Glass jars"
+            },
+            correctAnswer: "C"
+        },
+        {
+            question: "What is the goal of promoting composting under RA 9003?",
+            options: {
+                A: "To burn organic waste",
+                B: "To reduce organic waste in landfills",
+                C: "To sell waste overseas",
+                D: "To increase garbage collection"
+            },
+            correctAnswer: "B"
+        },
+        {
+            question: "Which of the following is a sustainable waste management practice?",
+            options: {
+                A: "Dumping into rivers",
+                B: "Incineration",
+                C: "Recycling",
+                D: "Burning plastics"
+            },
+            correctAnswer: "C"
+        },
+        {
+            question: "How can communities help improve waste segregation?",
+            options: {
+                A: "Ignore recycling laws",
+                B: "Mix all types of waste",
+                C: "Practice and promote proper segregation",
+                D: "Depend solely on the government"
+            },
+            correctAnswer: "C"
+        },
+        {
+            question: "Which sector is responsible for educating people on waste segregation?",
+            options: {
+                A: "Private companies only",
+                B: "The military",
+                C: "Communities, schools, and local government",
+                D: "Tourists"
+            },
+            correctAnswer: "C"
+        },
+        {
+            question: "What is a consequence of poor waste segregation?",
+            options: {
+                A: "Increased recyclability",
+                B: "Cleaner environment",
+                C: "Contaminated waste streams",
+                D: "Decreased landfill use"
+            },
+            correctAnswer: "C"
+        }
+    ];
+
+    let currentQuestionIndex = 0;
+    let selectedAnswer = null; // To store the currently selected answer
+    let score = 0; // To track the user's score
+
+    // Set the total number of questions initially
+    questionTotalCountElement.textContent = questions.length;
+
+    /**
+     * Shows the quiz container and hides the results container.
+     */
+    function showQuiz() {
+        quizContainer.classList.remove('hidden');
+        quizResultsContainer.classList.add('hidden');
+        resultsLinkDesktop.classList.add('hidden'); // Hide results link while quiz is active
+        resultsLinkMobile.classList.add('hidden');
+    }
+
+    /**
+     * Shows the results container and hides the quiz container.
+     */
+    function showResults() {
+        quizContainer.classList.add('hidden');
+        quizResultsContainer.classList.remove('hidden');
+        finalScoreElement.querySelector('span:first-child').textContent = score;
+        finalScoreElement.querySelector('span:last-child').textContent = questions.length;
+        resultsLinkDesktop.classList.remove('hidden'); // Show results link when quiz is finished
+        resultsLinkMobile.classList.remove('hidden');
+    }
+
+    /**
+     * Loads the current question into the HTML.
+     */
+    function loadQuestion() {
+        showQuiz(); // Ensure quiz is visible when loading a new question
+        if (currentQuestionIndex < questions.length) {
+            const currentQuestion = questions[currentQuestionIndex];
+            questionTextElement.textContent = currentQuestion.question;
+
+            // Update options text
+            document.querySelector('#option-a p').textContent = `A. ${currentQuestion.options.A}`;
+            document.querySelector('#option-b p').textContent = `B. ${currentQuestion.options.B}`;
+            document.querySelector('#option-c p').textContent = `C. ${currentQuestion.options.C}`;
+            document.querySelector('#option-d p').textContent = `D. ${currentQuestion.options.D}`;
+
+            // Reset styling and selection for new question
+            quizOptions.forEach(option => {
+                option.classList.remove('selected', 'correct', 'incorrect');
+                option.addEventListener('click', handleOptionClick); // Re-enable click listeners
+            });
+            selectedAnswer = null;
+            feedbackMessage.classList.add('hidden'); // Keep feedback message hidden
+            feedbackMessage.textContent = '';
+            submitAnswerButton.textContent = 'Submit Answer'; // Reset button text
+            submitAnswerButton.disabled = false; // Re-enable button
+            submitAnswerButton.classList.remove('opacity-50', 'cursor-not-allowed');
+
+            // Update current question count display
+            questionCurrentCountElement.textContent = currentQuestionIndex + 1;
+        } else {
+            // End of quiz
+            showResults(); // Show the results screen
+        }
+    }
+
+    /**
+     * Handles the click event on a quiz option.
+     * Marks the selected option and deselects others.
+     * @param {Event} event - The click event object.
+     */
+    function handleOptionClick(event) {
+        // Remove 'selected' class from previously selected option
+        if (selectedAnswer) {
+            selectedAnswer.classList.remove('selected');
+        }
+
+        // Add 'selected' class to the clicked option
+        const clickedOption = event.currentTarget;
+        clickedOption.classList.add('selected');
+        selectedAnswer = clickedOption; // Store the new selected option
+
+        // Clear any visual feedback that might have been left over from previous questions
+        quizOptions.forEach(option => {
+            option.classList.remove('correct', 'incorrect');
+        });
+    }
+
+    /**
+     * Handles the submission of the quiz answer or moves to the next question.
+     */
+    function handleSubmitOrNext() {
+        if (submitAnswerButton.textContent === 'Next Question') {
+            currentQuestionIndex++;
+            loadQuestion();
+            return;
+        }
+
+        if (!selectedAnswer) {
+            // Temporarily show a message if no answer is selected
+            feedbackMessage.textContent = 'Please select an answer.';
+            feedbackMessage.className = 'mt-6 p-4 rounded-lg text-center font-semibold text-lg bg-yellow-100 text-yellow-800 block';
+            return;
+        } else {
+            // Hide the 'Please select an answer' message once an answer is selected
+            feedbackMessage.classList.add('hidden');
+            feedbackMessage.textContent = '';
+        }
+
+
+        const currentQuestion = questions[currentQuestionIndex];
+        const userAnswer = selectedAnswer.dataset.answer; // Get the data-answer attribute
+
+        // Check if the answer is correct and increment score, but don't show immediate feedback
+        if (userAnswer === currentQuestion.correctAnswer) {
+            score++; // Increment score for correct answer
+        }
+
+        // Disable options after submission (user cannot change answer for current question)
+        quizOptions.forEach(option => option.removeEventListener('click', handleOptionClick));
+
+        // Change button text to "Next Question"
+        submitAnswerButton.textContent = 'Next Question';
+    }
+
+    /**
+     * Resets the quiz to its initial state.
+     */
+    function restartQuiz() {
+        currentQuestionIndex = 0;
+        score = 0;
+        showQuiz();
+        loadQuestion();
+    }
+
+    // Initialize the quiz by loading the first question
+    loadQuestion();
+
+    // Add event listener to the submit/next button
+    if (submitAnswerButton) {
+        submitAnswerButton.addEventListener('click', handleSubmitOrNext);
+    }
+
+    // Add event listener for the restart quiz button
+    if (restartQuizButton) {
+        restartQuizButton.addEventListener('click', restartQuiz);
+    }
+
+    // Add event listeners for the new "Results" links
+    if (resultsLinkDesktop) {
+        resultsLinkDesktop.addEventListener('click', (e) => {
+            e.preventDefault(); // Prevent default anchor behavior
+            showResults();
+        });
+    }
+    if (resultsLinkMobile) {
+        resultsLinkMobile.addEventListener('click', (e) => {
+            e.preventDefault(); // Prevent default anchor behavior
+            showResults();
+            toggleMobileMenu(); // Close mobile menu after clicking results
+        });
+    }
+});
