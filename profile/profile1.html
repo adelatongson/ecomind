@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Profile - Nicole Fernandez</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Inter", sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            transition: background-color 0.5s ease;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            background: white;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 100;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: #2d5016;
+            text-decoration: none;
+            cursor: pointer;
+            transition: opacity 0.3s;
+        }
+
+        .logo:hover {
+            opacity: 0.8;
+        }
+
+        .logo img {
+            width: 24px;
+            height: 24px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 0.5rem 1rem;
+        }
+
+        .nav-links a:hover {
+            color: #2d5016;
+        }
+
+        .nav-links .login-btn {
+            background: #9ACD32;
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            text-decoration: none;
+            color: #2d5016;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        .nav-links .login-btn:hover {
+            background: #8FBC8F;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 3px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: #333;
+            transition: 0.3s;
+        }
+
+        .main-content {
+            max-width: 1200px;
+            margin: 120px auto 40px;
+            padding: 0 20px;
+        }
+
+        .profile-section {
+            background-color: #E0C7A9;
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        .profile-header {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            margin-bottom: 30px;
+            justify-content: flex-start;
+            padding-left: 50px;
+        }
+
+        .profile-image {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            background-color: #e0e0e0;
+            border: 3px solid #ddd;
+            background-image: url('nicole.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .return-button {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            width: 35px;
+            height: 35px;
+            background-image: url('return.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .return-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+        }
+
+        .profile-info h1 {
+            font-size: 28px;
+            margin-bottom: 5px;
+            color: black;
+            font-weight: bold;
+        }
+
+        .profile-info p {
+            color: black;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .progress-bar {
+            width: 300px;
+            height: 20px;
+            background-color: #e0e0e0;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-fill {
+            width: 60%;
+            height: 100%;
+            background-color: #8BC34A;
+            border-radius: 10px;
+        }
+
+        .progress-text {
+            position: absolute;
+            right: 10px;
+            top: 2px;
+            font-size: 12px;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .section-title {
+            background-color: #C8E6C9;
+            color: black;
+            padding: 15px 20px;
+            border-radius: 8px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .submitted-files {
+            background-color: rgba(176, 204, 41, 0.25);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .file-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+            color: black;
+            font-weight: bold;
+        }
+
+        .file-item:last-child {
+            border-bottom: none;
+        }
+
+        .file-status {
+            padding: 5px 15px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .file-button {
+            background-color: #B0CC29;
+            color: black;
+            padding: 8px 16px;
+            border: none;
+            font-size: 12px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .file-button:hover {
+            background-color: #9AB825;
+        }
+
+        .status-pending {
+            background-color: #FFF3C4;
+            color: #F57F17;
+        }
+
+        .status-approved {
+            background-color: #C8E6C9;
+            color: #2E7D32;
+        }
+
+        .status-submitted {
+            background-color: #E1F5FE;
+            color: #0277BD;
+        }
+
+        .quiz-results {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .quiz-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .quiz-table th {
+            background-color: #f8f8f8;
+            padding: 15px;
+            text-align: left;
+            border-bottom: 2px solid #ddd;
+            font-weight: bold;
+            color: black;
+        }
+
+        .quiz-table td {
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+            color: black;
+            font-weight: bold;
+        }
+
+        .quiz-table tr:hover {
+            background-color: #f9f9f9;
+        }
+
+        /* Alternating row colors with B0CC29 */
+        .quiz-table tbody tr:nth-child(1) {
+            background-color: rgba(176, 204, 41, 0.25);
+        }
+
+        .quiz-table tbody tr:nth-child(2) {
+            background-color: rgba(176, 204, 41, 0.5);
+        }
+
+        .quiz-table tbody tr:nth-child(3) {
+            background-color: rgba(176, 204, 41, 0.25);
+        }
+
+        .quiz-table tbody tr:nth-child(4) {
+            background-color: rgba(176, 204, 41, 0.5);
+        }
+
+        .quiz-table tbody tr:nth-child(5) {
+            background-color: rgba(176, 204, 41, 0.25);
+        }
+
+        .score {
+            font-weight: bold;
+            color: black;
+        }
+
+        .view-btn {
+            width: 24px;
+            height: 24px;
+            background-image: url('comment.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            transition: opacity 0.3s ease;
+        }
+
+        .view-btn:hover {
+            opacity: 0.7;
+        }
+
+        .teacher-remarks {
+            background-color: #C8E6C9;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 30px;
+            min-height: 100px;
+        }
+
+        .footer {
+            background-color: #4F6D3F;
+            color: #e0e0e0;
+            padding: 40px 0;
+            margin-top: 50px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            padding: 0 20px;
+        }
+
+        .footer-section h3 {
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 8px;
+        }
+
+        .footer-section ul li a {
+            color: #e0e0e0;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section ul li a:hover {
+            color: #9ACD32;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #666;
+            margin-top: 30px;
+            padding-top: 20px;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(255, 255, 255, 0.95);
+                flex-direction: column;
+                padding: 1rem;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .profile-header {
+                flex-direction: column;
+                text-align: center;
+                padding-left: 0;
+            }
+
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="#home" class="logo">
+            <img src="logo.png" alt="EcoMind Logo">
+            EcoMind
+        </a>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#module">Module</a></li>
+            <li><a href="#game">Game</a></li>
+            <li><a href="login.html" class="login-btn">Login</a></li>
+        </ul>
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <div class="profile-section">
+            <button class="return-button" onclick="returnToPrevious()" title="Return"></button>
+            <div class="profile-header">
+                <div class="profile-image"></div>
+                <div class="profile-info">
+                    <h1>Nicole L. Fernandez</h1>
+                    <p>Student ID or email</p>
+                    <p><strong>Progress Bar</strong></p>
+                    <div class="progress-bar">
+                        <div class="progress-fill"></div>
+                        <div class="progress-text">60% Complete</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="submitted-files">
+            <h2 class="section-title">Submitted Files</h2>
+            <div class="file-item">
+                <span>Segregation Activity</span>
+                <button class="file-button" onclick="downloadFile()">Download</button>
+                <button class="file-button" onclick="viewFile()">View</button>
+                <span class="file-status status-submitted">Status: Submitted</span>
+            </div>
+        </div>
+
+        <div class="quiz-results">
+            <h2 class="section-title">Quiz Results</h2>
+            <table class="quiz-table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Score</th>
+                        <th>Time Taken</th>
+                        <th>Date Taken</th>
+                        <th>Attempts</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Module 1:<br>Waste Types</td>
+                        <td class="score">100/100</td>
+                        <td>30.6 minutes</td>
+                        <td>17/05/2025</td>
+                        <td>3</td>
+                        <td><button class="view-btn" title="View Comments"></button></td>
+                    </tr>
+                    <tr>
+                        <td>Module 2:<br>Waste Types</td>
+                        <td class="score">100/100</td>
+                        <td>30.6 minutes</td>
+                        <td>17/05/2025</td>
+                        <td>3</td>
+                        <td><button class="view-btn" title="View Comments"></button></td>
+                    </tr>
+                    <tr>
+                        <td>Module 3:<br>Waste Types</td>
+                        <td class="score">100/100</td>
+                        <td>30.6 minutes</td>
+                        <td>17/05/2025</td>
+                        <td>3</td>
+                        <td><button class="view-btn" title="View Comments"></button></td>
+                    </tr>
+                    <tr>
+                        <td>Module 4:<br>Waste Types</td>
+                        <td class="score">100/100</td>
+                        <td>30.6 minutes</td>
+                        <td>17/05/2025</td>
+                        <td>3</td>
+                        <td><button class="view-btn" title="View Comments"></button></td>
+                    </tr>
+                    <tr>
+                        <td>Module 5:<br>Waste Types</td>
+                        <td class="score">100/100</td>
+                        <td>30.6 minutes</td>
+                        <td>17/05/2025</td>
+                        <td>3</td>
+                        <td><button class="view-btn" title="View Comments"></button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="teacher-remarks">
+            <h2 class="section-title">Teacher's Remarks</h2>
+            <!-- Teacher's remarks content would go here -->
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>ECOMIND</h3>
+                <ul>
+                    <li><a href="#" class="flex items-center"><span class="mr-2">📷</span> Instagram</a></li>
+                    <li><a href="#" class="flex items-center"><span class="mr-2">🐦</span> Twitter</a></li>
+                    <li><a href="#" class="flex items-center"><span class="mr-2">👥</span> Facebook</a></li>
+                    <li><a href="#" class="flex items-center"><span class="mr-2">📌</span> Pinterest</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>About Us</h3>
+                <ul>
+                    <li><a href="#">About Ecomind</a></li>
+                    <li><a href="#">Vision & Mission</a></li>
+                    <li><a href="#">Partnership</a></li>
+                    <li><a href="#">Sustainability</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <ul>
+                    <li><a href="#">1-800-555-5555</a></li>
+                    <li><a href="#">Join us</a></li>
+                    <li><a href="#">Email us</a></li>
+                    <li><a href="#">Customer Support</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Learning</h3>
+                <ul>
+                    <li><a href="#">Modules</a></li>
+                    <li><a href="#">Quizzes</a></li>
+                    <li><a href="#">Games</a></li>
+                    <li><a href="#">Volunteers</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+                <p>&copy; 2049 Fitma</p>
+                <div style="display: flex; gap: 30px;">
+                    <a href="#" style="color: #e0e0e0; text-decoration: none;">Fitma Policies</a>
+                    <a href="#" style="color: #e0e0e0; text-decoration: none;">Terms of Use</a>
+                    <a href="#" style="color: #e0e0e0; text-decoration: none;">About us</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile navigation toggle
+        document.querySelector('.hamburger').addEventListener('click', function() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('active');
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                if (this.getAttribute('href').startsWith('#')) {
+                    e.preventDefault();
+                    const target = this.getAttribute('href');
+                    console.log(`Navigating to ${target}`);
+                }
+            });
+        });
+
+        // File action functions
+        function downloadFile() {
+            alert('Downloading file...');
+            // Add your download logic here
+        }
+
+        function viewFile() {
+            alert('Opening file viewer...');
+            // Add your view logic here
+        }
+
+        // Return button function
+        function returnToPrevious() {
+            alert('Returning to previous page...');
+            // You can replace this with:
+            // window.history.back();
+            // or navigate to a specific page
+        }
+    </script>
+</body>
+</html>
