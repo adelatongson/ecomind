@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
         body {
             margin: 0;
@@ -14,40 +15,7 @@
             min-height: 100vh;
         }
 
-        header {
-            background-color: #f8f5f0;
-            padding: 10px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-        }
-
-        .logo img {
-            height: 50px;
-            margin-right: 10px;
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-            margin: 0;
-            padding: 0;
-        }
-
-        nav ul li {
-            margin-left: 20px;
-        }
-
-        nav ul li a {
-            text-decoration: none;
-            color: #333;
-        }
-
+        /* Adjust quiz-container margin-top to account for fixed header */
         .quiz-container {
             flex: 1;
             display: flex;
@@ -56,6 +24,8 @@
             justify-content: center;
             padding: 20px;
             background-color: #f9f9f9;
+            margin-top: 80px; /* Approximate height of the header */
+            margin-bottom: 20px;
         }
 
         .question-header {
@@ -121,35 +91,10 @@
             font-size: 16px;
         }
 
-        footer {
-            background-color: #2d3e3f;
-            color: white;
-            padding: 20px;
-            text-align: center;
-            display: flex;
-            justify-content: space-around;
-        }
-
-        .footer-section {
-            margin: 0 10px;
-        }
-
-        .footer-section h3 {
-            margin-bottom: 10px;
-        }
-
-        .footer-section ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .footer-section ul li a {
-            color: white;
-            text-decoration: none;
-        }
-
+        /* Results Container styles (existing and adjusted) */
         .results-container {
             display: flex;
+            flex-wrap: wrap; /* Allow wrapping for smaller screens */
             justify-content: space-around;
             width: 100%;
             max-width: 1000px;
@@ -157,7 +102,7 @@
         }
 
         .results-list {
-            width: 50%;
+            width: 100%; /* Full width on smaller screens */
             padding: 20px;
         }
 
@@ -179,7 +124,7 @@
         }
 
         .chart-container {
-            width: 50%;
+            width: 100%; /* Full width on smaller screens */
             padding: 20px;
             display: flex;
             flex-direction: column;
@@ -202,23 +147,28 @@
         .chart-info p {
             margin: 5px 0;
         }
+
+        @media (min-width: 768px) {
+            .results-list, .chart-container {
+                width: 50%; /* Half width on larger screens */
+            }
+        }
     </style>
 </head>
 <body>
-    <header>
-        <div class="logo">
-            <img src="https://via.placeholder.com/50" alt="Logo">
-            <span>Ecomind</span>
+    <header class="fixed top-0 left-0 w-full bg-white shadow-md z-50 py-4 px-6 md:px-12 flex justify-between items-center rounded-b-lg">
+        <div class="flex items-center space-x-2">
+            <img src="image_1161f1.png" alt="Ecomind Logo" class="w-10 h-10 rounded-full">
+            <span class="text-xl font-semibold text-gray-800">Ecomind</span>
         </div>
-        <nav>
-            <ul>
-                <li><a href="homepage.html">Home</a></li>
-                <li><a href="about us page.html">About Us</a></li>
-                <li><a href="modules homepage.html">Module</a></li>
-                <li><a href="game homepage.html">Game</a></li>
-                <li><a href="login.html">Login</a></li>
-            </ul>
+        <nav class="hidden md:flex items-center space-x-8">
+            <a href="home.html" class="text-gray-700 hover:text-green-600 font-medium transition-colors duration-300">Home</a>
+            <a href="aboutus.html" class="text-gray-700 hover:text-green-600 font-medium transition-colors duration-300">About Us</a>
+            <a href="modulehomepage.html" class="text-gray-700 hover:text-green-600 font-medium transition-colors duration-300">Module</a>
+            <a href="gamehomepage.html" class="text-700 hover:text-green-600 font-medium transition-colors duration-300">Game</a>
+            <a href="login.html" class="bg-[#B0CC29] text-black px-8 py-3 rounded-full hover:bg-opacity-80 transition-colors duration-300 shadow-lg font-semibold inline-block">Login</a>
         </nav>
+        <button class="md:hidden text-gray-700 text-2xl"> &#9776; </button>
     </header>
 
     <div class="quiz-container">
@@ -240,37 +190,52 @@
         </div>
     </div>
 
-    <footer>
-        <div class="footer-section">
-            <h3>ECOMIND</h3>
-            <ul>
-                <li><a href="#">Blog</a></li>
-                <li><a href="#">Courses</a></li>
-                <li><a href="#">Finance</a></li>
-            </ul>
+    <footer class="bg-[#4F6D3F] text-gray-300 py-12 px-4 md:px-12">
+        <div class="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 justify-items-center justify-center">
+            <div>
+                <h3 class="text-xl font-semibold text-white mb-4">ECOMIND</h3>
+                <ul class="space-y-2">
+                    <li><a href="#" class="hover:text-green-400 transition-colors duration-300 flex items-center"><span class="mr-2">&#x1F4F7;</span> Instagram</a></li>
+                    <li><a href="#" class="hover:text-green-400 transition-colors duration-300 flex items-center"><span class="mr-2">&#x1F426;</span> Twitter</a></li>
+                    <li><a href="#" class="hover:text-green-400 transition-colors duration-300 flex items-center"><span class="mr-2">&#x1F465;</span> Facebook</a></li>
+                    <li><a href="#" class="hover:text-green-400 transition-colors duration-300 flex items-center"><span class="mr-2">&#x1F4CC;</span> Pinterest</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-xl font-semibold text-white mb-4">About Us</h3>
+                <ul class="space-y-2">
+                    <li><a href="#" class="hover:text-green-400 transition-colors duration-300">About Ecomind</a></li>
+                    <li><a href="#" class="hover:text-green-400 transition-colors duration-300">Vision & Mission</a></li>
+                    <li><a href="#" class="hover:text-green-400 transition-colors duration-300">Partnership</a></li>
+                    <li><a href="#" class="hover:text-green-400 transition-colors duration-300">Sustainability</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-xl font-semibold text-white mb-4">Contact Us</h3>
+                <ul class="space-y-2">
+                    <li><a href="#" class="hover:text-green-400 transition-colors duration-300">1-800-555-5555</a></li>
+                    <li><a href="#" class="hover:text-green-400 transition-colors duration-300">Join us</a></li>
+                    <li><a href="#" class="hover:text-green-400 transition-colors duration-300">Email us</a></li>
+                    <li><a href="#" class="hover:text-green-400 transition-colors duration-300">Customer Support</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-xl font-semibold text-white mb-4">Learning</h3>
+                <ul class="space-y-2">
+                    <li><a href="#" class="hover:text-green-400 transition-colors duration-300">Modules</a></li>
+                    <li><a href="#" class="hover:text-green-400 transition-colors duration-300">Quizzes</a></li>
+                    <li><a href="#" class="hover:text-green-400 transition-colors duration-300">Games</a></li>
+                    <li><a href="#" class="hover:text-green-400 transition-colors duration-300">Volunteers</a></li>
+                </ul>
+            </div>
         </div>
-        <div class="footer-section">
-            <h3>About Us</h3>
-            <ul>
-                <li><a href="#">About Ecomind</a></li>
-                <li><a href="#">Sustainability</a></li>
-            </ul>
-        </div>
-        <div class="footer-section">
-            <h3>Contact Us</h3>
-            <ul>
-                <li><a href="#">+63 955 9038</a></li>
-                <li><a href="#">info@ecomind.com</a></li>
-                <li><a href="#">Customer Support</a></li>
-            </ul>
-        </div>
-        <div class="footer-section">
-            <h3>Learning</h3>
-            <ul>
-                <li><a href="#">Modules</a></li>
-                <li><a href="#">Games</a></li>
-                <li><a href="#">Certifications</a></li>
-            </ul>
+        <div class="container mx-auto border-t border-gray-600 mt-8 pt-6 text-center text-sm">
+            <div class="flex flex-col md:flex-row justify-center items-center space-y-2 md:space-y-0 md:space-x-8">
+                <p>&copy; 2049 Fitma</p>
+                <a href="#" class="hover:text-green-400 transition-colors duration-300">Fitma Policies</a>
+                <a href="#" class="hover:text-green-400 transition-colors duration-300">Terms of Use</a>
+                <a href="#" class="hover:text-green-400 transition-colors duration-300">About us</a>
+            </div>
         </div>
     </footer>
 
@@ -280,387 +245,387 @@
         let timer;
         let userAnswers = [];
         let questions = [
-    {
-        question: "What is the goal of promoting composting under RA 9003?",
-        options: [
-            "A. To burn organic waste",
-            "B. To reduce organic waste in landfills",
-            "C. To sell waste overseas",
-            "D. To increase garbage collection"
-        ],
-        answer: "B. To reduce organic waste in landfills"
-    },
-    {
-        question: "What is one key purpose of Republic Act No. 9003?",
-        options: [
-            "A. Encourage illegal dumping",
-            "B. Promote incineration",
-            "C. Mandate solid waste management programs",
-            "D. Increase landfill usage"
-        ],
-        answer: "C. Mandate solid waste management programs"
-    },
-    {
-        question: "What does proper hazardous waste disposal prevent?",
-        options: [
-            "A. Soil enrichment",
-            "B. Health risks from toxic exposure",
-            "C. Recycling of toxic materials",
-            "D. Water purification"
-        ],
-        answer: "B. Health risks from toxic exposure"
-    },
-    {
-        question: "What type of waste is typically biodegradable?",
-        options: [
-            "A. Plastic bottles",
-            "B. Aluminum cans",
-            "C. Food scraps",
-            "D. Glass jars"
-        ],
-        answer: "C. Food scraps"
-    },
-    {
-        question: "What is the purpose of waste classification?",
-        options: [
-            "A. To increase landfill size",
-            "B. To make waste collection slower",
-            "C. To determine the best way to handle waste",
-            "D. To avoid separating waste"
-        ],
-        answer: "C. To determine the best way to handle waste"
-    },
-    {
-        question: "Which of the following is a sustainable waste management practice?",
-        options: [
-            "A. Dumping into rivers",
-            "B. Incineration",
-            "C. Recycling",
-            "D. Burning plastics"
-        ],
-        answer: "C. Recycling"
-    },
-    {
-        question: "What is waste segregation?",
-        options: [
-            "A. Mixing all types of waste into one bin",
-            "B. Burning all types of waste",
-            "C. Separating waste based on type, composition, or recyclability",
-            "D. Throwing away waste without classification"
-        ],
-        answer: "C. Separating waste based on type, composition, or recyclability"
-    },
-    {
-        question: "Which of the following is an example of special waste?",
-        options: [
-            "A. Vegetable peels",
-            "B. Batteries",
-            "C. Paper",
-            "D. Candy wrappers"
-        ],
-        answer: "B. Batteries"
-    },
-    {
-        question: "Which item is classified as recyclable?",
-        options: [
-            "A. Glass bottle",
-            "B. Disposable gloves",
-            "C. Worn-out rug",
-            "D. Garden waste"
-        ],
-        answer: "A. Glass bottle"
-    },
-    {
-        question: "Which of the following is a category of waste that should be separated?",
-        options: [
-            "A. Liquid only",
-            "B. Biodegradable",
-            "C. Precious metals",
-            "D. Unused items"
-        ],
-        answer: "B. Biodegradable"
-    },
-    {
-        question: "Why can inconsistent segregation practices be problematic?",
-        options: [
-            "A. They save time",
-            "B. They lead to less waste",
-            "C. They cause confusion and reduce efficiency",
-            "D. They promote sustainability"
-        ],
-        answer: "C. They cause confusion and reduce efficiency"
-    },
-    {
-        question: "What is household healthcare waste?",
-        options: [
-            "A. Plastic bottles and cans",
-            "B. Wastes contaminated with infectious materials",
-            "C. Dry paper products",
-            "D. Compostable garden waste"
-        ],
-        answer: "B. Wastes contaminated with infectious materials"
-    },
-    {
-        question: "What law is known as the Ecological Solid Waste Management Act of 2000?",
-        options: [
-            "A. Republic Act No. 7160",
-            "B. Republic Act No. 9003",
-            "C. Republic Act No. 10121",
-            "D. Republic Act No. 8425"
-        ],
-        answer: "B. Republic Act No. 9003"
-    },
-    {
-        question: "Which of the following is a type of household healthcare waste?",
-        options: [
-            "A. Face masks",
-            "B. Aluminum cans",
-            "C. Cardboard",
-            "D. Old clothes"
-        ],
-        answer: "A. Face masks"
-    },
-    {
-        question: "What category do used syringes fall under?",
-        options: [
-            "A. Recyclable",
-            "B. Residual",
-            "C. Healthcare",
-            "D. Compostable"
-        ],
-        answer: "C. Healthcare"
-    },
-    {
-        question: "What infrastructure issue affects waste segregation?",
-        options: [
-            "A. Excess collection bins",
-            "B. Limited recycling bins and collection systems",
-            "C. Too many composting options",
-            "D. Free recycling services"
-        ],
-        answer: "B. Limited recycling bins and collection systems"
-    },
-    {
-        question: "Which waste type is considered dangerous if not disposed of properly?",
-        options: [
-            "A. Recyclable",
-            "B. Compostable",
-            "C. Household healthcare waste",
-            "D. Residual"
-        ],
-        answer: "C. Household healthcare waste"
-    },
-    {
-        question: "How does recycling contribute to natural resource conservation?",
-        options: [
-            "A. It increases energy use",
-            "B. It uses more raw materials",
-            "C. It reduces demand for virgin resources",
-            "D. It harms the environment"
-        ],
-        answer: "C. It reduces demand for virgin resources"
-    },
-    {
-        question: "What happens when food waste is mixed with recyclables?",
-        options: [
-            "A. Better composting",
-            "B. Easier sorting",
-            "C. Contamination of recyclable materials",
-            "D. Lower waste volume"
-        ],
-        answer: "C. Contamination of recyclable materials"
-    },
-    {
-        question: "What is recyclable waste?",
-        options: [
-            "A. Waste burned at home",
-            "B. Contaminated trash",
-            "C. Waste that can be processed for reuse",
-            "D. Medical waste"
-        ],
-        answer: "C. Waste that can be processed for reuse"
-    },
-    {
-        question: "Which sector is responsible for educating people on waste segregation?",
-        options: [
-            "A. Private companies only",
-            "B. The military",
-            "C. Communities, schools, and local government",
-            "D. Tourists"
-        ],
-        answer: "C. Communities, schools, and local government"
-    },
-    {
-        question: "What is one effect of reducing landfill dependency?",
-        options: [
-            "A. Increased pollution",
-            "B. Shortened landfill lifespan",
-            "C. Extended landfill lifespan",
-            "D. More land needed for dumpsites"
-        ],
-        answer: "C. Extended landfill lifespan"
-    },
-    {
-        question: "Which of the following is NOT compostable?",
-        options: [
-            "A. Fish entrails",
-            "B. Soft vegetable trims",
-            "C. Aluminum foil",
-            "D. Fruit seeds"
-        ],
-        answer: "C. Aluminum foil"
-    },
-    {
-        question: "Why is classifying waste important?",
-        options: [
-            "A. It wastes time and resources",
-            "B. It helps burn more waste",
-            "C. It supports safe and efficient disposal methods",
-            "D. It reduces waste collection"
-        ],
-        answer: "C. It supports safe and efficient disposal methods"
-    },
-    {
-        question: "What type of waste are worn-out or broken appliances classified as?",
-        options: [
-            "A. Compostable",
-            "B. Residual",
-            "C. Recyclable",
-            "D. Special"
-        ],
-        answer: "D. Special"
-    },
-    {
-        question: "What does compostable waste primarily consist of?",
-        options: [
-            "A. Plastics and metals",
-            "B. Garden and food waste",
-            "C. Batteries and paint",
-            "D. Used syringes"
-        ],
-        answer: "B. Garden and food waste"
-    },
-    {
-        question: "What is a direct benefit of efficient waste management?",
-        options: [
-            "A. More waste is created",
-            "B. Higher landfill dependency",
-            "C. Increased collection costs",
-            "D. Streamlined collection and processing"
-        ],
-        answer: "D. Streamlined collection and processing"
-    },
-    {
-        question: "What does special waste include?",
-        options: [
-            "A. Organic kitchen waste",
-            "B. Broken glass",
-            "C. Hazardous household items",
-            "D. Unused tissues"
-        ],
-        answer: "C. Hazardous household items"
-    },
-    {
-        question: "Which item is considered recyclable?",
-        options: [
-            "A. Sanitary napkin",
-            "B. Newspaper",
-            "C. Soiled bandage",
-            "D. Food waste"
-        ],
-        answer: "B. Newspaper"
-    },
-    {
-        question: "Which waste type includes sharps and soiled dressings?",
-        options: [
-            "A. Recyclable waste",
-            "B. Compostable waste",
-            "C. Household healthcare waste",
-            "D. Residual waste"
-        ],
-        answer: "C. Household healthcare waste"
-    },
-    {
-        question: "Why is proper waste segregation important for the environment?",
-        options: [
-            "A. It increases pollution",
-            "B. It reduces the risk of contamination",
-            "C. It delays waste disposal",
-            "D. It produces more waste"
-        ],
-        answer: "B. It reduces the risk of contamination"
-    },
-    {
-        question: "Which item is classified as residual waste?",
-        options: [
-            "A. Glass bottle",
-            "B. Plastic-lined juice carton",
-            "C. Steel spoon",
-            "D. Fresh leaves"
-        ],
-        answer: "B. Plastic-lined juice carton"
-    },
-    {
-        question: "Paint and thinner are classified as what kind of waste?",
-        options: [
-            "A. Compostable",
-            "B. Recyclable",
-            "C. Special",
-            "D. Residual"
-        ],
-        answer: "C. Special"
-    },
-    {
-        question: "Which of the following is an example of compostable waste?",
-        options: [
-            "A. Tin cans",
-            "B. Expired medicine",
-            "C. Fruit and vegetable peelings",
-            "D. Face masks"
-        ],
-        answer: "C. Fruit and vegetable peelings"
-    },
-    {
-        question: "What is a consequence of poor waste segregation?",
-        options: [
-            "A. Increased recyclability",
-            "B. Cleaner environment",
-            "C. Contaminated waste streams",
-            "D. Decreased landfill use"
-        ],
-        answer: "C. Contaminated waste streams"
-    },
-    {
-        question: "How can communities help improve waste segregation?",
-        options: [
-            "A. Ignore recycling laws",
-            "B. Mix all types of waste",
-            "C. Practice and promote proper segregation",
-            "D. Depend solely on the government"
-        ],
-        answer: "C. Practice and promote proper segregation"
-    },
-    {
-        question: "Which factor can limit the ability to set up waste segregation systems?",
-        options: [
-            "A. Overfunding",
-            "B. Lack of waste",
-            "C. Cost and limited resources",
-            "D. Too much space"
-        ],
-        answer: "C. Cost and limited resources"
-    },
-    {
-        question: "What are residual wastes?",
-        options: [
-            "A. Medical sharps",
-            "B. Wastes that are neither compostable nor recyclable",
-            "C. Kitchen scraps",
-            "D. Garden trimmings"
-        ],
-        answer: "B. Wastes that are neither compostable nor recyclable"
-    }
-];
+            {
+                question: "What is the goal of promoting composting under RA 9003?",
+                options: [
+                    "A. To burn organic waste",
+                    "B. To reduce organic waste in landfills",
+                    "C. To sell waste overseas",
+                    "D. To increase garbage collection"
+                ],
+                answer: "B. To reduce organic waste in landfills"
+            },
+            {
+                question: "What is one key purpose of Republic Act No. 9003?",
+                options: [
+                    "A. Encourage illegal dumping",
+                    "B. Promote incineration",
+                    "C. Mandate solid waste management programs",
+                    "D. Increase landfill usage"
+                ],
+                answer: "C. Mandate solid waste management programs"
+            },
+            {
+                question: "What does proper hazardous waste disposal prevent?",
+                options: [
+                    "A. Soil enrichment",
+                    "B. Health risks from toxic exposure",
+                    "C. Recycling of toxic materials",
+                    "D. Water purification"
+                ],
+                answer: "B. Health risks from toxic exposure"
+            },
+            {
+                question: "What type of waste is typically biodegradable?",
+                options: [
+                    "A. Plastic bottles",
+                    "B. Aluminum cans",
+                    "C. Food scraps",
+                    "D. Glass jars"
+                ],
+                answer: "C. Food scraps"
+            },
+            {
+                question: "What is the purpose of waste classification?",
+                options: [
+                    "A. To increase landfill size",
+                    "B. To make waste collection slower",
+                    "C. To determine the best way to handle waste",
+                    "D. To avoid separating waste"
+                ],
+                answer: "C. To determine the best way to handle waste"
+            },
+            {
+                question: "Which of the following is a sustainable waste management practice?",
+                options: [
+                    "A. Dumping into rivers",
+                    "B. Incineration",
+                    "C. Recycling",
+                    "D. Burning plastics"
+                ],
+                answer: "C. Recycling"
+            },
+            {
+                question: "What is waste segregation?",
+                options: [
+                    "A. Mixing all types of waste into one bin",
+                    "B. Burning all types of waste",
+                    "C. Separating waste based on type, composition, or recyclability",
+                    "D. Throwing away waste without classification"
+                ],
+                answer: "C. Separating waste based on type, composition, or recyclability"
+            },
+            {
+                question: "Which of the following is an example of special waste?",
+                options: [
+                    "A. Vegetable peels",
+                    "B. Batteries",
+                    "C. Paper",
+                    "D. Candy wrappers"
+                ],
+                answer: "B. Batteries"
+            },
+            {
+                question: "Which item is classified as recyclable?",
+                options: [
+                    "A. Glass bottle",
+                    "B. Disposable gloves",
+                    "C. Worn-out rug",
+                    "D. Garden waste"
+                ],
+                answer: "A. Glass bottle"
+            },
+            {
+                question: "Which of the following is a category of waste that should be separated?",
+                options: [
+                    "A. Liquid only",
+                    "B. Biodegradable",
+                    "C. Precious metals",
+                    "D. Unused items"
+                ],
+                answer: "B. Biodegradable"
+            },
+            {
+                question: "Why can inconsistent segregation practices be problematic?",
+                options: [
+                    "A. They save time",
+                    "B. They lead to less waste",
+                    "C. They cause confusion and reduce efficiency",
+                    "D. They promote sustainability"
+                ],
+                answer: "C. They cause confusion and reduce efficiency"
+            },
+            {
+                question: "What is household healthcare waste?",
+                options: [
+                    "A. Plastic bottles and cans",
+                    "B. Wastes contaminated with infectious materials",
+                    "C. Dry paper products",
+                    "D. Compostable garden waste"
+                ],
+                answer: "B. Wastes contaminated with infectious materials"
+            },
+            {
+                question: "What law is known as the Ecological Solid Waste Management Act of 2000?",
+                options: [
+                    "A. Republic Act No. 7160",
+                    "B. Republic Act No. 9003",
+                    "C. Republic Act No. 10121",
+                    "D. Republic Act No. 8425"
+                ],
+                answer: "B. Republic Act No. 9003"
+            },
+            {
+                question: "Which of the following is a type of household healthcare waste?",
+                options: [
+                    "A. Face masks",
+                    "B. Aluminum cans",
+                    "C. Cardboard",
+                    "D. Old clothes"
+                ],
+                answer: "A. Face masks"
+            },
+            {
+                question: "What category do used syringes fall under?",
+                options: [
+                    "A. Recyclable",
+                    "B. Residual",
+                    "C. Healthcare",
+                    "D. Compostable"
+                ],
+                answer: "C. Healthcare"
+            },
+            {
+                question: "What infrastructure issue affects waste segregation?",
+                options: [
+                    "A. Excess collection bins",
+                    "B. Limited recycling bins and collection systems",
+                    "C. Too many composting options",
+                    "D. Free recycling services"
+                ],
+                answer: "B. Limited recycling bins and collection systems"
+            },
+            {
+                question: "Which waste type is considered dangerous if not disposed of properly?",
+                options: [
+                    "A. Recyclable",
+                    "B. Compostable",
+                    "C. Household healthcare waste",
+                    "D. Residual"
+                ],
+                answer: "C. Household healthcare waste"
+            },
+            {
+                question: "How does recycling contribute to natural resource conservation?",
+                options: [
+                    "A. It increases energy use",
+                    "B. It uses more raw materials",
+                    "C. It reduces demand for virgin resources",
+                    "D. It harms the environment"
+                ],
+                answer: "C. It reduces demand for virgin resources"
+            },
+            {
+                question: "What happens when food waste is mixed with recyclables?",
+                options: [
+                    "A. Better composting",
+                    "B. Easier sorting",
+                    "C. Contamination of recyclable materials",
+                    "D. Lower waste volume"
+                ],
+                answer: "C. Contamination of recyclable materials"
+            },
+            {
+                question: "What is recyclable waste?",
+                options: [
+                    "A. Waste burned at home",
+                    "B. Contaminated trash",
+                    "C. Waste that can be processed for reuse",
+                    "D. Medical waste"
+                ],
+                answer: "C. Waste that can be processed for reuse"
+            },
+            {
+                question: "Which sector is responsible for educating people on waste segregation?",
+                options: [
+                    "A. Private companies only",
+                    "B. The military",
+                    "C. Communities, schools, and local government",
+                    "D. Tourists"
+                ],
+                answer: "C. Communities, schools, and local government"
+            },
+            {
+                question: "What is one effect of reducing landfill dependency?",
+                options: [
+                    "A. Increased pollution",
+                    "B. Shortened landfill lifespan",
+                    "C. Extended landfill lifespan",
+                    "D. More land needed for dumpsites"
+                ],
+                answer: "C. Extended landfill lifespan"
+            },
+            {
+                question: "Which of the following is NOT compostable?",
+                options: [
+                    "A. Fish entrails",
+                    "B. Soft vegetable trims",
+                    "C. Aluminum foil",
+                    "D. Fruit seeds"
+                ],
+                answer: "C. Aluminum foil"
+            },
+            {
+                question: "Why is classifying waste important?",
+                options: [
+                    "A. It wastes time and resources",
+                    "B. It helps burn more waste",
+                    "C. It supports safe and efficient disposal methods",
+                    "D. It reduces waste collection"
+                ],
+                answer: "C. It supports safe and efficient disposal methods"
+            },
+            {
+                question: "What type of waste are worn-out or broken appliances classified as?",
+                options: [
+                    "A. Compostable",
+                    "B. Residual",
+                    "C. Recyclable",
+                    "D. Special"
+                ],
+                answer: "D. Special"
+            },
+            {
+                question: "What does compostable waste primarily consist of?",
+                options: [
+                    "A. Plastics and metals",
+                    "B. Garden and food waste",
+                    "C. Batteries and paint",
+                    "D. Used syringes"
+                ],
+                answer: "B. Garden and food waste"
+            },
+            {
+                question: "What is a direct benefit of efficient waste management?",
+                options: [
+                    "A. More waste is created",
+                    "B. Higher landfill dependency",
+                    "C. Increased collection costs",
+                    "D. Streamlined collection and processing"
+                ],
+                answer: "D. Streamlined collection and processing"
+            },
+            {
+                question: "What does special waste include?",
+                options: [
+                    "A. Organic kitchen waste",
+                    "B. Broken glass",
+                    "C. Hazardous household items",
+                    "D. Unused tissues"
+                ],
+                answer: "C. Hazardous household items"
+            },
+            {
+                question: "Which item is considered recyclable?",
+                options: [
+                    "A. Sanitary napkin",
+                    "B. Newspaper",
+                    "C. Soiled bandage",
+                    "D. Food waste"
+                ],
+                answer: "B. Newspaper"
+            },
+            {
+                question: "Which waste type includes sharps and soiled dressings?",
+                options: [
+                    "A. Recyclable waste",
+                    "B. Compostable waste",
+                    "C. Household healthcare waste",
+                    "D. Residual waste"
+                ],
+                answer: "C. Household healthcare waste"
+            },
+            {
+                question: "Why is proper waste segregation important for the environment?",
+                options: [
+                    "A. It increases pollution",
+                    "B. It reduces the risk of contamination",
+                    "C. It delays waste disposal",
+                    "D. It produces more waste"
+                ],
+                answer: "B. It reduces the risk of contamination"
+            },
+            {
+                question: "Which item is classified as residual waste?",
+                options: [
+                    "A. Glass bottle",
+                    "B. Plastic-lined juice carton",
+                    "C. Steel spoon",
+                    "D. Fresh leaves"
+                ],
+                answer: "B. Plastic-lined juice carton"
+            },
+            {
+                question: "Paint and thinner are classified as what kind of waste?",
+                options: [
+                    "A. Compostable",
+                    "B. Recyclable",
+                    "C. Special",
+                    "D. Residual"
+                ],
+                answer: "C. Special"
+            },
+            {
+                question: "Which of the following is an example of compostable waste?",
+                options: [
+                    "A. Tin cans",
+                    "B. Expired medicine",
+                    "C. Fruit and vegetable peelings",
+                    "D. Face masks"
+                ],
+                answer: "C. Fruit and vegetable peelings"
+            },
+            {
+                question: "What is a consequence of poor waste segregation?",
+                options: [
+                    "A. Increased recyclability",
+                    "B. Cleaner environment",
+                    "C. Contaminated waste streams",
+                    "D. Decreased landfill use"
+                ],
+                answer: "C. Contaminated waste streams"
+            },
+            {
+                question: "How can communities help improve waste segregation?",
+                options: [
+                    "A. Ignore recycling laws",
+                    "B. Mix all types of waste",
+                    "C. Practice and promote proper segregation",
+                    "D. Depend solely on the government"
+                ],
+                answer: "C. Practice and promote proper segregation"
+            },
+            {
+                question: "Which factor can limit the ability to set up waste segregation systems?",
+                options: [
+                    "A. Overfunding",
+                    "B. Lack of waste",
+                    "C. Cost and limited resources",
+                    "D. Too much space"
+                ],
+                answer: "C. Cost and limited resources"
+            },
+            {
+                question: "What are residual wastes?",
+                options: [
+                    "A. Medical sharps",
+                    "B. Wastes that are neither compostable nor recyclable",
+                    "C. Kitchen scraps",
+                    "D. Garden trimmings"
+                ],
+                answer: "B. Wastes that are neither compostable nor recyclable"
+            }
+        ];
 
         function startTimer(duration, display) {
             let timer = duration, minutes, seconds;
