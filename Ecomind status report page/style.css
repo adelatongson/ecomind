@@ -1,0 +1,532 @@
+/* Global Body and HTML Reset */
+html {
+    box-sizing: border-box;
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif; /* Applied Montserrat font */
+    background-color: #f0f8f0; /* Light green background */
+    display: flex; /* Makes body a flex container */
+    flex-direction: column; /* Stacks children vertically */
+    min-height: 100vh; /* Ensures body is at least viewport height */
+    /* Removed overflow-y: scroll from body; the page will now scroll naturally */
+}
+
+/* Header CSS */
+header {
+    position: fixed; /* Header remains fixed at the top */
+    top: 0; left: 0; right: 0;
+    background: white;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    padding: 12px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    height: 64px; /* Explicit height for reliable content offset */
+}
+header .logo {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    color: #333;
+    font-size: 1.2em;
+}
+header .logo img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 8px;
+}
+header nav {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap; /* Prevent nav items from wrapping */
+}
+header nav a {
+    margin-left: 20px;
+    text-decoration: none;
+    color: #555;
+    font-weight: 500;
+    white-space: nowrap; /* Keep text on one line */
+}
+header nav a:hover {
+    color: #16a34a; /* green */
+}
+header nav .login-btn {
+    background: #b0cc29;
+    color: black;
+    padding: 8px 20px;
+    border-radius: 30px;
+    font-weight: 600;
+    text-decoration: none;
+    margin-left: 30px;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+    white-space: nowrap; /* Keep text on one line */
+}
+header nav .login-btn:hover {
+    background-color: #a6bb28;
+}
+
+/* Main Content Wrapper (pushes footer down) */
+.main-content-wrapper {
+    flex-grow: 1; /* This is the key: it takes all available vertical space */
+    padding-top: 64px; /* Pushes content down, matches header height */
+    padding-bottom: 20px; /* Small padding for spacing before footer */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Footer CSS (now a regular, flowing element) */
+footer {
+    background-color: #4f6d3f;
+    color: #ccc;
+    padding: 40px 20px;
+    font-size: 0.9rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* This still works for its internal content */
+}
+footer .container {
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap; /* Allows sections to wrap if not enough horizontal space */
+    gap: 40px;
+    justify-content: center;
+}
+footer h3 {
+    color: white;
+    margin-bottom: 12px;
+}
+footer ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+footer ul li {
+    margin-bottom: 8px;
+}
+footer ul li a {
+    color: #ccc;
+    text-decoration: none;
+}
+footer ul li a:hover {
+    color: #a6db4a;
+}
+footer .bottom-bar {
+    text-align: center;
+    margin-top: 24px;
+    border-top: 1px solid #35522c;
+    padding-top: 16px;
+}
+footer .bottom-bar a {
+    margin: 0 12px;
+    color: #a6db4a;
+    text-decoration: none;
+}
+
+/* Media Queries for Header and Footer */
+@media (max-width: 768px) {
+    header {
+        /* Keep header in a row, adjust spacing */
+        align-items: center; /* Center items vertically within the row */
+        height: auto; /* Allow height to adjust based on content */
+        padding: 12px 10px; /* Adjust horizontal padding for smaller screens */
+    }
+    header nav {
+        margin-top: 0; /* Remove vertical margin */
+        align-items: center; /* Align nav items vertically */
+        width: auto; /* Allow width to be content-based */
+        gap: 10px; /* Add a small gap between nav items */
+        flex-wrap: nowrap; /* Ensure they don't wrap */
+    }
+    header nav a,
+    header nav .login-btn {
+        margin-left: 0; /* Remove specific left margin */
+        width: auto; /* Don't force full width */
+        text-align: center; /* Center text within its own space */
+        padding: 5px 8px; /* Adjust padding for smaller links */
+        font-size: 0.9em; /* Slightly reduce font size if needed */
+    }
+    header nav .login-btn {
+        padding: 8px 15px; /* Adjust login button padding */
+    }
+    .main-content-wrapper {
+        padding-top: 150px; /* Example: Increased padding for a taller header on mobile */
+        padding-bottom: 20px; /* Small padding */
+    }
+    footer {
+        height: auto; /* Footer naturally takes its content height */
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+    footer .container {
+        /* This will now keep sections in a row,
+           allowing them to wrap onto multiple lines if needed due to flex-wrap: wrap; */
+        gap: 20px;
+        text-align: center;
+    }
+    footer ul {
+        align-items: center;
+    }
+}
+
+
+/* Progress Report Section Specific Styles (From progress_report.css - UPDATED FOR 30PX SHIFT ONLY) */
+.progress-container {
+    background-color: #e4efb0;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 1200px;
+    flex-grow: 1; /* Allows container to take up available space within main-content-wrapper */
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    min-height: 400px; /* Ensure some minimum height for the progress area */
+}
+
+/* Top Navigation Bar */
+.top-nav {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    background-color: #f6fded;
+    border-radius: 8px;
+    overflow-x: auto;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    padding: 0 10px;
+}
+
+.nav-item {
+    padding: 15px 10px;
+    color: #333;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+    min-width: fit-content;
+}
+
+/* Specific flex values for top-nav items to align with user entries */
+.nav-item.name-section {
+    flex: 4;
+    min-width: 200px;
+}
+.nav-item.file-section {
+    flex: 2.5;
+    min-width: 150px;
+    margin-left: -30px; /* <<<< EDITED LINE: Shifts File header and subsequent headers left by 30px */
+}
+.nav-item.games-section {
+    flex: 2;
+    min-width: 150px;
+}
+.nav-item.action-section {
+    flex: 1;
+    min-width: 40px;
+    justify-content: flex-end;
+    padding-right: 20px;
+}
+
+.search-input {
+    padding: 8px 12px;
+    border: 1px solid #a0d8a0;
+    border-radius: 5px;
+    font-size: 1em;
+    width: 150px;
+    flex-shrink: 0;
+    outline: none;
+}
+
+.search-input::placeholder {
+    color: #888;
+}
+
+/* User List Wrapper (for scrollability) */
+.user-list-wrapper {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding-right: 15px;
+    position: relative;
+}
+
+.user-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Individual User Entry */
+.user-entry {
+    background-color: #f7fff7;
+    padding: 15px 20px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    flex-wrap: nowrap;
+    min-width: 320px;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex: 3.1;
+    min-width: 200px;
+}
+
+.status-indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: inline-block;
+    flex-shrink: 0;
+}
+
+.status-indicator.online {
+    background-color: #28a745;
+}
+
+.status-indicator.offline {
+    background-color: #dc3545;
+}
+
+.user-name {
+    font-weight: bold;
+    color: #333;
+    word-break: break-word;
+    flex-grow: 1;
+}
+
+/* User Progress - This container now holds both file and game items */
+.user-progress {
+    display: flex;
+    flex: 4.5;
+    gap: 20px;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    min-width: 300px;
+    margin-left: -30px; /* <<<< EDITED LINE: Shifts File/Games content left by 30px */
+}
+
+.progress-item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 3px;
+    min-width: 120px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Specific flex for file and game items to align with their headers */
+.progress-item.file-upload {
+    flex: 2.3;
+}
+.progress-item.game-played {
+    flex: 2;
+}
+
+.progress-item span:first-child { /* The title like "File Uploaded:" */
+    font-size: 0.85em;
+    color: #777;
+    font-weight: normal;
+}
+
+.progress-item .status { /* The actual file/game name */
+    padding: 3px 8px;
+    border-radius: 15px;
+    font-size: 0.9em;
+    font-weight: bold;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%; /* Important for ellipsis */
+}
+
+.progress-item .status.submitted {
+    background-color: #d4edda;
+    color: #155724;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.progress-item .status.submitted::before {
+    content: '✓';
+    color: #28a745;
+    font-weight: bold;
+}
+
+.user-actions {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    min-width: 40px;
+}
+
+.delete-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 5px;
+    transition: background-color 0.2s ease;
+    flex-shrink: 0;
+}
+
+.delete-btn:hover {
+    background-color: #f0f0f0;
+}
+
+.delete-btn img {
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+}
+
+/* Media Queries for User Entries (if they wrap) */
+@media (max-width: 768px) {
+    /* Top Nav on small screens */
+    .top-nav {
+        flex-wrap: wrap; /* Allow top-nav items to wrap on smaller screens */
+    }
+    .top-nav .nav-item {
+        flex: 1 1 auto; /* Allow them to shrink/grow based on content */
+        min-width: 100px; /* Minimum width for smaller header items */
+        text-align: center; /* Center text when wrapping */
+    }
+    /* Reset explicit flex values for top-nav items on smaller screens */
+    .nav-item.name-section,
+    .nav-item.file-section, /* Added to reset margin-left */
+    .nav-item.games-section,
+    .nav-item.action-section {
+        flex: unset; /* Remove fixed flex ratios */
+        min-width: unset;
+        width: 100%; /* Make them take full width when stacked */
+        justify-content: center; /* Ensure content is centered if it spans full width */
+        margin-left: unset; /* IMPORTANT: Remove negative margin on mobile */
+    }
+    /* User Entry on small screens */
+    .user-entry {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+    /* Reset flex properties for user entry sections when stacked */
+    .user-info, .user-progress, .user-actions {
+        width: 100%;
+        min-width: unset;
+        justify-content: flex-start;
+        flex-shrink: unset;
+        flex: unset;
+        margin-left: unset; /* IMPORTANT: Remove negative margin on mobile */
+    }
+    .user-progress {
+        flex-direction: row; /* Keep file/game in a row on tablet */
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    .progress-item {
+        flex-basis: calc(50% - 5px); /* Two columns */
+        min-width: unset;
+        flex: unset; /* Remove specific flex values when wrapping */
+    }
+    .user-actions {
+        justify-content: flex-start;
+    }
+    /* Hide the 'Action' header if its corresponding items are stacked */
+    .nav-item.action-section {
+        display: none;
+    }
+}
+@media (max-width: 480px) {
+    .progress-item {
+        flex-basis: 100%; /* Stack on small phones */
+    }
+}
+
+/* Custom Scroll Indicator */
+.scroll-indicator {
+    position: absolute;
+    right: 15px;
+    top: 120px; /* Adjust this based on your layout's top-nav height */
+    bottom: 20px; /* Adjust this based on how much space you want at the bottom */
+    width: 10px;
+    background-color: #C6E438;
+    border-radius: 5px;
+}
+
+/* Modal Styling */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+}
+
+.modal-content p {
+    margin-bottom: 20px;
+    font-size: 1.1em;
+    color: #333;
+}
+
+.modal-buttons button {
+    background-color: #c8edc8;
+    color: #155724;
+    padding: 10px 20px;
+    margin: 0 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+}
+
+.modal-buttons button:hover {
+    background-color: #b0e0b0;
+}
+
+#confirmDeleteYes {
+    background-color: #dc3545;
+    color: white;
+}
+
+#confirmDeleteYes:hover {
+    background-color: #c82333;
+}
