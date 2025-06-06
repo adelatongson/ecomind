@@ -1,0 +1,31 @@
+body {
+    font-family: 'Inter', sans-serif;
+}
+/* Custom styles for quiz options - using rounded corners and subtle shadow */
+.quiz-option {
+    background-color: white;
+    padding: 1.5rem; /* p-6 */
+    border-radius: 0.75rem; /* rounded-xl */
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* shadow-md */
+    cursor: pointer;
+    transition-property: background-color;
+    transition-duration: 200ms;
+}
+.quiz-option:hover {
+    background-color: #f9fafb; /* hover:bg-gray-50 */
+}
+.quiz-option.selected {
+    border-width: 2px;
+    border-color: #B0CC29;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-lg */
+}
+.quiz-option.correct {
+    background-color: #d1fae5; /* bg-green-100 */
+    border-width: 2px;
+    border-color: #10b981; /* border-green-500 */
+}
+.quiz-option.incorrect {
+    background-color: #fee2e2; /* bg-red-100 */
+    border-width: 2px;
+    border-color: #ef4444; /* border-red-500 */
+}
