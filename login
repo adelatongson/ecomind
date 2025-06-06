@@ -284,11 +284,11 @@
             <span class="text-xl font-semibold text-gray-800">Ecomind</span>
         </div>
         <nav class="hidden md:flex items-center space-x-8">
-            <a href="#home" class="text-gray-700 hover:text-green-600 font-medium transition-colors duration-300">Home</a>
-            <a href="#about" class="text-gray-700 hover:text-green-600 font-medium transition-colors duration-300">About Us</a>
-            <a href="#module" class="text-gray-700 hover:text-green-600 font-medium transition-colors duration-300">Module</a>
-            <a href="#game" class="text-gray-700 hover:text-green-600 font-medium transition-colors duration-300">Game</a>
-            <a href="#login" class="bg-[#B0CC29] text-black px-8 py-3 rounded-full hover:bg-opacity-80 transition-colors duration-300 shadow-lg font-semibold inline-block">Login</a>
+            <a href="home.html" class="text-gray-700 hover:text-green-600 font-medium transition-colors duration-300">Home</a>
+            <a href="aboutus.html" class="text-gray-700 hover:text-green-600 font-medium transition-colors duration-300">About Us</a>
+            <a href="modulehomepage.html" class="text-gray-700 hover:text-green-600 font-medium transition-colors duration-300">Module</a>
+            <a href="gamehomepage.html" class="text-gray-700 hover:text-green-600 font-medium transition-colors duration-300">Game</a>
+            <a href="login.html" class="bg-[#B0CC29] text-black px-8 py-3 rounded-full hover:bg-opacity-80 transition-colors duration-300 shadow-lg font-semibold inline-block">Login</a>
         </nav>
         <button class="md:hidden text-gray-700 text-2xl" id="hamburger-button"> &#9776; </button>
     </header>
