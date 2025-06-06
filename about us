@@ -325,27 +325,39 @@
 <section class="partnerships">
     <div class="partners-logos">
         <div class="partner">
-            <img src="https://placehold.co/100x100/FFD700/FFFFFF?text=iVOLUNTEER" alt="iVolunteer Philippines Logo" />
+            <a href="https://www.ivolunteer.com.ph" target="_blank">
+                <img src="https://placehold.co/100x100/FFD700/FFFFFF?text=iVOLUNTEER" alt="iVolunteer Philippines Logo" />
+            </a>
             <span>iVOLUNTEER PHILIPPINES</span>
         </div>
         <div class="partner">
-            <img src="https://placehold.co/100x100/FF0000/FFFFFF?text=SAVE+CHILDREN" alt="Save the Children Logo" />
+            <a href="https://www.savethechildren.org" target="_blank">
+                <img src="https://placehold.co/100x100/FF0000/FFFFFF?text=SAVE+CHILDREN" alt="Save the Children Logo" />
+            </a>
             <span>Save the Children</span>
         </div>
         <div class="partner">
-            <img src="https://placehold.co/100x100/0000FF/FFFFFF?text=PNVSCA" alt="PNVSCA Logo" />
+            <a href="https://www.pnvsca.gov.ph" target="_blank">
+                <img src="https://placehold.co/100x100/0000FF/FFFFFF?text=PNVSCA" alt="PNVSCA Logo" />
+            </a>
             <span>PNVSCA</span>
         </div>
         <div class="partner">
-            <img src="https://placehold.co/100x100/008000/FFFFFF?text=PRECIOUS+PLASTIC" alt="Precious Plastic Philippines Logo" />
+            <a href="https://www.preciousplastic.com" target="_blank">
+                <img src="https://placehold.co/100x100/008000/FFFFFF?text=PRECIOUS+PLASTIC" alt="Precious Plastic Philippines Logo" />
+            </a>
             <span>PRECIOUS PLASTIC PHILIPPINES</span>
         </div>
         <div class="partner">
-            <img src="https://placehold.co/100x100/800080/FFFFFF?text=PORMS" alt="PORMS Logo" />
+            <a href="https://www.porms.org" target="_blank">
+                <img src="https://placehold.co/100x100/800080/FFFFFF?text=PORMS" alt="PORMS Logo" />
+            </a>
             <span>PORMS</span>
         </div>
         <div class="partner">
-            <img src="https://placehold.co/100x100/00FFFF/FFFFFF?text=ENVIRONMENTAL+GROUP" alt="Environmental Group Logo" />
+            <a href="https://www.environmentalgroup.org" target="_blank">
+                <img src="https://placehold.co/100x100/00FFFF/FFFFFF?text=ENVIRONMENTAL+GROUP" alt="Environmental Group Logo" />
+            </a>
             <span>Environmental Group</span>
         </div>
     </div>
@@ -489,5 +501,6 @@
 
 </body>
 </html>
+
 
 
