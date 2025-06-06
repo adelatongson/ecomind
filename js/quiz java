@@ -33,13 +33,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const questionTextElement = document.getElementById('question-text');
     const quizOptions = document.querySelectorAll('.quiz-option');
     const submitAnswerButton = document.getElementById('submit-answer-button');
-    const feedbackMessage = document.getElementById('feedback-message'); // This will now remain hidden until the end
+    const feedbackMessage = document.getElementById('feedback-message');
     const questionCurrentCountElement = document.getElementById('question-current-count');
     const questionTotalCountElement = document.getElementById('question-total-count');
     const finalScoreElement = document.getElementById('final-score');
     const restartQuizButton = document.getElementById('restart-quiz-button');
-    const resultsLinkDesktop = document.getElementById('results-link-desktop');
-    const resultsLinkMobile = document.getElementById('results-link-mobile');
+    // Removed results link elements as they are no longer in the navigation
+    // const resultsLinkDesktop = document.getElementById('results-link-desktop');
+    // const resultsLinkMobile = document.getElementById('results-link-mobile');
 
 
     // Array of quiz questions
@@ -282,39 +283,40 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Set the total number of questions initially
     questionTotalCountElement.textContent = questions.length;
+    console.log("Total questions defined:", questions.length); // Debug log
 
     /**
      * Shows the quiz container and hides the results container.
      */
     function showQuiz() {
+        console.log("Function: showQuiz() called."); // Debug log
         quizContainer.classList.remove('hidden');
         quizResultsContainer.classList.add('hidden');
-        resultsLinkDesktop.classList.add('hidden'); // Hide results link while quiz is active
-        resultsLinkMobile.classList.add('hidden');
     }
 
     /**
      * Shows the results container and hides the quiz container.
      */
     function showResults() {
+        console.log("Function: showResults() called."); // Debug log
         quizContainer.classList.add('hidden');
         quizResultsContainer.classList.remove('hidden');
         finalScoreElement.querySelector('span:first-child').textContent = score;
         finalScoreElement.querySelector('span:last-child').textContent = questions.length;
-        resultsLinkDesktop.classList.remove('hidden'); // Show results link when quiz is finished
-        resultsLinkMobile.classList.remove('hidden');
     }
 
     /**
      * Loads the current question into the HTML.
      */
     function loadQuestion() {
+        console.log("Function: loadQuestion() called. Current index:", currentQuestionIndex); // Debug log
         showQuiz(); // Ensure quiz is visible when loading a new question
         if (currentQuestionIndex < questions.length) {
             const currentQuestion = questions[currentQuestionIndex];
+            console.log("Attempting to load question:", currentQuestion.question); // Debug log
             questionTextElement.textContent = currentQuestion.question;
+            console.log("Question text element content after update:", questionTextElement.textContent); // Debug log
 
-            // Update options text
             document.querySelector('#option-a p').textContent = `A. ${currentQuestion.options.A}`;
             document.querySelector('#option-b p').textContent = `B. ${currentQuestion.options.B}`;
             document.querySelector('#option-c p').textContent = `C. ${currentQuestion.options.C}`;
@@ -336,6 +338,7 @@ document.addEventListener('DOMContentLoaded', () => {
             questionCurrentCountElement.textContent = currentQuestionIndex + 1;
         } else {
             // End of quiz
+            console.log("All questions answered. Showing results."); // Debug log
             showResults(); // Show the results screen
         }
     }
@@ -346,6 +349,7 @@ document.addEventListener('DOMContentLoaded', () => {
      * @param {Event} event - The click event object.
      */
     function handleOptionClick(event) {
+        console.log("Option clicked."); // Debug log
         // Remove 'selected' class from previously selected option
         if (selectedAnswer) {
             selectedAnswer.classList.remove('selected');
@@ -366,6 +370,7 @@ document.addEventListener('DOMContentLoaded', () => {
      * Handles the submission of the quiz answer or moves to the next question.
      */
     function handleSubmitOrNext() {
+        console.log("Function: handleSubmitOrNext() called. Button text:", submitAnswerButton.textContent); // Debug log
         if (submitAnswerButton.textContent === 'Next Question') {
             currentQuestionIndex++;
             loadQuestion();
@@ -376,6 +381,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Temporarily show a message if no answer is selected
             feedbackMessage.textContent = 'Please select an answer.';
             feedbackMessage.className = 'mt-6 p-4 rounded-lg text-center font-semibold text-lg bg-yellow-100 text-yellow-800 block';
+            console.log("Validation: No answer selected."); // Debug log
             return;
         } else {
             // Hide the 'Please select an answer' message once an answer is selected
@@ -390,6 +396,9 @@ document.addEventListener('DOMContentLoaded', () => {
         // Check if the answer is correct and increment score, but don't show immediate feedback
         if (userAnswer === currentQuestion.correctAnswer) {
             score++; // Increment score for correct answer
+            console.log("Answer correct! Current score:", score); // Debug log
+        } else {
+            console.log("Answer incorrect."); // Debug log
         }
 
         // Disable options after submission (user cannot change answer for current question)
@@ -403,13 +412,14 @@ document.addEventListener('DOMContentLoaded', () => {
      * Resets the quiz to its initial state.
      */
     function restartQuiz() {
+        console.log("Function: restartQuiz() called."); // Debug log
         currentQuestionIndex = 0;
         score = 0;
         showQuiz();
         loadQuestion();
     }
 
-    // Initialize the quiz by loading the first question
+    // Initialize the quiz by loading the first question when the DOM is fully loaded
     loadQuestion();
 
     // Add event listener to the submit/next button
@@ -422,18 +432,4 @@ document.addEventListener('DOMContentLoaded', () => {
         restartQuizButton.addEventListener('click', restartQuiz);
     }
 
-    // Add event listeners for the new "Results" links
-    if (resultsLinkDesktop) {
-        resultsLinkDesktop.addEventListener('click', (e) => {
-            e.preventDefault(); // Prevent default anchor behavior
-            showResults();
-        });
-    }
-    if (resultsLinkMobile) {
-        resultsLinkMobile.addEventListener('click', (e) => {
-            e.preventDefault(); // Prevent default anchor behavior
-            showResults();
-            toggleMobileMenu(); // Close mobile menu after clicking results
-        });
-    }
 });
