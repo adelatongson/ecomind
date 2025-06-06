@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ecomind</title>
+    <!-- Link to Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Link to custom CSS file -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts for Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+
+    <!-- Header Section -->
+    <header class="fixed top-0 left-0 w-full bg-white shadow-md z-50 py-4 px-6 md:px-12 flex justify-between items-center rounded-b-lg">
+        <div class="flex items-center space-x-2">
+            <!-- Placeholder for logo image with an onerror fallback -->
+            <img src="https://placehold.co/40x40/B0CC29/ffffff?text=Logo" alt="Ecomind Logo" class="w-10 h-10 rounded-full" onerror="this.onerror=null;this.src='https://placehold.co/40x40/B0CC29/ffffff?text=Logo';">
+            <span class="text-xl font-semibold text-gray-800">Ecomind</span>
+        </div>
+        <!-- Navigation Menu for Desktop -->
+        <nav id="main-nav" class="hidden md:flex items-center space-x-8">
+            <a href="#" class="text-gray-700 hover:text-green-600 font-medium transition-colors duration-300">Home</a>
+            <a href="#" class="text-gray-700 hover:text-green-600 font-medium transition-colors duration-300">About Us</a>
+            <a href="#" class="text-gray-700 hover:text-green-600 font-medium transition-colors duration-300">Module</a>
+            <a href="#" class="text-gray-700 hover:text-green-600 font-medium transition-colors duration-300">Game</a>
+            <!-- New 'Results' link - now always visible -->
+            <a href="#quiz-results" id="results-link-desktop" class="text-gray-700 hover:text-green-600 font-medium transition-colors duration-300">Results</a>
+            <a href="about.html" class="bg-[#B0CC29] text-black px-8 py-3 rounded-full hover:bg-opacity-80 transition-colors duration-300 shadow-lg font-semibold inline-block">Login</a>
+        </nav>
+        <!-- Mobile Menu Button -->
+        <button id="mobile-menu-button" class="md:hidden text-gray-700 text-2xl">
+            &#9776; <!-- Hamburger icon -->
+        </button>
+    </header>
+
+    <!-- Mobile Navigation Overlay (hidden by default) -->
+    <div id="mobile-menu-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden"></div>
+    <nav id="mobile-menu" class="fixed top-0 right-0 w-64 h-full bg-white shadow-lg z-50 transform translate-x-full transition-transform duration-300 ease-in-out md:hidden">
+        <div class="p-6">
+            <button id="close-mobile-menu" class="text-gray-700 text-3xl absolute top-4 right-4">&times;</button>
+            <div class="mt-12 flex flex-col space-y-4">
+                <a href="#" class="block text-gray-800 hover:text-green-600 font-medium text-lg">Home</a>
+                <a href="#" class="block text-gray-800 hover:text-green-600 font-medium text-lg">About Us</a>
+                <a href="#" class="block text-gray-800 hover:text-green-600 font-medium text-lg">Module</a>
+                <a href="#" class="block text-gray-800 hover:text-green-600 font-medium text-lg">Game</a>
+                <!-- New 'Results' link for mobile - now always visible -->
+                <a href="#quiz-results" id="results-link-mobile" class="block text-gray-800 hover:text-green-600 font-medium text-lg">Results</a>
+                <a href="about.html" class="block bg-[#B0CC29] text-black px-6 py-2 rounded-full text-center hover:bg-opacity-80 transition-colors duration-300 shadow-lg font-semibold mt-4">Login</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main content area -->
+    <main class="pt-24 pb-12 min-h-screen flex items-center justify-center">
+        <div class="container mx-auto px-4 md:px-12 max-w-4xl">
+            <!-- Quiz Card -->
+            <div id="quiz-container" class="bg-white p-8 rounded-lg shadow-xl mb-8">
+                <h2 id="question-text" class="text-2xl md:text-3xl font-bold text-gray-800 mb-6 text-center">
+                    <!-- Question will be loaded here by JavaScript -->
+                </h2>
+                <!-- Adjusted grid for options: 2 columns on small screens and up, 1 column on very small screens -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
+                    <!-- Quiz Option A -->
+                    <div id="option-a" class="quiz-option" data-answer="A">
+                        <p class="text-lg font-medium text-gray-700"></p>
+                    </div>
+                    <!-- Quiz Option B -->
+                    <div id="option-b" class="quiz-option" data-answer="B">
+                        <p class="text-lg font-medium text-gray-700"></p>
+                    </div>
+                    <!-- Quiz Option C -->
+                    <div id="option-c" class="quiz-option" data-answer="C">
+                        <p class="text-lg font-medium text-gray-700"></p>
+                    </div>
+                    <!-- Quiz Option D -->
+                    <div id="option-d" class="quiz-option" data-answer="D">
+                        <p class="text-lg font-medium text-gray-700"></p>
+                    </div>
+                </div>
+                <!-- Submit Answer Button -->
+                <button id="submit-answer-button" class="w-full bg-[#B0CC29] text-black px-8 py-3 rounded-full hover:bg-opacity-80 transition-colors duration-300 shadow-lg font-semibold text-lg">
+                    Submit Answer
+                </button>
+                <!-- Feedback Message Area -->
+                <div id="feedback-message" class="mt-6 p-4 rounded-lg text-center font-semibold text-lg hidden">
+                    <!-- Feedback message will appear here -->
+                </div>
+            </div>
+
+            <!-- Quiz Results Section (hidden by default) -->
+            <div id="quiz-results" class="bg-white p-8 rounded-lg shadow-xl mb-8 hidden">
+                <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-6 text-center">
+                    Quiz Results
+                </h2>
+                <p id="final-score" class="text-xl text-gray-700 text-center mb-4">
+                    Your final score: <span class="font-bold">0</span> out of <span class="font-bold">0</span>
+                </p>
+                <p class="text-center text-gray-600">
+                    Thank you for completing the quiz!
+                </p>
+                <button id="restart-quiz-button" class="w-full bg-[#4F6D3F] text-white px-8 py-3 rounded-full hover:bg-opacity-80 transition-colors duration-300 shadow-lg font-semibold text-lg mt-6">
+                    Restart Quiz
+                </button>
+            </div>
+
+
+            <!-- User Info and Question Count -->
+            <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0 p-4 bg-white rounded-lg shadow-md">
+                <div class="flex items-center space-x-2">
+                    <span class="bg-[#B0CC29] w-6 h-6 rounded-full inline-block"></span>
+                    <span class="text-gray-700 font-medium">Username</span>
+                </div>
+                <div class="bg-[#B0CC29] text-black px-4 py-2 rounded-full font-semibold">
+                    Question <span id="question-current-count">1</span>/<span id="question-total-count">100</span>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="bg-[#4F6D3F] text-gray-300 py-12 px-4 md:px-12 rounded-t-lg">
+        <div class="container mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 justify-items-center justify-center">
+            <!-- ECOMIND Social Links -->
+            <div>
+                <h3 class="text-xl font-semibold text-white mb-4">ECOMIND</h3>
+                <ul class="space-y-2">
+                    <li><a href="#" class="hover:text-green-400 transition-colors duration-300 flex items-center"><span class="mr-2">&#x1F4F7;</span> Instagram</a></li>
+                    <li><a href="#" class="hover:text-green-400 transition-colors duration-300 flex items-center"><span class="mr-2">&#x1F426;</span> Twitter</a></li>
+                    <li><a href="#" class="hover:text-green-400 transition-colors duration-300 flex items-center"><span class="mr-2">&#x1F465;</span> Facebook</a></li>
+                    <li><a href="#" class="hover:text-green-400 transition-colors duration-300 flex items-center"><span class="mr-2">&#x1F4CC;</span> Pinterest</a></li>
+                </ul>
+            </div>
+            <!-- About Us Links -->
+            <div>
+                <h3 class="text-xl font-semibold text-white mb-4">About Us</h3>
+                <ul class="space-y-2">
+                    <li><a href="#" class="hover:text-green-400 transition-colors duration-300">About Ecomind</a></li>
+                    <li><a href="#" class="hover:text-green-400 transition-colors duration-300">Vision & Mission</a></li>
+                    <li><a href="#" class="hover:text-green-400 transition-colors duration-300">Partnership</a></li>
+                    <li><a href="#" class="hover:text-green-400 transition-colors duration-300">Sustainability</a></li>
+                </ul>
+            </div>
+            <!-- Contact Us Links -->
+            <div>
+                <h3 class="text-xl font-semibold text-white mb-4">Contact Us</h3>
+                <ul class="space-y-2">
+                    <li><a href="#" class="hover:text-green-400 transition-colors duration-300">1-800-555-5555</a></li>
+                    <li><a href="#" class="hover:text-green-400 transition-colors duration-300">Join us</a></li>
+                    <li><a href="#" class="hover:text-green-400 transition-colors duration-300">Email us</a></li>
+                    <li><a href="#" class="hover:text-green-400 transition-colors duration-300">Customer Support</a></li>
+                </ul>
+            </div>
+            <!-- Learning Links -->
+            <div>
+                <h3 class="text-xl font-semibold text-white mb-4">Learning</h3>
+                <ul class="space-y-2">
+                    <li><a href="#" class="hover:text-green-400 transition-colors duration-300">Modules</a></li>
+                    <li><a href="#" class="hover:text-green-400 transition-colors duration-300">Quizzes</a></li>
+                    <li><a href="#" class="hover:text-green-400 transition-colors duration-300">Games</a></li>
+                    <li><a href="#" class="hover:text-green-400 transition-colors duration-300">Volunteers</a></li>
+                </ul>
+            </div>
+        </div>
+        <!-- Copyright and Policy Links -->
+        <div class="container mx-auto border-t border-gray-600 mt-8 pt-6 text-center text-sm">
+            <div class="flex flex-col md:flex-row justify-center items-center space-y-2 md:space-y-0 md:space-x-8">
+                <p>&copy; 2049 Fitma</p>
+                <a href="#" class="hover:text-green-400 transition-colors duration-300">Fitma Policies</a>
+                <a href="#" class="hover:text-green-400 transition-colors duration-300">Terms of Use</a>
+                <a href="#" class="hover:text-green-400 transition-colors duration-300">About us</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Link to external JavaScript file -->
+    <script src="script.js"></script>
+</body>
+</html>
