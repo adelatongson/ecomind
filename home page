@@ -11,21 +11,21 @@
             font-family: 'Inter', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f0f2f5; /* Light gray background */
+            background-color: #f0f2f5;
         }
         .hero-background {
-            background-image: url('image/Background.svg'); /* Placeholder for the mountain image */
+            background-image: url('image/Background.svg');
             background-size: cover;
             background-position: center;
             position: relative;
-            height: 80vh; /* Adjust height as needed */
+            height: 80vh;
             display: flex;
-            align-items: flex-end; /* Push content to the bottom */
-            justify-content: center; /* Center the content horizontally */
+            align-items: flex-end;
+            justify-content: center;
             text-align: center;
             color: white;
-            padding-top: 64px; /* Space for fixed header */
-            padding-bottom: 4rem; /* Added padding to the bottom of the hero section */
+            padding-top: 64px;
+            padding-bottom: 4rem;
         }
         .hero-overlay {
             position: absolute;
@@ -35,18 +35,16 @@
             height: 100%;
             background: linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.1) 50%, rgba(0,0,0,0.3) 100%);
         }
-        /* Styling for the outer rounded rectangle card */
         .stats-card {
-            background-color: rgba(255, 255, 255, 0.6); /* Translucent white background */
-            border-radius: 1.5rem; /* More rounded corners */
-            padding: 1rem 1.5rem; /* Padding inside the card */
+            background-color: rgba(255, 255, 255, 0.6);
+            border-radius: 1.5rem;
+            padding: 1rem 1.5rem;
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            display: flex; /* Use flexbox for internal alignment */
-            align-items: center; /* Vertically center items */
-            justify-content: flex-start; /* Align items to the start */
-            width: 280px; /* Fixed width for the card */
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            width: 280px;
         }
-        /* Styling for the inner circular progress bar */
         .stats-progress-circle {
             width: 80px;
             height: 80px;
@@ -56,17 +54,15 @@
             align-items: center;
             justify-content: center;
             position: relative;
-            /* Creates the ring effect using radial and conic gradients */
-            background: radial-gradient(white 60%, transparent 61%), /* Inner transparent circle for the hole */
-                        conic-gradient(var(--fill-color) 0% var(--percentage), var(--unfill-color) var(--percentage) 100%); /* Arc fill */
+            background: radial-gradient(white 60%, transparent 61%),
+                        conic-gradient(var(--fill-color) 0% var(--percentage), var(--unfill-color) var(--percentage) 100%);
             background-origin: border-box;
             background-clip: content-box, border-box;
-            /* Optional: Add a subtle inner white border for definition */
             box-shadow: inset 0 0 0 5px rgba(255, 255, 255, 0.5);
         }
         .stats-progress-circle span {
             position: relative;
-            z-index: 2; /* Ensures text is above the gradients */
+            z-index: 2;
         }
         .vision-mission-card {
             background-color: white;
@@ -76,8 +72,8 @@
             text-align: center;
         }
         .about-us-gradient {
-            background-color: white; /* Changed from gradient to solid white */
-            padding-top: 8rem; /* Adjust to extend gradient upwards */
+            background-color: white;
+            padding-top: 8rem;
             padding-bottom: 4rem;
         }
     </style>
@@ -90,11 +86,11 @@
             <span class="text-xl font-semibold text-gray-800">Ecomind</span>
         </div>
         <nav class="hidden md:flex items-center space-x-8">
-            <a href="#" class="text-gray-700 hover:text-green-600 font-medium transition-colors duration-300">Home</a>
-            <a href="#" class="text-gray-700 hover:text-green-600 font-medium transition-colors duration-300">About Us</a>
-            <a href="#" class="text-gray-700 hover:text-green-600 font-medium transition-colors duration-300">Module</a>
-            <a href="#" class="text-700 hover:text-green-600 font-medium transition-colors duration-300">Game</a>
-            <a href="about.html" class="bg-[#B0CC29] text-black px-8 py-3 rounded-full hover:bg-opacity-80 transition-colors duration-300 shadow-lg font-semibold inline-block">Login</a>
+            <a href="home.html" class="text-gray-700 hover:text-green-600 font-medium transition-colors duration-300">Home</a>
+            <a href="aboutus.html" class="text-gray-700 hover:text-green-600 font-medium transition-colors duration-300">About Us</a>
+            <a href="modulehomepage.html" class="text-gray-700 hover:text-green-600 font-medium transition-colors duration-300">Module</a>
+            <a href="gamehomepage.html" class="text-700 hover:text-green-600 font-medium transition-colors duration-300">Game</a>
+            <a href="login.html" class="bg-[#B0CC29] text-black px-8 py-3 rounded-full hover:bg-opacity-80 transition-colors duration-300 shadow-lg font-semibold inline-block">Login</a>
         </nav>
         <button class="md:hidden text-gray-700 text-2xl"> &#9776; </button>
     </header>
@@ -229,7 +225,6 @@
             </div>
         </div>
     </footer>
-
 
 </body>
 </html>
