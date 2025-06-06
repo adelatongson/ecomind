@@ -12,38 +12,7 @@
             padding: 0;
             color: #333;
         }
-        header {
-            position: fixed;
-            top: 0; left: 0; right: 0;
-            background: white;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            padding: 12px 24px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 100;
-            border-bottom-left-radius: 10px;
-            border-bottom-right-radius: 10px;
-        }
-        header .logo {
-            display: flex;
-            align-items: center;
-        }
-        header .logo img {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            margin-right: 8px;
-        }
-        header nav a {
-            margin-left: 20px;
-            text-decoration: none;
-            color: #555;
-            font-weight: 500;
-        }
-        header nav a:hover {
-            color: #16a34a; /* green */
-        }
+
         header nav .login-btn {
             background: #b0cc29;
             color: black;
@@ -57,10 +26,10 @@
         }
         header nav .login-btn:hover {
             background-color: #a6bb28;
-        }
+        } 
         .hero-background {
             margin-top: 72px;
-            background: url('image/background.png') center/cover no-repeat;
+            background: url('/image/Background.svg') center/cover no-repeat;
             padding: 60px 20px;
             position: relative;
             color: black;
@@ -239,75 +208,24 @@
         button#submitComment:hover {
             background-color: #15803d;
         }
-        footer {
-            background-color: #4f6d3f;
-            color: #ccc;
-            padding: 40px 20px;
-            font-size: 0.9rem;
-        }
-        footer .container {
-     max-width: 1200px;
-    margin: auto;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 40px;
-    justify-content: center;
-}
-
-        footer .container {
-            max-width: 1200px;
-            margin: auto;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 40px;
-            justify-content: center;
-        }
-        footer h3 {
-            color: white;
-            margin-bottom: 12px;
-        }
-        footer ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        footer ul li {
-            margin-bottom: 8px;
-        }
-        footer ul li a {
-            color: #ccc;
-            text-decoration: none;
-        }
-        footer ul li a:hover {
-            color: #a6db4a;
-        }
-        footer .bottom-bar {
-            text-align: center;
-            margin-top: 24px;
-            border-top: 1px solid #35522c;
-            padding-top: 16px;
-        }
-        footer .bottom-bar a {
-            margin: 0 12px;
-            color: #a6db4a;
-            text-decoration: none;
-        }
     </style>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
 
-<header>
-    <div class="logo">
-        <img src="image/logo.png" alt="Ecomind Logo" />
-        <span>Ecomind</span>
+<header class="fixed top-0 left-0 w-full bg-white shadow-md z-50 py-4 px-6 md:px-12 flex justify-between items-center rounded-b-lg">
+    <div class="flex items-center space-x-2">
+        <img src="image/logo.png" alt="Ecomind Logo" class="w-10 h-10 rounded-full">
+        <span class="text-xl font-semibold text-gray-800">Ecomind</span>
     </div>
-    <nav>
-      <a href="file:///C:/Users/MyPC/OneDrive/Ecomind/homepage.html">Home</a>
-      <a href="file:///C:/Users/MyPC/OneDrive/Ecomind/about%20us%20page.html">About Us</a>
-      <a href="file:///C:/Users/MyPC/OneDrive/Ecomind/modules%20homepage.html">Modules</a>
-      <a href="file:///C:/Users/MyPC/OneDrive/Ecomind/game%20homepage.html">Game</a>
-      <a href="file:///C:/Users/MyPC/OneDrive/Ecomind/login.html" class="login-btn">Login</a>
+    <nav class="hidden md:flex items-center space-x-8">
+        <a href="homepage.html" class="text-gray-700 hover:text-green-600 font-medium transition-colors duration-300">Home</a>
+        <a href="aboutus.html" class="text-gray-700 hover:text-green-600 font-medium transition-colors duration-300">About Us</a>
+        <a href="moduleshomepage.html" class="text-gray-700 hover:text-green-600 font-medium transition-colors duration-300">Modules</a>
+        <a href="gamehomepage.html" class="text-gray-700 hover:text-green-600 font-medium transition-colors duration-300">Game</a>
+        <a href="login.html" class="bg-[#B0CC29] text-black px-8 py-3 rounded-full hover:bg-opacity-80 transition-colors duration-300 shadow-lg font-semibold inline-block">Login</a>
     </nav>
+    <button class="md:hidden text-gray-700 text-2xl"> &#9776; </button>
 </header>
 
 <section class="hero-background">
@@ -381,56 +299,56 @@
     <button id="submitComment">Submit</button>
 </section>
 
-<footer>
-    <div class="container">
-        <div>
-            <h3>EcoMind</h3>
-            <ul>
-                <li><a href="#">Instagram</a></li>
-                <li><a href="#">Facebook</a></li>
-                <li><a href="#">Pinterest</a></li>
+<footer style="background-color: #4F6D3F; color: #f0f0f0; padding: 60px 20px 20px;">
+    <div style="max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 40px;">
+        <div style="flex: 1 1 200px;">
+            <h3 style="font-size: 1.25rem; margin-bottom: 16px; color: #ffffff;">ECOMIND</h3>
+            <ul style="list-style: none; padding: 0;">
+                <li style="margin-bottom: 8px;">📷 Instagram</li>
+                <li style="margin-bottom: 8px;">🐦 Twitter</li>
+                <li style="margin-bottom: 8px;">👥 Facebook</li>
+                <li style="margin-bottom: 8px;">📌 Pinterest</li>
             </ul>
         </div>
-        <div>
-            <h3>About Us</h3>
-            <ul>
-                <li><a href="#">Who We Are</a></li>
-                <li><a href="#">Media & Press</a></li>
-                <li><a href="#">Partners</a></li>
-                <li><a href="#">Our Vision</a></li>
+
+        <div style="flex: 1 1 200px;">
+            <h3 style="font-size: 1.25rem; margin-bottom: 16px; color: #ffffff;">About Us</h3>
+            <ul style="list-style: none; padding: 0;">
+                <li style="margin-bottom: 8px;">About Ecomind</li>
+                <li style="margin-bottom: 8px;">Vision & Mission</li>
+                <li style="margin-bottom: 8px;">Partnership</li>
+                <li style="margin-bottom: 8px;">Sustainability</li>
             </ul>
         </div>
-        <div>
-            <h3>Get in Touch</h3>
-            <ul>
-                <li><a href="#">+1-800-555-5555</a></li>
-                <li><a href="#">Join the Team</a></li>
-                <li><a href="#">hello@ecomind.org</a></li>
-                <li><a href="#">Support</a></li>
+
+        <div style="flex: 1 1 200px;">
+            <h3 style="font-size: 1.25rem; margin-bottom: 16px; color: #ffffff;">Contact Us</h3>
+            <ul style="list-style: none; padding: 0;">
+                <li style="margin-bottom: 8px;">1-800-555-5555</li>
+                <li style="margin-bottom: 8px;">Join us</li>
+                <li style="margin-bottom: 8px;">Email us</li>
+                <li style="margin-bottom: 8px;">Customer Support</li>
             </ul>
         </div>
-        <div>
-            <h3>Learn More</h3>
-            <ul>
-                <li><a href="#">All Modules</a></li>
-                <li><a href="#">Quizzes</a></li>
-                <li><a href="#">Eco Guides</a></li>
-                <li><a href="#">For Volunteers</a></li>
+
+        <div style="flex: 1 1 200px;">
+            <h3 style="font-size: 1.25rem; margin-bottom: 16px; color: #ffffff;">Learning</h3>
+            <ul style="list-style: none; padding: 0;">
+                <li style="margin-bottom: 8px;">Modules</li>
+                <li style="margin-bottom: 8px;">Quizzes</li>
+                <li style="margin-bottom: 8px;">Games</li>
+                <li style="margin-bottom: 8px;">Volunteers</li>
             </ul>
         </div>
     </div>
-    <div class="bottom-bar">
-        <p>&copy; <span id="year"></span> EcoMind. All rights reserved.</p>
-        <div>
-            <a href="#">Privacy Policy</a>
-            <a href="#">Terms of Use</a>
-            <a href="#">Site Map</a>
-        </div>
+
+    <div style="max-width: 1200px; margin: 40px auto 0; border-top: 1px solid #666; padding-top: 20px; text-align: center; font-size: 0.875rem; color: #ccc;">
+        <p>&copy; <span id="footerYear"></span> Fitma | Fitma Policies | Terms of Use | About us</p>
     </div>
 </footer>
 
 <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
+    document.getElementById("footerYear").textContent = new Date().getFullYear();
 </script>
 
 <script>
@@ -501,6 +419,3 @@
 
 </body>
 </html>
-
-
-
