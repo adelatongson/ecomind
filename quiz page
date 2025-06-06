@@ -26,8 +26,7 @@
             <a href="#" class="text-gray-700 hover:text-green-600 font-medium transition-colors duration-300">About Us</a>
             <a href="#" class="text-gray-700 hover:text-green-600 font-medium transition-colors duration-300">Module</a>
             <a href="#" class="text-gray-700 hover:text-green-600 font-medium transition-colors duration-300">Game</a>
-            <!-- New 'Results' link - now always visible -->
-            <a href="#quiz-results" id="results-link-desktop" class="text-gray-700 hover:text-green-600 font-medium transition-colors duration-300">Results</a>
+            <!-- 'Results' link removed from here -->
             <a href="about.html" class="bg-[#B0CC29] text-black px-8 py-3 rounded-full hover:bg-opacity-80 transition-colors duration-300 shadow-lg font-semibold inline-block">Login</a>
         </nav>
         <!-- Mobile Menu Button -->
@@ -46,8 +45,7 @@
                 <a href="#" class="block text-gray-800 hover:text-green-600 font-medium text-lg">About Us</a>
                 <a href="#" class="block text-gray-800 hover:text-green-600 font-medium text-lg">Module</a>
                 <a href="#" class="block text-gray-800 hover:text-green-600 font-medium text-lg">Game</a>
-                <!-- New 'Results' link for mobile - now always visible -->
-                <a href="#quiz-results" id="results-link-mobile" class="block text-gray-800 hover:text-green-600 font-medium text-lg">Results</a>
+                <!-- 'Results' link removed from here -->
                 <a href="about.html" class="block bg-[#B0CC29] text-black px-6 py-2 rounded-full text-center hover:bg-opacity-80 transition-colors duration-300 shadow-lg font-semibold mt-4">Login</a>
             </div>
         </div>
