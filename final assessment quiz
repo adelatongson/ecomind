@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: #f8f5f0;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 50px;
+            margin-right: 10px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+        }
+
+        .quiz-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+
+        .question-header {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 800px;
+            margin-bottom: 10px;
+        }
+
+        .item-number {
+            font-weight: bold;
+        }
+
+        .time {
+            font-weight: bold;
+        }
+
+        .question {
+            background-color: #e8f8e8;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            text-align: center;
+            max-width: 800px;
+            width: 100%;
+        }
+
+        .options {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            max-width: 800px;
+            margin-bottom: 20px;
+        }
+
+        .option {
+            background-color: #d9d9d9;
+            padding: 20px;
+            border-radius: 5px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .option.selected {
+            background-color: #81c784;
+            color: white;
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .submit-button {
+            background-color: #81c784;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        footer {
+            background-color: #2d3e3f;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .footer-section {
+            margin: 0 10px;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 10px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-section ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .results-container {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .results-list {
+            width: 50%;
+            padding: 20px;
+        }
+
+        .results-list div {
+            margin-bottom: 10px;
+            padding: 10px;
+            background-color: #e8f8e8;
+            border-radius: 5px;
+        }
+
+        .results-list .correct {
+            background-color: #81c784;
+            color: white;
+        }
+
+        .results-list .incorrect {
+            background-color: #ff8a80;
+            color: white;
+        }
+
+        .chart-container {
+            width: 50%;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .chart-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .chart-info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .chart-info p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="https://via.placeholder.com/50" alt="Logo">
+            <span>Ecomind</span>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="homepage.html">Home</a></li>
+                <li><a href="about us page.html">About Us</a></li>
+                <li><a href="modules homepage.html">Module</a></li>
+                <li><a href="game homepage.html">Game</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="quiz-container">
+        <div class="question-header">
+            <div class="item-number">Item 1</div>
+            <div class="time" id="time">Time: 05:00</div>
+        </div>
+        <div class="question">
+            <p id="question-text">Which of the following is the most environmentally friendly method of waste disposal?</p>
+        </div>
+        <div class="options">
+            <div class="option" onclick="selectOption(this)">A. Landfilling</div>
+            <div class="option" onclick="selectOption(this)">B. Incineration</div>
+            <div class="option" onclick="selectOption(this)">C. Open Dumping</div>
+            <div class="option" onclick="selectOption(this)">D. Recycling</div>
+        </div>
+        <div class="navigation">
+            <button class="submit-button" onclick="nextQuestion()">Submit Answer</button>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-section">
+            <h3>ECOMIND</h3>
+            <ul>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">Courses</a></li>
+                <li><a href="#">Finance</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h3>About Us</h3>
+            <ul>
+                <li><a href="#">About Ecomind</a></li>
+                <li><a href="#">Sustainability</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h3>Contact Us</h3>
+            <ul>
+                <li><a href="#">+63 955 9038</a></li>
+                <li><a href="#">info@ecomind.com</a></li>
+                <li><a href="#">Customer Support</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h3>Learning</h3>
+            <ul>
+                <li><a href="#">Modules</a></li>
+                <li><a href="#">Games</a></li>
+                <li><a href="#">Certifications</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script>
+        let currentQuestionIndex = 0;
+        let timeLeft = 7200; // 2 hours in seconds
+        let timer;
+        let userAnswers = [];
+        let questions = [
+              {
+                question: "What is waste segregation?",
+                options: ["A. Mixing all types of waste into one bin", " B. Burning all types of waste", "C. Separating waste based on type, composition, or recyclability", "D. Throwing away waste without classification"],
+                answer: "C. Separating waste based on type, composition, or recyclability"
+            },
+            {
+                question: "What law is known as the Ecological Solid Waste Management Act of 2000?",
+                options: ["A. Republic Act No. 7160", "B. Republic Act No. 9003", " C. Republic Act No. 10121", " D. Republic Act No. 8425"],
+                answer: " B. Republic Act No. 9003"
+            },
+        ];
+
+        function startTimer(duration, display) {
+            let timer = duration, minutes, seconds;
+            let interval = setInterval(function () {
+                minutes = parseInt(timer / 60, 10);
+                seconds = parseInt(timer % 60, 10);
+
+                minutes = minutes < 10 ? "0" + minutes : minutes;
+                seconds = seconds < 10 ? "0" + seconds : seconds;
+
+                display.textContent = "Time: " + minutes + ":" + seconds;
+
+                if (--timer < 0) {
+                    timer = 0;
+                    clearInterval(interval);
+                    alert("Time is up! Quiz ended.");
+                    showResults();
+                }
+            }, 1000);
+        }
+
+        function selectOption(optionElement) {
+            const options = document.querySelectorAll('.option');
+            options.forEach(option => option.classList.remove('selected'));
+            optionElement.classList.add('selected');
+        }
+
+        function nextQuestion() {
+            const selectedOption = document.querySelector('.option.selected');
+            if (selectedOption) {
+
+                userAnswers[currentQuestionIndex] = selectedOption.textContent;
+
+                currentQuestionIndex++;
+                if (currentQuestionIndex < questions.length) {
+                    updateQuestion();
+                } else {
+                    alert("Quiz completed!");
+                    clearInterval(timer);
+                    showResults();
+                }
+            } else {
+                alert("Please select an option.");
+            }
+        }
+
+        function updateQuestion() {
+            const questionText = document.getElementById('question-text');
+            const options = document.querySelectorAll('.option');
+            const itemNumber = document.querySelector('.item-number');
+
+            questionText.textContent = questions[currentQuestionIndex].question;
+            options.forEach((option, index) => {
+                option.textContent = questions[currentQuestionIndex].options[index];
+                option.classList.remove('selected');
+            });
+            itemNumber.textContent = `Item ${currentQuestionIndex + 1}`;
+        }
+
+        function showResults() {
+            let correctAnswers = 0;
+            questions.forEach((question, index) => {
+                if (userAnswers[index] === question.answer) {
+                    correctAnswers++;
+                }
+            });
+
+            const incorrectAnswers = questions.length - correctAnswers;
+            const timeTaken = 7200 - timeLeft; // Time taken in seconds
+
+            const quizContainer = document.querySelector('.quiz-container');
+            quizContainer.innerHTML = `
+                <div class="results-container">
+                    <div class="results-list">
+                        <h2>Test Results</h2>
+                        ${questions.map((question, index) => {
+                            const isCorrect = userAnswers[index] === question.answer;
+                            return `
+                                <div class="${isCorrect ? 'correct' : 'incorrect'}">
+                                    <p><strong>Question ${index + 1}:</strong> ${question.question}</p>
+                                    <p><strong>Your Choice:</strong> ${userAnswers[index] || 'Not answered'}</p>
+                                    <p><strong>Correct Answer:</strong> ${question.answer}</p>
+                                </div>
+                            `;
+                        }).join('')}
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="resultsChart"></canvas>
+                        <div class="chart-title">Time and Score</div>
+                        <div class="chart-info">
+                            <p>Time: ${Math.floor(timeTaken / 60)} minutes ${timeTaken % 60} seconds</p>
+                            <p>Score: ${correctAnswers} out of ${questions.length}</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            const ctx = document.getElementById('resultsChart').getContext('2d');
+            const resultsChart = new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    labels: ['Correct', 'Incorrect'],
+                    datasets: [{
+                        data: [correctAnswers, incorrectAnswers],
+                        backgroundColor: ['#81c784', '#ff8a80'],
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                        },
+                        title: {
+                            display: true,
+                            text: 'Test Results',
+                            font: {
+                                size: 18
+                            }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    const label = context.label || '';
+                                    const value = context.raw || 0;
+                                    const total = context.dataset.data.reduce((a, b) => a + b, 0);
+                                    const percentage = Math.round((value / total) * 100);
+                                    return `${label}: ${value} (${percentage}%)`;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        updateQuestion();
+
+        const display = document.querySelector('#time');
+        startTimer(timeLeft, display);
+    </script>
+</body>
+</html>
