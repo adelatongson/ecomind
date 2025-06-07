@@ -24,7 +24,7 @@
             flex-wrap: wrap;
             background-color: #fdf3e4;
             padding: 2rem;
-            margin-top: 64px; /* Adjust margin-top to account for fixed header */
+            margin-top: 64px; 
         }
 
         .banner-text {
