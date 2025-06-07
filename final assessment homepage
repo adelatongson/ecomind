@@ -10,15 +10,12 @@
             margin: 0;
             font-family: 'Inter', sans-serif;
         }
-
-        /* The hero section and assessment container specific styles remain */
         .hero {
             display: flex;
             align-items: center;
             background-color: #f8f5f0;
             padding: 40px;
-            /* Add padding-top to account for the fixed header */
-            padding-top: 100px; /* Adjust this value based on your header's actual height */
+            padding-top: 100px; 
         }
 
         .hero-image {
