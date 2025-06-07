@@ -10,9 +10,8 @@
         body {
             font-family: 'Inter', sans-serif;
         }
-        /* Custom background image for the body */
         body {
-            background-image: url('image/Backgroundlogin.svg'); /* A green hilly landscape with a light blue sky */
+            background-image: url('image/Backgroundlogin.svg');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -20,39 +19,36 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: flex-start; /* Changed to flex-start to allow content to start below header */
+            justify-content: flex-start;
             position: relative;
             overflow: hidden;
         }
-        /* Ensure the main content container is centered and takes appropriate space */
         .main-container {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            flex-grow: 1; /* Allows it to take available space */
-            padding: 20px; /* Add some padding around the container */
-            margin-top: 96px; /* Add margin-top to account for the fixed header height (approx. h-24 or py-4 + padding) */
+            flex-grow: 1;
+            padding: 20px;
+            margin-top: 96px;
         }
-
-        /* Mobile navigation (Hamburger menu) - Hidden by default, shown by JS */
         #mobile-nav {
-            display: none; /* Hide mobile nav by default */
+            display: none;
             flex-direction: column;
             position: absolute;
-            top: 100%; /* Position below the header */
+            top: 100%;
             left: 0;
             width: 100%;
             background-color: white;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             padding: 1rem;
-            z-index: 40; /* Ensure it's above other content but below the main header if needed */
+            z-index: 40;
         }
         #mobile-nav a {
             padding: 0.75rem 1rem;
             border-bottom: 1px solid #eee;
             text-align: center;
-            color: #4B5563; /* Tailwind gray-700 */
+            color: #4B5563;
         }
         #mobile-nav a:last-child {
             border-bottom: none;
@@ -67,15 +63,14 @@
             <span class="text-xl font-semibold text-gray-800">Ecomind</span>
         </div>
         <nav class="hidden md:flex items-center space-x-8" id="desktop-nav">
-            <a href="#home" class="text-gray-700 hover:text-green-600 font-medium transition-colors duration-300">Home</a>
-            <a href="#about" class="text-gray-700 hover:text-green-600 font-medium transition-colors duration-300">About Us</a>
-            <a href="#module" class="text-gray-700 hover:text-green-600 font-medium transition-colors duration-300">Module</a>
-            <a href="#game" class="text-gray-700 hover:text-green-600 font-medium transition-colors duration-300">Game</a>
+            <a href="home.html" class="text-gray-700 hover:text-green-600 font-medium transition-colors duration-300">Home</a>
+            <a href="aboutus.html" class="text-gray-700 hover:text-green-600 font-medium transition-colors duration-300">About Us</a>
+            <a href="modulehomepage.html" class="text-gray-700 hover:text-green-600 font-medium transition-colors duration-300">Module</a>
+            <a href="gamehomepage.html" class="text-gray-700 hover:text-green-600 font-medium transition-colors duration-300">Game</a>
             <a href="login.html" class="bg-[#B0CC29] text-black px-8 py-3 rounded-full hover:bg-opacity-80 transition-colors duration-300 shadow-lg font-semibold inline-block">Login</a>
         </nav>
         <button class="md:hidden text-gray-700 text-2xl" id="hamburger-button"> &#9776; </button>
     </header>
-
 
     <div class="main-container flex flex-col md:flex-row bg-white bg-opacity-85 rounded-xl shadow-2xl overflow-hidden w-11/12 max-w-5xl mb-8">
 
