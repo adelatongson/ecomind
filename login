@@ -6,7 +6,6 @@
     <title>EcoMind - Environmental Education</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* Base styles for the body and background */
         body {
             font-family: 'Inter', sans-serif; /* Using Inter font as per instructions */
             background-image: url('image/Backgroundlogin.svg'); /* Placeholder for loginbackround.png */
@@ -15,10 +14,9 @@
             background-position: center;
             min-height: 100vh;
             position: relative;
-            overflow-x: hidden; /* Prevent horizontal scrolling */
+            overflow-x: hidden; 
         }
 
-        /* Overlay for the background image */
         body::before {
             content: '';
             position: absolute;
@@ -30,23 +28,21 @@
             z-index: -1;
         }
 
-        /* Main content area, adjusted for fixed header */
         .main-content {
             display: flex;
             max-width: 1200px;
             margin: 0 auto;
             padding: 2rem;
-            gap: 0; /* No gap between welcome and login sections by default */
+            gap: 0; 
             align-items: flex-start;
-            min-height: calc(100vh - 80px); /* Adjust based on new navbar height */
-            padding-top: 6rem; /* Add padding to account for fixed navbar */
-            justify-content: center; /* Center content horizontally */
+            min-height: calc(100vh - 80px); 
+            padding-top: 6rem;
+            justify-content: center; 
         }
 
-        /* Welcome section styling */
         .welcome-section {
             flex: 1;
-            background-image: url('image/welcome.svg'); /* Placeholder for loginwelcome.png */
+            background-image: url('image/welcome.svg'); 
             background-size: contain;
             background-position: center;
             background-repeat: no-repeat;
@@ -55,20 +51,18 @@
             color: white;
             position: relative;
             overflow: hidden;
-            height: 500px; /* Fixed height for consistency */
+            height: 500px; 
             display: flex;
             flex-direction: column;
             justify-content: center;
         }
 
-        /* Welcome section heading */
         .welcome-section h1 {
             font-size: 3rem;
             margin-bottom: 1rem;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
 
-        /* Login section styling */
         .login-section {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
@@ -76,13 +70,12 @@
             padding: 2rem;
             width: 350px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            height: 500px; /* Fixed height for consistency */
+            height: 500px; 
             display: flex;
             flex-direction: column;
             justify-content: center;
         }
 
-        /* Login section heading */
         .login-section h2 {
             text-align: center;
             margin-bottom: 2rem;
@@ -90,12 +83,10 @@
             font-size: 2rem;
         }
 
-        /* Form group for inputs */
         .form-group {
             margin-bottom: 1.5rem;
         }
 
-        /* Input field styling */
         .form-group input {
             width: 100%;
             padding: 0.8rem;
@@ -106,18 +97,15 @@
             background: rgba(255, 255, 255, 0.5);
         }
 
-        /* Input focus state */
         .form-group input:focus {
             outline: none;
-            border-color: #4682B4; /* SteelBlue */
+            border-color: #4682B4; 
         }
 
-        /* Password field container for toggle icon */
         .password-field {
             position: relative;
         }
 
-        /* Password toggle icon styling */
         .password-toggle {
             position: absolute;
             right: 10px;
@@ -127,40 +115,35 @@
             color: #666;
         }
 
-        /* Password toggle image size */
         .password-toggle img {
             width: 20px;
             height: 20px;
         }
 
-        /* Login button styling */
         .login-button {
             width: 100%;
             padding: 0.8rem;
-            background: #9ACD32; /* YellowGreen */
+            background: #9ACD32; 
             border: none;
             border-radius: 10px;
             font-size: 1rem;
             font-weight: bold;
-            color: #2d5016; /* Darker green for text */
+            color: #2d5016;
             cursor: pointer;
             transition: background 0.3s;
             margin-bottom: 1rem;
         }
 
-        /* Login button hover state */
         .login-button:hover {
-            background: #8FBC8F; /* DarkSeaGreen */
+            background: #8FBC8F; 
         }
 
-        /* Social login buttons container */
         .social-login {
             display: flex;
             gap: 1rem;
             margin-bottom: 1rem;
         }
 
-        /* Individual social button styling */
         .social-btn {
             flex: 1;
             padding: 0.6rem;
@@ -176,71 +159,66 @@
             font-size: 0.9rem;
         }
 
-        /* Social button hover state */
         .social-btn:hover {
-            border-color: #4682B4; /* SteelBlue */
-            background: #f0f8ff; /* AliceBlue */
+            border-color: #4682B4; 
+            background: #f0f8ff; 
         }
 
-        /* Register button styling */
         .register-btn {
             width: 100%;
             padding: 0.8rem;
             background: transparent;
-            border: 2px solid #9ACD32; /* YellowGreen */
+            border: 2px solid #9ACD32;
             border-radius: 10px;
             font-size: 1rem;
-            color: #2d5016; /* Darker green for text */
+            color: #2d5016; 
             cursor: pointer;
             transition: all 0.3s;
         }
 
-        /* Register button hover state */
         .register-btn:hover {
-            background: #9ACD32; /* YellowGreen */
+            background: #9ACD32; 
             color: white;
         }
 
-        /* Responsive adjustments for smaller screens */
         @media (max-width: 768px) {
             .main-content {
                 flex-direction: column;
                 gap: 1rem;
                 padding: 1rem;
-                padding-top: 6rem; /* Adjust for smaller screens too */
+                padding-top: 6rem; 
             }
 
             .welcome-section {
                 width: 100%;
-                border-radius: 20px; /* Full border-radius on mobile */
-                height: auto; /* Auto height on mobile */
-                padding: 2rem; /* Reduced padding on mobile */
+                border-radius: 20px;
+                height: auto;
+                padding: 2rem;
             }
 
             .welcome-section h1 {
-                font-size: 2rem; /* Smaller font on mobile */
+                font-size: 2rem; 
             }
 
             .login-section {
                 width: 100%;
-                max-width: 400px; /* Max width for login section on mobile */
-                border-radius: 20px; /* Full border-radius on mobile */
-                height: auto; /* Auto height on mobile */
-                align-self: center; /* Center the login section */
+                max-width: 400px; 
+                border-radius: 20px; 
+                height: auto; 
+                align-self: center; 
             }
         }
 
-        /* Modal specific styles */
         .modal {
-            display: none; /* Hidden by default */
-            position: fixed; /* Stay in place */
-            z-index: 1000; /* Sit on top */
+            display: none; 
+            position: fixed; 
+            z-index: 1000;
             left: 0;
             top: 0;
-            width: 100%; /* Full width */
-            height: 100%; /* Full height */
-            overflow: auto; /* Enable scroll if needed */
-            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+            width: 100%; 
+            height: 100%; 
+            overflow: auto; 
+            background-color: rgba(0,0,0,0.4); 
             justify-content: center;
             align-items: center;
         }
@@ -336,10 +314,9 @@
     </div>
 
     <script>
-        // Function to show a custom modal message instead of alert()
         function showModal(message) {
             document.getElementById('modalMessage').textContent = message;
-            document.getElementById('myModal').style.display = 'flex'; // Use flex to center
+            document.getElementById('myModal').style.display = 'flex'; 
         }
 
         // Function to close the custom modal
@@ -347,7 +324,6 @@
             document.getElementById('myModal').style.display = 'none';
         }
 
-        // Login form functionality
         document.getElementById('loginForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
@@ -363,37 +339,33 @@
             }
         });
 
-        // Password toggle functionality
         function togglePassword() {
             const passwordField = document.getElementById('password');
             const toggleImg = document.getElementById('passwordToggleImg');
             
             if (passwordField.type === 'password') {
                 passwordField.type = 'text';
-                toggleImg.src = 'https://placehold.co/20x20/CCCCCC/000000?text=🙈'; // Placeholder for hide icon
+                toggleImg.src = 'https://placehold.co/20x20/CCCCCC/000000?text=🙈'; 
                 toggleImg.alt = 'Hide password';
             } else {
                 passwordField.type = 'password';
-                toggleImg.src = 'https://placehold.co/20x20/CCCCCC/000000?text=👁️'; // Placeholder for show icon
+                toggleImg.src = 'https://placehold.co/20x20/CCCCCC/000000?text=👁️'; 
                 toggleImg.alt = 'Show password';
             }
         }
 
-        // Social login functionality
         function socialLogin(provider) {
             showModal(`Redirecting to ${provider} login...`);
             // Here you would typically redirect to the social media OAuth flow
             console.log(`Social login with ${provider}`);
         }
 
-        // Register button functionality
         function showRegister() {
             showModal('Redirecting to registration page...');
             // Here you would typically redirect to a registration form
             console.log('Navigate to registration');
         }
 
-        // Mobile navigation toggle
         document.getElementById('hamburger-button').addEventListener('click', function() {
             const navLinks = document.querySelector('header nav'); // Select the nav element
             navLinks.classList.toggle('hidden'); // Toggle the 'hidden' class to show/hide
@@ -411,7 +383,6 @@
             navLinks.classList.toggle('md:hidden'); // Ensure it's hidden on medium screens
         });
         
-        // Smooth scrolling for navigation links
         document.querySelectorAll('header nav a').forEach(link => {
             link.addEventListener('click', function(e) {
                 // Close mobile menu if open
@@ -421,7 +392,6 @@
                     navLinks.classList.remove('flex', 'flex-col', 'absolute', 'top-full', 'left-0', 'w-full', 'bg-white', 'shadow-lg', 'py-4', 'items-center', 'space-y-4');
                 }
 
-                // Prevent default anchor click behavior only for internal links
                 if (this.hash !== "") {
                     e.preventDefault();
                     const targetId = this.getAttribute('href');
