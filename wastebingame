@@ -23,7 +23,6 @@
             background-color: #f87171 !important;
         }
 
-        /* Removed .navbar styles as it's replaced by .header */
 
         .logo {
             display: flex;
@@ -31,7 +30,7 @@
             gap: 0.5rem;
             font-weight: bold;
             font-size: 1.2rem;
-            color: #2d5016; /* Adjusted to match the new header's text color */
+            color: #2d5016; 
             text-decoration: none;
             cursor: pointer;
             transition: opacity 0.3s;
@@ -41,25 +40,24 @@
             opacity: 0.8;
         }
 
-        /* Adjusted nav-links and login-btn styles to fit new header structure if needed, or let Tailwind handle it */
         .nav-links a {
             text-decoration: none;
-            color: #333; /* Default text color, Tailwind classes will override */
+            color: #333; 
             font-weight: 500;
             transition: color 0.3s;
-            padding: 0.5rem 1rem; /* Adjust padding if needed */
+            padding: 0.5rem 1rem; 
         }
 
         .nav-links a:hover {
-            color: #2d5016; /* Hover color */
+            color: #2d5016; 
         }
 
         .nav-links .login-btn {
-            background: #9ACD32; /* Example color, Tailwind will define this */
+            background: #9ACD32; 
             padding: 0.5rem 1.5rem;
             border-radius: 20px;
             text-decoration: none;
-            color: #2d5016; /* Adjusted to match the new header's text color */
+            color: #2d5016;
             font-weight: bold;
             transition: background 0.3s;
         }
@@ -69,7 +67,7 @@
         }
 
         .hamburger {
-            display: none; /* Handled by Tailwind md:hidden */
+            display: none; 
             flex-direction: column;
             cursor: pointer;
             gap: 3px;
@@ -94,7 +92,7 @@
             align-items: center;
             justify-content: center;
             position: relative;
-            margin-top: 80px; /* Keep this to account for the fixed header */
+            margin-top: 80px;
         }
 
         .game-section::before {
@@ -561,7 +559,7 @@
             wasteElement.style.backgroundColor = currentItem.color;
             wasteElement.textContent = currentItem.emoji;
             
-            // Reset all bins
+
             document.querySelectorAll('.bin').forEach(bin => {
                 bin.classList.remove('drag-over');
             });
@@ -571,7 +569,7 @@
             const wasteItem = document.getElementById('wasteItem');
             const bins = document.querySelectorAll('.bin');
 
-            // Make waste item draggable
+
             wasteItem.draggable = true;
 
             wasteItem.addEventListener('dragstart', (e) => {
@@ -583,7 +581,7 @@
                 wasteItem.classList.remove('dragging');
             });
 
-            // Setup drop zones
+
             bins.forEach(bin => {
                 bin.addEventListener('dragover', (e) => {
                     e.preventDefault();
@@ -619,7 +617,7 @@
 
             updateScore();
             
-            // Load next item after delay
+
             setTimeout(() => {
                 loadNewItem();
             }, 2000);
@@ -651,13 +649,13 @@
             document.getElementById('wrong').textContent = wrongCount;
         }
 
-        // Mobile navigation toggle
+
         document.querySelector('.hamburger').addEventListener('click', function() {
             const navLinks = document.getElementById('mobile-nav'); // Target the mobile nav by ID
             navLinks.classList.toggle('hidden'); // Toggle 'hidden' class
         });
 
-        // Smooth scrolling for navigation links
+
         document.querySelectorAll('#desktop-nav a, #mobile-nav a').forEach(link => { // Select both desktop and mobile links
             link.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -666,14 +664,14 @@
                 if (targetElement) {
                     targetElement.scrollIntoView({ behavior: 'smooth' });
                 }
-                // If mobile nav is open, close it after clicking a link
+
                 if (!document.getElementById('mobile-nav').classList.contains('hidden')) {
                     document.getElementById('mobile-nav').classList.add('hidden');
                 }
             });
         });
 
-        // Touch support for mobile devices
+
         let touchStartX, touchStartY;
         
         document.getElementById('wasteItem').addEventListener('touchstart', (e) => {
@@ -697,13 +695,13 @@
             const touch = e.changedTouches[0];
             const elementBelow = document.elementFromPoint(touch.clientX, touch.clientY);
             
-            // Reset position
+
             element.style.position = 'relative';
             element.style.left = '';
             element.style.top = '';
             element.style.zIndex = '';
             
-            // Check if dropped on a bin
+
             const bin = elementBelow.closest('.bin');
             if (bin) {
                 const binType = bin.getAttribute('data-bin-type');
