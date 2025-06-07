@@ -13,7 +13,6 @@
       background-color: #f0fdf4;
     }
 
-    /* Original hero section adjusted for header height */
     .hero {
       background: url('https://placehold.co/1920x600/a0d8f0/000000?text=Nature+Background') no-repeat center center/cover;
       height: 100vh;
@@ -23,7 +22,7 @@
       align-items: center;
       text-align: center;
       color: white;
-      padding-top: 80px; /* Adjusted for fixed header */
+      padding-top: 80px; 
     }
 
     .hero h1 {
@@ -211,8 +210,6 @@
       .hero h1 {
         font-size: 2rem;
       }
-
-      /* No specific custom-header media query needed as it's now Tailwind-managed */
 
       .footer-column {
         width: 100%;
